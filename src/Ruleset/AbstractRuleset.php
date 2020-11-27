@@ -20,7 +20,7 @@ abstract class AbstractRuleset implements RulesetInterface
      *
      * @var string
      */
-    protected $name = '';
+    protected $name;
 
     /**
      * Rules for the ruleset.
@@ -48,7 +48,7 @@ abstract class AbstractRuleset implements RulesetInterface
      */
     final public function getName(): string
     {
-        return $this->name;
+        return $this->name ?? trim(strrchr(self::class, '\\'), '\\');
     }
 
     /**
