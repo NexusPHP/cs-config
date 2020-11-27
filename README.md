@@ -10,7 +10,7 @@ This library provides a factory for custom rulesets for [`friendsofphp/php-cs-fi
 
 [1]: https://github.com/FriendsOfPHP/PHP-CS-Fixer
 
-*This is the drop-in replacement for [Liaison CS Config](https://github.com/paulbalandan/liaison-cs-config), but is not fully backwards compatible. See [MIGRATION.md](MIGRATION.md) for details.*
+*This is the drop-in replacement for [Liaison CS Config Factory](https://github.com/paulbalandan/liaison-cs-config), but is not fully backwards compatible. See [MIGRATION.md](MIGRATION.md) for details.*
 
 ## Installation
 
@@ -87,7 +87,7 @@ namespace Nexus\CsConfig;
 
 * Scenario 2: Providing only the required arguments
 
-If you opted not to provided any of the optional arguments (i.e., email address, starting license year),
+If you opted not to provide any of the optional arguments (i.e., email address, starting license year),
 these will not be shown on the license header allowing flexibility on the copyright portion.
 
 ```diff
