@@ -1,0 +1,48 @@
+{
+    "name": "nexusphp/cs-config",
+    "type": "library",
+    "description": "A factory for custom rulesets for PHP CS Fixer.",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "John Paul E. Balandan, CPA",
+            "email": "paulbalandan@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^7.3 || ^8.0",
+        "ext-tokenizer": "*",
+        "friendsofphp/php-cs-fixer": "^2.16"
+    },
+    "require-dev": {
+        "phpstan/phpstan": "^0.12",
+        "phpstan/phpstan-strict-rules": "^0.12",
+        "phpunit/phpunit": "^9.4"
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-develop": "2.x-dev"
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Nexus\\CS-Config\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Nexus\\CS-Config\\Tests\\": "tests/"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "support": {
+        "issues": "https://github.com/NexusPHP/cs-config/issues",
+        "source": "https://github.com/NexusPHP/cs-config.git"
+    }
+}
