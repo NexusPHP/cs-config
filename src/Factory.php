@@ -66,7 +66,7 @@ final class Factory
     {
         if (\PHP_VERSION_ID < $ruleset->getRequiredPHPVersion()) {
             throw new RuntimeException(sprintf(
-                'Ruleset "%s" requires a minimum PHP_VERSION_ID of "%d" but current PHP_VERSION_ID is "%d".',
+                'The "%s" ruleset requires a minimum PHP_VERSION_ID of "%d" but current PHP_VERSION_ID is "%d".',
                 $ruleset->getName(),
                 $ruleset->getRequiredPHPVersion(),
                 \PHP_VERSION_ID
