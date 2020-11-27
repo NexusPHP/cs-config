@@ -73,11 +73,11 @@ jobs:
         run: composer config --global github-oauth.github.com ${{ secrets.ACCESS_TOKEN }}
 
       - name: Install dependencies for PHP ^7.3
-        if: ${{ matrix.php-versions }} != '8.0'
+        if: matrix.php-versions != '8.0'
         run: composer update --ansi --no-scripts --no-interaction
 
       - name: Install dependencies for PHP ^8.0
-        if: ${{ matrix.php-versions }} == '8.0'
+        if: matrix.php-versions == '8.0'
         run: composer update --ansi --no-scripts --no-interaction --ignore-platform-reqs
 
       - name: Run PHP-CS-Fixer
