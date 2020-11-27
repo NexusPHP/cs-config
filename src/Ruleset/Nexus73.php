@@ -150,7 +150,7 @@ final class Nexus73 extends AbstractRuleset
             'lowercase_static_reference'  => true,
             'magic_constant_casing'       => true,
             'magic_method_casing'         => true,
-            'mb_str_functions'            => true, // risky
+            'mb_str_functions'            => false, // risky
             'method_argument_space'       => [
                 'after_heredoc'                    => true,
                 'ensure_fully_multiline'           => true,
