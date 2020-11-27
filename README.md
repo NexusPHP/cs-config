@@ -25,8 +25,8 @@ then you should add it as a development-time dependency:
 ```php
 <?php
 
-use Nexus\CS-Config\Factory;
-use Nexus\CS-Config\Ruleset\Nexus73;
+use Nexus\CsConfig\Factory;
+use Nexus\CsConfig\Ruleset\Nexus73;
 
 return Factory::create(new Nexus73());
 

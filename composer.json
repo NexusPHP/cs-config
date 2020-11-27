@@ -34,12 +34,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Nexus\\CS-Config\\": "src/"
+            "Nexus\\CsConfig\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Nexus\\CS-Config\\Tests\\": "tests/"
+            "Nexus\\CsConfig\\Tests\\": "tests/"
         }
     },
     "minimum-stability": "dev",
