@@ -1,3 +1,6 @@
+# From phpstan/phpstan-strict-rules
+# but removed overly strict rules
+
 parameters:
 	polluteScopeWithLoopInitialAssignments: false
 	polluteScopeWithAlwaysIterableForeach: false
@@ -32,7 +35,6 @@ rules:
 	- PHPStan\Rules\Operators\OperandsInArithmeticModuloRule
 	- PHPStan\Rules\Operators\OperandsInArithmeticMultiplicationRule
 	- PHPStan\Rules\Operators\OperandsInArithmeticSubtractionRule
-	- PHPStan\Rules\StrictCalls\DynamicCallOnStaticMethodsRule
 	- PHPStan\Rules\StrictCalls\StrictFunctionCallsRule
 	- PHPStan\Rules\SwitchConditions\MatchingTypeInSwitchCaseConditionRule
 	- PHPStan\Rules\VariableVariables\VariableMethodCallRule
