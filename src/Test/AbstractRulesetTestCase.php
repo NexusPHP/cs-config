@@ -52,7 +52,7 @@ abstract class AbstractRulesetTestCase extends TestCase
         sort($fixersNotBuiltIn);
         $c = \count($fixersNotBuiltIn);
 
-        $this->assertEmpty($fixersNotBuiltIn, sprintf(
+        self::assertEmpty($fixersNotBuiltIn, sprintf(
             'Failed asserting that %s for the %s "%s" %s built-in to PhpCsFixer.',
             $c > 1 ? 'fixers' : 'fixer',
             $c > 1 ? 'rules' : 'rule',
@@ -74,7 +74,7 @@ abstract class AbstractRulesetTestCase extends TestCase
         $sorted = $rules;
         sort($sorted);
 
-        $this->assertSame($sorted, $rules, sprintf(
+        self::assertSame($sorted, $rules, sprintf(
             'Failed asserting that the rules in "%s" are sorted by name.',
             $source
         ));
@@ -90,7 +90,7 @@ abstract class AbstractRulesetTestCase extends TestCase
         sort($fixersWithoutConfiguration);
         $c = \count($fixersWithoutConfiguration);
 
-        $this->assertEmpty($fixersWithoutConfiguration, sprintf(
+        self::assertEmpty($fixersWithoutConfiguration, sprintf(
             'Failed asserting that built-in %s for the %s "%s" %s configured in this ruleset.',
             $c > 1 ? 'fixers' : 'fixer',
             $c > 1 ? 'rules' : 'rule',
@@ -103,8 +103,8 @@ abstract class AbstractRulesetTestCase extends TestCase
     {
         $rules = self::createRuleset()->getRules();
 
-        $this->assertArrayHasKey('header_comment', $rules);
-        $this->assertFalse($rules['header_comment']);
+        self::assertArrayHasKey('header_comment', $rules);
+        self::assertFalse($rules['header_comment']);
     }
 
     /**

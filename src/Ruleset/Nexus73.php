@@ -291,7 +291,7 @@ final class Nexus73 extends AbstractRuleset
             'php_unit_size_class'                           => false,
             'php_unit_strict'                               => true, // risky
             'php_unit_test_annotation'                      => false, // risky
-            'php_unit_test_case_static_method_calls'        => ['call_type' => 'this'], // risky
+            'php_unit_test_case_static_method_calls'        => ['call_type' => 'self'], // risky
             'php_unit_test_class_requires_covers'           => false,
             'phpdoc_add_missing_param_annotation'           => ['only_untyped' => false],
             'phpdoc_align'                                  => true,

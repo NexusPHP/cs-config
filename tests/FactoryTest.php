@@ -44,10 +44,10 @@ final class FactoryTest extends TestCase
     public function testFactoryReturnsInstanceOfConfig(): void
     {
         $config = Factory::create($this->mockRuleset())->forProjects();
-        $this->assertInstanceOf('PhpCsFixer\Config', $config);
+        self::assertInstanceOf('PhpCsFixer\Config', $config);
 
         $config = Factory::create($this->mockRuleset())->forLibrary('Library', 'John Doe', 'email', 2020);
-        $this->assertInstanceOf('PhpCsFixer\Config', $config);
+        self::assertInstanceOf('PhpCsFixer\Config', $config);
     }
 
     public function testFactoryPassesSameRulesFromRuleset(): void
@@ -55,34 +55,34 @@ final class FactoryTest extends TestCase
         $ruleset = $this->mockRuleset();
         $config = Factory::create($ruleset)->forProjects();
 
-        $this->assertSame($ruleset->getRules(), $config->getRules());
+        self::assertSame($ruleset->getRules(), $config->getRules());
     }
 
     public function testFactoryAllowsOverrideOfRules(): void
     {
         $config = Factory::create(new Nexus73())->forProjects();
-        $this->assertIsArray($config->getRules()['binary_operator_spaces']);
+        self::assertIsArray($config->getRules()['binary_operator_spaces']);
 
         $config = Factory::create(new Nexus73(), [
             'binary_operator_spaces' => false,
         ])->forProjects();
-        $this->assertFalse($config->getRules()['binary_operator_spaces']);
+        self::assertFalse($config->getRules()['binary_operator_spaces']);
     }
 
     public function testFactoryReturnsDefaultOptionsWhenNoOptionsGiven(): void
     {
         $config = Factory::create($this->mockRuleset())->forProjects();
 
-        $this->assertSame('.php_cs.cache', $config->getCacheFile());
-        $this->assertSame([], $config->getCustomFixers());
-        $this->assertInstanceOf('PhpCsFixer\Finder', $config->getFinder());
-        $this->assertSame('txt', $config->getFormat());
-        $this->assertFalse($config->getHideProgress());
-        $this->assertSame('    ', $config->getIndent());
-        $this->assertSame("\n", $config->getLineEnding());
-        $this->assertNull($config->getPhpExecutable());
-        $this->assertIsBool($config->getRiskyAllowed());
-        $this->assertTrue($config->getUsingCache());
+        self::assertSame('.php_cs.cache', $config->getCacheFile());
+        self::assertSame([], $config->getCustomFixers());
+        self::assertInstanceOf('PhpCsFixer\Finder', $config->getFinder());
+        self::assertSame('txt', $config->getFormat());
+        self::assertFalse($config->getHideProgress());
+        self::assertSame('    ', $config->getIndent());
+        self::assertSame("\n", $config->getLineEnding());
+        self::assertNull($config->getPhpExecutable());
+        self::assertIsBool($config->getRiskyAllowed());
+        self::assertTrue($config->getUsingCache());
     }
 
     public function testFactoryConsumesPassedOptionsToIt(): void
@@ -98,13 +98,13 @@ final class FactoryTest extends TestCase
         ];
         $config = Factory::create($this->mockRuleset(), [], $options)->forProjects();
 
-        $this->assertSame($options['cacheFile'], $config->getCacheFile());
-        $this->assertSame($options['format'], $config->getFormat());
-        $this->assertTrue($config->getHideProgress());
-        $this->assertSame($options['indent'], $config->getIndent());
-        $this->assertSame($options['lineEnding'], $config->getLineEnding());
-        $this->assertSame($options['phpExecutable'], $config->getPhpExecutable());
-        $this->assertFalse($config->getUsingCache());
+        self::assertSame($options['cacheFile'], $config->getCacheFile());
+        self::assertSame($options['format'], $config->getFormat());
+        self::assertTrue($config->getHideProgress());
+        self::assertSame($options['indent'], $config->getIndent());
+        self::assertSame($options['lineEnding'], $config->getLineEnding());
+        self::assertSame($options['phpExecutable'], $config->getPhpExecutable());
+        self::assertFalse($config->getUsingCache());
     }
 
     public function testCreateForLibraryCreatesPreformattedLicense(): void
@@ -112,8 +112,8 @@ final class FactoryTest extends TestCase
         $config = Factory::create($this->mockRuleset())->forLibrary('Library', 'Foo Bar', 'foo@bar.com', 2020);
         $header = $config->getRules()['header_comment']['header'];
 
-        $this->assertStringContainsString('This file is part of Library.', $header);
-        $this->assertStringContainsString('(c) 2020 Foo Bar <foo@bar.com>', $header);
+        self::assertStringContainsString('This file is part of Library.', $header);
+        self::assertStringContainsString('(c) 2020 Foo Bar <foo@bar.com>', $header);
     }
 
     /**
