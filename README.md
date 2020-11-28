@@ -186,44 +186,18 @@ namespace MyCompany\CodingStandards\Ruleset;
 
 use Nexus\CsConfig\Ruleset\AbstractRuleset;
 
-class MyCompany extends AbstractRuleset
+final class MyCompany extends AbstractRuleset
 {
-  /**
-   * Name of this ruleset
-   *
-   * @var string
-   */
-  protected $name = 'My Company';
-
-  /**
-   * Your list of rules
-   *
-   * @var array
-   */
-  protected $rules = [
-    '@PSR2' => true,
-    ...
-  ];
-
-  /**
-   * PHP_VERSION_ID that this ruleset is targeting.
-   *
-   * @var int
-   */
-  protected $requiredPHPVersion = 70400;
-
-  /**
-   * Does this ruleset have risky rules?
-   *
-   * If yes and `PhpCsFixer\Config` has the `$isRiskyAllowed`
-   * flag set to `false`, those risky rules won't be run.
-   *
-   * Set this flag to `true` to automatically setup
-   * the `$isRiskyAllowed` flag.
-   *
-   * @var bool
-   */
-  protected $autoActivateIsRiskyAllowed = false;
+  public function __construct()
+  {
+    $this->name = 'My Company';
+    $this->rules = [
+      '@PSR2' => true,
+      ...
+    ];
+    $this->requiredPHPVersion = 70400;
+    $this->autoActivateIsRiskyAllowed = true;
+  }
 }
 
 ```
