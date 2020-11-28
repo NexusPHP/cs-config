@@ -22,3 +22,5 @@ jobs:
           release_name: NexusPHP CS Config ${{ github.ref }}
           draft: false
           prerelease: false
+          body: |
+            Please refer to the CHANGELOG for the detailed list of changes.
