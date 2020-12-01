@@ -23,4 +23,4 @@ jobs:
           draft: false
           prerelease: false
           body: |
-            Please refer to the CHANGELOG for the detailed list of changes.
+            Please refer to the [CHANGELOG](CHANGELOG.md) for the detailed list of changes.
