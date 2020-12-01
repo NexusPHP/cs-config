@@ -46,6 +46,7 @@
     "prefer-stable": true,
     "support": {
         "issues": "https://github.com/NexusPHP/cs-config/issues",
-        "source": "https://github.com/NexusPHP/cs-config.git"
+        "source": "https://github.com/NexusPHP/cs-config.git",
+        "slack": "https://nexusphp.slack.com"
     }
 }
