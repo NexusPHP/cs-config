@@ -130,7 +130,7 @@ final class Nexus73 extends AbstractRuleset
                     'subpackage',
                 ],
             ],
-            'global_namespace_import'     => false,
+            'global_namespace_import'     => ['import_classes' => false],
             'hash_to_slash_comment'       => false, // deprecated
             'header_comment'              => false,
             'heredoc_indentation'         => true,
