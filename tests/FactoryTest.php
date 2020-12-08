@@ -88,13 +88,13 @@ final class FactoryTest extends TestCase
     public function testFactoryConsumesPassedOptionsToIt(): void
     {
         $options = [
-            'cacheFile'     => __DIR__ . '/../../build/.php_cs.cache',
-            'format'        => 'junit',
-            'hideProgress'  => true,
-            'indent'        => "\t",
-            'lineEnding'    => "\r\n",
+            'cacheFile' => __DIR__ . '/../../build/.php_cs.cache',
+            'format' => 'junit',
+            'hideProgress' => true,
+            'indent' => "\t",
+            'lineEnding' => "\r\n",
             'phpExecutable' => PHP_BINARY,
-            'usingCache'    => false,
+            'usingCache' => false,
         ];
         $config = Factory::create($this->mockRuleset(), [], $options)->forProjects();
 

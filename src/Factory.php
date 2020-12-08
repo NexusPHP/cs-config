@@ -139,7 +139,7 @@ the LICENSE file that was distributed with this source code.
 
         return $this->invoke([
             'header_comment' => [
-                'header'       => trim($header),
+                'header' => trim($header),
                 'comment_type' => 'PHPDoc',
             ],
         ]);
