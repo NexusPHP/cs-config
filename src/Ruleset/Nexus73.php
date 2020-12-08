@@ -294,34 +294,38 @@ final class Nexus73 extends AbstractRuleset
                     'method_private',
                 ],
             ],
-            'ordered_imports'                               => true,
-            'ordered_interfaces'                            => false, // risky
-            'ordered_traits'                                => true,
-            'php_unit_construct'                            => true, // risky
-            'php_unit_dedicate_assert'                      => ['target' => 'newest'], // risky
-            'php_unit_dedicate_assert_internal_type'        => ['target' => 'newest'], // risky
-            'php_unit_expectation'                          => true, // risky
-            'php_unit_fqcn_annotation'                      => true,
-            'php_unit_internal_class'                       => true,
-            'php_unit_method_casing'                        => true,
-            'php_unit_mock'                                 => true, // risky
-            'php_unit_mock_short_will_return'               => true, // risky
-            'php_unit_namespaced'                           => true, // risky
-            'php_unit_no_expectation_annotation'            => true, // risky
-            'php_unit_ordered_covers'                       => false, // deprecated
-            'php_unit_set_up_tear_down_visibility'          => true, // risky
-            'php_unit_size_class'                           => false,
-            'php_unit_strict'                               => true, // risky
-            'php_unit_test_annotation'                      => false, // risky
-            'php_unit_test_case_static_method_calls'        => ['call_type' => 'self'], // risky
-            'php_unit_test_class_requires_covers'           => false,
-            'phpdoc_add_missing_param_annotation'           => ['only_untyped' => false],
-            'phpdoc_align'                                  => true,
-            'phpdoc_annotation_without_dot'                 => true,
-            'phpdoc_indent'                                 => true,
-            'phpdoc_inline_tag'                             => false, // deprecated
-            'phpdoc_inline_tag_normalizer'                  => true,
-            'phpdoc_line_span'                              => true,
+            'ordered_imports'                        => true,
+            'ordered_interfaces'                     => false, // risky
+            'ordered_traits'                         => true,
+            'php_unit_construct'                     => true, // risky
+            'php_unit_dedicate_assert'               => ['target' => 'newest'], // risky
+            'php_unit_dedicate_assert_internal_type' => ['target' => 'newest'], // risky
+            'php_unit_expectation'                   => true, // risky
+            'php_unit_fqcn_annotation'               => true,
+            'php_unit_internal_class'                => true,
+            'php_unit_method_casing'                 => true,
+            'php_unit_mock'                          => true, // risky
+            'php_unit_mock_short_will_return'        => true, // risky
+            'php_unit_namespaced'                    => true, // risky
+            'php_unit_no_expectation_annotation'     => true, // risky
+            'php_unit_ordered_covers'                => false, // deprecated
+            'php_unit_set_up_tear_down_visibility'   => true, // risky
+            'php_unit_size_class'                    => false,
+            'php_unit_strict'                        => true, // risky
+            'php_unit_test_annotation'               => false, // risky
+            'php_unit_test_case_static_method_calls' => ['call_type' => 'self'], // risky
+            'php_unit_test_class_requires_covers'    => false,
+            'phpdoc_add_missing_param_annotation'    => ['only_untyped' => false],
+            'phpdoc_align'                           => true,
+            'phpdoc_annotation_without_dot'          => true,
+            'phpdoc_indent'                          => true,
+            'phpdoc_inline_tag'                      => false, // deprecated
+            'phpdoc_inline_tag_normalizer'           => true,
+            'phpdoc_line_span'                       => [
+                'const'    => 'single',
+                'method'   => 'single',
+                'property' => 'single',
+            ],
             'phpdoc_no_access'                              => true,
             'phpdoc_no_alias_tag'                           => true,
             'phpdoc_no_empty_return'                        => false,

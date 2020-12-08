@@ -43,33 +43,25 @@ abstract class AbstractRuleset implements RulesetInterface
      */
     protected $autoActivateIsRiskyAllowed = false;
 
-    /**
-     * @inheritDoc
-     */
+    /** @inheritDoc */
     final public function getName(): string
     {
         return $this->name ?? trim(strrchr(self::class, '\\'), '\\');
     }
 
-    /**
-     * @inheritDoc
-     */
+    /** @inheritDoc */
     final public function getRules(): array
     {
         return $this->rules;
     }
 
-    /**
-     * @inheritDoc
-     */
+    /** @inheritDoc */
     final public function getRequiredPHPVersion(): int
     {
         return $this->requiredPHPVersion;
     }
 
-    /**
-     * @inheritDoc
-     */
+    /** @inheritDoc */
     final public function willAutoActivateIsRiskyAllowed(): bool
     {
         return $this->autoActivateIsRiskyAllowed;
