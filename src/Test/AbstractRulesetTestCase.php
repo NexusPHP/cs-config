@@ -14,9 +14,10 @@ declare(strict_types=1);
 namespace Nexus\CsConfig\Test;
 
 use Nexus\CsConfig\Ruleset\RulesetInterface;
+use PhpCsFixer\Fixer\DeprecatedFixerInterface;
 use PhpCsFixer\Fixer\FixerInterface;
 use PhpCsFixer\FixerFactory;
-use PhpCsFixer\RuleSet;
+use PhpCsFixer\RuleSet\RuleSet;
 use PHPUnit\Framework\TestCase;
 
 abstract class AbstractRulesetTestCase extends TestCase
@@ -29,10 +30,36 @@ abstract class AbstractRulesetTestCase extends TestCase
     final public static function ruleNamesProvider(): iterable
     {
         $ruleset = static::createRuleset();
+        $name = $ruleset->getName();
 
-        return [
-            [$ruleset->getName(), array_keys($ruleset->getRules())],
-        ];
+        yield $name => [$name, array_keys($ruleset->getRules())];
+    }
+
+    /**
+     * @codeCoverageIgnore
+     *
+     * @return iterable
+     */
+    public static function deprecatedBuiltInFixersProvider(): iterable
+    {
+        static $deprecatedFixers;
+
+        if (null === $deprecatedFixers) {
+            $fixerFactory = FixerFactory::create();
+            $fixerFactory->registerBuiltInFixers();
+
+            $deprecatedFixers = array_map(static function (FixerInterface $fixer): string {
+                return $fixer->getName();
+            }, array_filter($fixerFactory->getFixers(), static function (FixerInterface $fixer): bool {
+                return $fixer instanceof DeprecatedFixerInterface;
+            }));
+
+            sort($deprecatedFixers);
+        }
+
+        foreach ($deprecatedFixers as $fixer) {
+            yield $fixer => [$fixer];
+        }
     }
 
     protected static function createRuleset(): RulesetInterface
@@ -108,6 +135,28 @@ abstract class AbstractRulesetTestCase extends TestCase
     }
 
     /**
+     * @dataProvider deprecatedBuiltInFixersProvider
+     *
+     * @param string $fixer
+     *
+     * @return void
+     */
+    final public function testDeprecatedFixersAreTurnedOff(string $fixer): void
+    {
+        static $rules;
+
+        if (null === $rules) {
+            $rules = self::createRuleset()->getRules();
+        }
+
+        self::assertArrayHasKey($fixer, $rules);
+        self::assertFalse($rules[$fixer], sprintf(
+            'Failed asserting that the deprecated "%s" fixer is set to false.',
+            $fixer
+        ));
+    }
+
+    /**
      * Rules defined by PhpCsFixer.
      *
      * @return string[]
@@ -139,6 +188,6 @@ abstract class AbstractRulesetTestCase extends TestCase
             return true;
         }, static::createRuleset()->getRules());
 
-        return array_keys(RuleSet::create($rules)->getRules());
+        return array_keys((new RuleSet($rules))->getRules());
     }
 }

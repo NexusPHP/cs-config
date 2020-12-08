@@ -112,7 +112,7 @@ final class Nexus73 extends AbstractRuleset
             'final_class'                            => false, // risky
             'final_internal_class'                   => true, // risky
             'final_public_method_for_abstract_class' => false, // risky
-            'final_static_access'                    => true,
+            'final_static_access'                    => false, // deprecated
             'fopen_flag_order'                       => true, // risky
             'fopen_flags'                            => ['b_mode' => true], // risky
             'full_opening_tag'                       => true,
@@ -308,7 +308,7 @@ final class Nexus73 extends AbstractRuleset
             'php_unit_mock_short_will_return'               => true, // risky
             'php_unit_namespaced'                           => true, // risky
             'php_unit_no_expectation_annotation'            => true, // risky
-            'php_unit_ordered_covers'                       => true,
+            'php_unit_ordered_covers'                       => false, // deprecated
             'php_unit_set_up_tear_down_visibility'          => true, // risky
             'php_unit_size_class'                           => false,
             'php_unit_strict'                               => true, // risky
@@ -328,7 +328,7 @@ final class Nexus73 extends AbstractRuleset
             'phpdoc_no_package'                             => true,
             'phpdoc_no_useless_inheritdoc'                  => true,
             'phpdoc_order'                                  => true,
-            'phpdoc_order_by_value'                         => false,
+            'phpdoc_order_by_value'                         => true,
             'phpdoc_return_self_reference'                  => true,
             'phpdoc_scalar'                                 => true,
             'phpdoc_separation'                             => true,
@@ -349,7 +349,7 @@ final class Nexus73 extends AbstractRuleset
             'pre_increment'                                 => false, // deprecated
             'protected_to_private'                          => true,
             'psr0'                                          => false,
-            'psr4'                                          => true, // deprecated
+            'psr4'                                          => false, // deprecated
             'psr_autoloading'                               => ['dir' => null],
             'random_api_migration'                          => true,
             'regular_callable_call'                         => true, // risky
