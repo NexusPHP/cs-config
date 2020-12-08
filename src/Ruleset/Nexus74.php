@@ -18,7 +18,7 @@ namespace Nexus\CsConfig\Ruleset;
  *
  * @internal
  */
-final class Nexus73 extends AbstractRuleset
+final class Nexus74 extends AbstractRuleset
 {
     public function __construct()
     {
@@ -394,7 +394,7 @@ final class Nexus73 extends AbstractRuleset
             'trailing_comma_in_multiline_array' => true,
             'trim_array_spaces' => true,
             'unary_operator_spaces' => true,
-            'use_arrow_functions' => false, // risky
+            'use_arrow_functions' => true, // risky
             'visibility_required' => [
                 'elements' => [
                     'const',
@@ -411,7 +411,7 @@ final class Nexus73 extends AbstractRuleset
                 'less_and_greater' => null,
             ],
         ];
-        $this->requiredPHPVersion = 70300;
+        $this->requiredPHPVersion = 70400;
         $this->autoActivateIsRiskyAllowed = true;
     }
 }
