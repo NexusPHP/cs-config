@@ -44,7 +44,7 @@ abstract class AbstractRuleset implements RulesetInterface
     protected $autoActivateIsRiskyAllowed = false;
 
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      */
     final public function getName(): string
     {
@@ -52,7 +52,7 @@ abstract class AbstractRuleset implements RulesetInterface
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      */
     final public function getRules(): array
     {
@@ -60,7 +60,7 @@ abstract class AbstractRuleset implements RulesetInterface
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      */
     final public function getRequiredPHPVersion(): int
     {
@@ -68,7 +68,7 @@ abstract class AbstractRuleset implements RulesetInterface
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      */
     final public function willAutoActivateIsRiskyAllowed(): bool
     {
