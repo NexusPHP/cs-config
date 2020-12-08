@@ -22,12 +22,16 @@ $finder = Finder::create()
     ->append([__FILE__])
 ;
 
+$overrides = [
+    'binary_operator_spaces' => ['default' => 'single_space'],
+];
+
 $options = [
-    'finder'    => $finder,
+    'finder' => $finder,
     'cacheFile' => 'build/.php_cs.cache',
 ];
 
-return Factory::create(new Nexus73(), [], $options)->forLibrary(
+return Factory::create(new Nexus73(), $overrides, $options)->forLibrary(
     'NexusPHP CS Config',
     'John Paul E. Balandan, CPA',
     'paulbalandan@gmail.com',
