@@ -26,6 +26,7 @@ final class Nexus73 extends AbstractRuleset
         $this->rules = [
             'align_multiline_comment' => ['comment_type' => 'all_multiline'],
             'array_indentation'       => true,
+            'array_push'              => true,
             'array_syntax'            => ['syntax' => 'short'],
             'backtick_to_shell_exec'  => true,
             'binary_operator_spaces'  => [
@@ -41,7 +42,6 @@ final class Nexus73 extends AbstractRuleset
             'blank_line_before_return'     => false, // deprecated
             'blank_line_before_statement'  => [
                 'statements' => [
-                    'break',
                     'continue',
                     'for',
                     'foreach',
@@ -73,6 +73,7 @@ final class Nexus73 extends AbstractRuleset
                 'single_line'                         => true,
             ],
             'class_keyword_remove'                 => false,
+            'clean_namespace'                      => true,
             'combine_consecutive_issets'           => true,
             'combine_consecutive_unsets'           => true,
             'combine_nested_dirname'               => true, // risky
@@ -88,10 +89,15 @@ final class Nexus73 extends AbstractRuleset
             'doctrine_annotation_braces'           => false,
             'doctrine_annotation_indentation'      => false,
             'doctrine_annotation_spaces'           => false,
-            'elseif'                               => true,
-            'encoding'                             => true,
-            'ereg_to_preg'                         => true, // risky
-            'error_suppression'                    => [
+            'echo_tag_syntax'                      => [
+                'format'                         => 'short',
+                'long_function'                  => 'echo',
+                'shorten_simple_statements_only' => true,
+            ],
+            'elseif'            => true,
+            'encoding'          => true,
+            'ereg_to_preg'      => true, // risky
+            'error_suppression' => [
                 'mute_deprecation_error'         => true,
                 'noise_remaining_usages'         => false,
                 'noise_remaining_usages_exclude' => [],
@@ -130,7 +136,14 @@ final class Nexus73 extends AbstractRuleset
                     'subpackage',
                 ],
             ],
+            'general_phpdoc_tag_rename' => [
+                'case_sensitive' => false,
+                'fix_annotation' => true,
+                'fix_inline'     => true,
+                'replacements'   => ['inheritDocs' => 'inheritDoc'],
+            ],
             'global_namespace_import'     => ['import_classes' => false],
+            'group_import'                => false,
             'hash_to_slash_comment'       => false, // deprecated
             'header_comment'              => false,
             'heredoc_indentation'         => true,
@@ -140,6 +153,7 @@ final class Nexus73 extends AbstractRuleset
             'increment_style'             => ['style' => 'post'],
             'indentation_type'            => true,
             'is_null'                     => true, // risky
+            'lambda_not_used_import'      => true,
             'line_ending'                 => true,
             'linebreak_after_opening_tag' => true,
             'list_syntax'                 => ['syntax' => 'short'],
@@ -182,6 +196,7 @@ final class Nexus73 extends AbstractRuleset
             'native_function_type_declaration_casing' => true,
             'new_with_braces'                         => true,
             'no_alias_functions'                      => true, // risky
+            'no_alias_language_construct_call'        => true,
             'no_alternative_syntax'                   => false,
             'no_binary_string'                        => true,
             'no_blank_lines_after_class_opening'      => true,
@@ -219,7 +234,7 @@ final class Nexus73 extends AbstractRuleset
             'no_null_property_initialization'             => true,
             'no_php4_constructor'                         => true, // risky
             'no_short_bool_cast'                          => true,
-            'no_short_echo_tag'                           => false,
+            'no_short_echo_tag'                           => false, // deprecated
             'no_singleline_whitespace_before_semicolons'  => true,
             'no_spaces_after_function_name'               => true,
             'no_spaces_around_offset'                     => [
@@ -235,6 +250,7 @@ final class Nexus73 extends AbstractRuleset
             'no_trailing_comma_in_singleline_array'            => true,
             'no_trailing_whitespace'                           => true,
             'no_trailing_whitespace_in_comment'                => true,
+            'no_trailing_whitespace_in_string'                 => true, // risky
             'no_unneeded_control_parentheses'                  => true,
             'no_unneeded_curly_braces'                         => ['namespaces' => true],
             'no_unneeded_final_method'                         => true, // risky
@@ -244,6 +260,7 @@ final class Nexus73 extends AbstractRuleset
             'no_unused_imports'                                => true,
             'no_useless_else'                                  => true,
             'no_useless_return'                                => true,
+            'no_useless_sprintf'                               => true, // risky
             'no_whitespace_before_comma_in_array'              => true,
             'no_whitespace_in_blank_line'                      => true,
             'non_printable_character'                          => true, // risky
@@ -252,7 +269,11 @@ final class Nexus73 extends AbstractRuleset
             'not_operator_with_successor_space'                => true,
             'nullable_type_declaration_for_default_null_value' => ['use_nullable_type_declaration' => true],
             'object_operator_without_whitespace'               => true,
-            'ordered_class_elements'                           => [
+            'operator_linebreak'                               => [
+                'only_booleans' => false,
+                'position'      => 'beginning',
+            ],
+            'ordered_class_elements' => [
                 'order' => [
                     'use_trait',
                     'constant_public',
@@ -275,6 +296,7 @@ final class Nexus73 extends AbstractRuleset
             ],
             'ordered_imports'                               => true,
             'ordered_interfaces'                            => false, // risky
+            'ordered_traits'                                => true,
             'php_unit_construct'                            => true, // risky
             'php_unit_dedicate_assert'                      => ['target' => 'newest'], // risky
             'php_unit_dedicate_assert_internal_type'        => ['target' => 'newest'], // risky
@@ -297,7 +319,8 @@ final class Nexus73 extends AbstractRuleset
             'phpdoc_align'                                  => true,
             'phpdoc_annotation_without_dot'                 => true,
             'phpdoc_indent'                                 => true,
-            'phpdoc_inline_tag'                             => true,
+            'phpdoc_inline_tag'                             => false, // deprecated
+            'phpdoc_inline_tag_normalizer'                  => true,
             'phpdoc_line_span'                              => true,
             'phpdoc_no_access'                              => true,
             'phpdoc_no_alias_tag'                           => true,
@@ -305,11 +328,14 @@ final class Nexus73 extends AbstractRuleset
             'phpdoc_no_package'                             => true,
             'phpdoc_no_useless_inheritdoc'                  => true,
             'phpdoc_order'                                  => true,
+            'phpdoc_order_by_value'                         => false,
             'phpdoc_return_self_reference'                  => true,
             'phpdoc_scalar'                                 => true,
             'phpdoc_separation'                             => true,
             'phpdoc_single_line_var_spacing'                => true,
             'phpdoc_summary'                                => true,
+            'phpdoc_tag_casing'                             => true,
+            'phpdoc_tag_type'                               => true,
             'phpdoc_to_comment'                             => true,
             'phpdoc_to_param_type'                          => false, // risky
             'phpdoc_to_return_type'                         => false, // risky
@@ -323,8 +349,10 @@ final class Nexus73 extends AbstractRuleset
             'pre_increment'                                 => false, // deprecated
             'protected_to_private'                          => true,
             'psr0'                                          => false,
-            'psr4'                                          => true,
+            'psr4'                                          => true, // deprecated
+            'psr_autoloading'                               => ['dir' => null],
             'random_api_migration'                          => true,
+            'regular_callable_call'                         => true, // risky
             'return_assignment'                             => true,
             'return_type_declaration'                       => true,
             'self_accessor'                                 => true, // risky
@@ -334,6 +362,7 @@ final class Nexus73 extends AbstractRuleset
             'short_scalar_cast'                             => true,
             'silenced_deprecation_error'                    => false, // deprecated
             'simple_to_complex_string_variable'             => true,
+            'simplified_if_return'                          => true,
             'simplified_null_return'                        => false,
             'single_blank_line_at_eof'                      => true,
             'single_blank_line_before_namespace'            => true,
@@ -343,6 +372,7 @@ final class Nexus73 extends AbstractRuleset
             'single_line_comment_style'                     => true,
             'single_line_throw'                             => false,
             'single_quote'                                  => true,
+            'single_space_after_construct'                  => true,
             'single_trait_insert_per_statement'             => true,
             'space_after_semicolon'                         => true,
             'standardize_increment'                         => true,
@@ -353,11 +383,14 @@ final class Nexus73 extends AbstractRuleset
             'string_line_ending'                            => true, // risky
             'switch_case_semicolon_to_colon'                => true,
             'switch_case_space'                             => true,
+            'switch_continue_to_break'                      => true,
             'ternary_operator_spaces'                       => true,
+            'ternary_to_elvis_operator'                     => true, // risky
             'ternary_to_null_coalescing'                    => true,
             'trailing_comma_in_multiline_array'             => true,
             'trim_array_spaces'                             => true,
             'unary_operator_spaces'                         => true,
+            'use_arrow_functions'                           => false, // risky
             'visibility_required'                           => [
                 'elements' => [
                     'const',
