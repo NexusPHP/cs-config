@@ -150,7 +150,7 @@ final class Nexus73 extends AbstractRuleset
             'heredoc_to_nowdoc' => true,
             'implode_call' => true, // risky
             'include' => true,
-            'increment_style' => ['style' => 'post'],
+            'increment_style' => ['style' => 'pre'],
             'indentation_type' => true,
             'is_null' => true, // risky
             'lambda_not_used_import' => true,
