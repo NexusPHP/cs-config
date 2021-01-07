@@ -78,8 +78,8 @@ This setting will configure a license header similar to below:
  *
  * (c) 2020 John Doe <john@doe.com>
  *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
+ * For the full copyright and license information, please view
+ * the LICENSE file that was distributed with this source code.
  */
 
 namespace Nexus\CsConfig;
@@ -110,8 +110,8 @@ This will give the following license header:
  *
  * (c) John Doe
  *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
+ * For the full copyright and license information, please view
+ * the LICENSE file that was distributed with this source code.
  */
 
 namespace Nexus\CsConfig;
