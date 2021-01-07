@@ -15,6 +15,7 @@ namespace Nexus\CsConfig;
 
 use Nexus\CsConfig\Ruleset\RulesetInterface;
 use PhpCsFixer\Config;
+use PhpCsFixer\ConfigInterface;
 use PhpCsFixer\Finder;
 
 /**
@@ -107,7 +108,7 @@ final class Factory
      * @param string   $email
      * @param null|int $startingYear
      *
-     * @return \PhpCsFixer\Config
+     * @return \PhpCsFixer\ConfigInterface
      */
     public function forLibrary(string $library, string $author, string $email = '', ?int $startingYear = null)
     {
@@ -145,7 +146,12 @@ the LICENSE file that was distributed with this source code.
         ]);
     }
 
-    public function forProjects(): Config
+    /**
+     * Plain invocation of `Config` with no additional arguments.
+     *
+     * @return \PhpCsFixer\ConfigInterface
+     */
+    public function forProjects()
     {
         return $this->invoke();
     }
@@ -155,11 +161,11 @@ the LICENSE file that was distributed with this source code.
      *
      * @param array<string, array<string>|bool> $overrides
      *
-     * @return \PhpCsFixer\Config
+     * @return \PhpCsFixer\ConfigInterface
      *
      * @internal
      */
-    private function invoke(array $overrides = []): Config
+    private function invoke(array $overrides = []): ConfigInterface
     {
         $rules = array_merge($this->options['rules'], $overrides);
 
