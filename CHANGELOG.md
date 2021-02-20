@@ -5,6 +5,13 @@ All notable changes to this library will be documented in this file:
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v2.1.5](https://github.com/NexusPHP/cs-config/compare/v2.1.4..v2.1.5) - 2021-02-20
+
+### Fixed
+
+- Removed the faulty `replace` section in composer.json causing halted installations
+- Fixed errors reported by PHPStan on level 8
+
 ## [v2.1.4](https://github.com/NexusPHP/cs-config/compare/v2.1.3..v2.1.4) - 2021-01-18
 
 ### Added
