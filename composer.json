@@ -14,11 +14,6 @@
         "ext-tokenizer": "*",
         "friendsofphp/php-cs-fixer": "^2.18"
     },
-    "replace": {
-        "symfony/polyfill-php70": "*",
-        "symfony/polyfill-php72": "*",
-        "symfony/polyfill-php73": "*"
-    },
     "conflict": {
         "liaison/cs-config": "*"
     },
