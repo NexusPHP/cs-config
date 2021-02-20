@@ -46,7 +46,9 @@ abstract class AbstractRuleset implements RulesetInterface
     /** @inheritDoc */
     final public function getName(): string
     {
-        return $this->name ?? trim(strrchr(self::class, '\\'), '\\');
+        $class = strrchr(self::class, '\\') ?: self::class;
+
+        return $this->name ?? trim($class, '\\');
     }
 
     /** @inheritDoc */
