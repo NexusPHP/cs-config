@@ -14,7 +14,7 @@ declare(strict_types=1);
 namespace Nexus\CsConfig\Test;
 
 use Nexus\CsConfig\Ruleset\RulesetInterface;
-use PhpCsFixer\Fixer\ConfigurationDefinitionFixerInterface;
+use PhpCsFixer\Fixer\ConfigurableFixerInterface;
 use PhpCsFixer\Fixer\DeprecatedFixerInterface;
 use PhpCsFixer\Fixer\FixerInterface;
 use PhpCsFixer\FixerConfiguration\DeprecatedFixerOptionInterface;
@@ -128,7 +128,7 @@ abstract class AbstractRulesetTestCase extends TestCase
             /** @var FixerInterface $fixer */
             $fixer = $fixers[$name];
 
-            if (! $fixer instanceof ConfigurationDefinitionFixerInterface) {
+            if (! $fixer instanceof ConfigurableFixerInterface) {
                 return false;
             }
 
