@@ -5,7 +5,12 @@ All notable changes to this library will be documented in this file:
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [v2.2.0](https://github.com/NexusPHP/cs-config/compare/v2.1.5..v2.2.0) - 2021-05-06
+## [v2.2.1](https://github.com/NexusPHP/cs-config/compare/v2.2.0...v2.2.1) - 2021-05-06
+
+- Fixed faulty build action on running `php-cs-fixer`
+- Use range diffs in CHANGELOG
+
+## [v2.2.0](https://github.com/NexusPHP/cs-config/compare/v2.1.5...v2.2.0) - 2021-05-06
 
 - Update `friendsofphp/php-cs-fixer` to v2.19 Testament
 - Use `new FixerFactory()` instead of `FixerFactory::create()`
@@ -14,40 +19,40 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Removed deprecated fixer options from the rulesets
 - Renamed configuration file to `.php-cs-fixer.dist.php`
 
-## [v2.1.5](https://github.com/NexusPHP/cs-config/compare/v2.1.4..v2.1.5) - 2021-02-20
+## [v2.1.5](https://github.com/NexusPHP/cs-config/compare/v2.1.4...v2.1.5) - 2021-02-20
 
 ### Fixed
 
 - Removed the faulty `replace` section in composer.json causing halted installations
 - Fixed errors reported by PHPStan on level 8
 
-## [v2.1.4](https://github.com/NexusPHP/cs-config/compare/v2.1.3..v2.1.4) - 2021-01-18
+## [v2.1.4](https://github.com/NexusPHP/cs-config/compare/v2.1.3...v2.1.4) - 2021-01-18
 
 ### Added
 
 - Added support for PHP 8
 - Bump `friendsofphp/php-cs-fixer` to v2.18.0 Remote Void
 
-## [v2.1.3](https://github.com/NexusPHP/cs-config/compare/v2.1.2..v2.1.3) - 2021-01-07
+## [v2.1.3](https://github.com/NexusPHP/cs-config/compare/v2.1.2...v2.1.3) - 2021-01-07
 
 ### Fixed
 
 - Fixed a PHPStan error on the incorrect covariant return type of `Factory::invoke`.
 
-## [v2.1.2](https://github.com/NexusPHP/cs-config/compare/v2.1.1..v2.1.2) - 2021-01-07
+## [v2.1.2](https://github.com/NexusPHP/cs-config/compare/v2.1.1...v2.1.2) - 2021-01-07
 
 ### Fixed
 
 - Fixed name of `Nexus74` ruleset which was erroneously set as `Nexus73`.
 - Fixed license format in `README`.
 
-## [v2.1.1](https://github.com/NexusPHP/cs-config/compare/v2.1.0..v2.1.1) - 2020-12-12
+## [v2.1.1](https://github.com/NexusPHP/cs-config/compare/v2.1.0...v2.1.1) - 2020-12-12
 
 ### Changed
 
 - `increment_style` fixer now uses the `['style' => 'pre']`. Previously, this was `post`.
 
-## [v2.1.0](https://github.com/NexusPHP/cs-config/compare/v2.0.2..v2.0.2) - 2020-12-08
+## [v2.1.0](https://github.com/NexusPHP/cs-config/compare/v2.0.2...v2.0.2) - 2020-12-08
 
 ### Added
 
@@ -60,13 +65,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `phpdoc_line_span` has been set to single for all classy elements.
 - `binary_operator_spaces` has been set to its default `single_space` for use in this library.
 
-## [v2.0.2](https://github.com/NexusPHP/cs-config/compare/v2.0.1..v2.0.2) - 2020-12-01
+## [v2.0.2](https://github.com/NexusPHP/cs-config/compare/v2.0.1...v2.0.2) - 2020-12-01
 
 ### Fixed
 
 - Re-release of previous release due to inconsistency in tagging process.
 
-## [v2.0.1](https://github.com/NexusPHP/cs-config/compare/v2.0.0..v2.0.1) - 2020-12-01
+## [v2.0.1](https://github.com/NexusPHP/cs-config/compare/v2.0.0...v2.0.1) - 2020-12-01
 
 ### Changed
 
