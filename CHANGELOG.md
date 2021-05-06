@@ -5,6 +5,15 @@ All notable changes to this library will be documented in this file:
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v2.2.0](https://github.com/NexusPHP/cs-config/compare/v2.1.5..v2.2.0) - 2021-05-06
+
+- Update `friendsofphp/php-cs-fixer` to v2.19 Testament
+- Use `new FixerFactory()` instead of `FixerFactory::create()`
+- Add `phpdoc_to_property_type` and `trailing_comma_in_multiline` rules
+- Removed deprecated fixers from the rulesets
+- Removed deprecated fixer options from the rulesets
+- Renamed configuration file to `.php-cs-fixer.dist.php`
+
 ## [v2.1.5](https://github.com/NexusPHP/cs-config/compare/v2.1.4..v2.1.5) - 2021-02-20
 
 ### Fixed
