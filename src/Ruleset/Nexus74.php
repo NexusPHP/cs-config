@@ -342,6 +342,7 @@ final class Nexus74 extends AbstractRuleset
             'phpdoc_tag_type' => true,
             'phpdoc_to_comment' => true,
             'phpdoc_to_param_type' => false, // risky
+            'phpdoc_to_property_type' => false, // risky, for PHP 8.0+
             'phpdoc_to_return_type' => false, // risky
             'phpdoc_trim' => true,
             'phpdoc_trim_consecutive_blank_line_separation' => true,
@@ -391,7 +392,8 @@ final class Nexus74 extends AbstractRuleset
             'ternary_operator_spaces' => true,
             'ternary_to_elvis_operator' => true, // risky
             'ternary_to_null_coalescing' => true,
-            'trailing_comma_in_multiline_array' => true,
+            'trailing_comma_in_multiline' => true,
+            'trailing_comma_in_multiline_array' => false, // deprecated
             'trim_array_spaces' => true,
             'unary_operator_spaces' => true,
             'use_arrow_functions' => true, // risky

@@ -45,7 +45,7 @@ abstract class AbstractRulesetTestCase extends TestCase
         static $deprecatedFixers;
 
         if (null === $deprecatedFixers) {
-            $fixerFactory = FixerFactory::create();
+            $fixerFactory = new FixerFactory();
             $fixerFactory->registerBuiltInFixers();
 
             $deprecatedFixers = array_map(static function (FixerInterface $fixer): string {
@@ -166,7 +166,7 @@ abstract class AbstractRulesetTestCase extends TestCase
         static $builtInFixers;
 
         if (null === $builtInFixers) {
-            $fixerFactory = FixerFactory::create();
+            $fixerFactory = new FixerFactory();
             $fixerFactory->registerBuiltInFixers();
 
             $builtInFixers = array_map(static function (FixerInterface $fixer): string {
