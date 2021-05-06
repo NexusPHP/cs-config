@@ -14,8 +14,11 @@ declare(strict_types=1);
 namespace Nexus\CsConfig\Test;
 
 use Nexus\CsConfig\Ruleset\RulesetInterface;
+use PhpCsFixer\Fixer\ConfigurationDefinitionFixerInterface;
 use PhpCsFixer\Fixer\DeprecatedFixerInterface;
 use PhpCsFixer\Fixer\FixerInterface;
+use PhpCsFixer\FixerConfiguration\DeprecatedFixerOptionInterface;
+use PhpCsFixer\FixerConfiguration\FixerOptionInterface;
 use PhpCsFixer\FixerFactory;
 use PhpCsFixer\RuleSet\RuleSet;
 use PHPUnit\Framework\TestCase;
@@ -109,10 +112,63 @@ abstract class AbstractRulesetTestCase extends TestCase
         ));
     }
 
+    final public function testRulesetDoesNotUseDeprecatedConfigurationOptions(): void
+    {
+        $ruleset = self::createRuleset();
+
+        $rules = $ruleset->getRules();
+        $names = array_keys($rules);
+        $fixers = $this->builtInFixers(false, true);
+
+        $filtered = array_filter(array_map(static function (string $name, $rule) use ($fixers) {
+            if (! \is_array($rule)) {
+                return false;
+            }
+
+            /** @var FixerInterface $fixer */
+            $fixer = $fixers[$name];
+
+            if (! $fixer instanceof ConfigurationDefinitionFixerInterface) {
+                return false;
+            }
+
+            $deprecatedConfigurationOptions = array_filter(
+                $fixer->getConfigurationDefinition()->getOptions(),
+                static function (FixerOptionInterface $option): bool {
+                    return $option instanceof DeprecatedFixerOptionInterface;
+                }
+            );
+
+            $ruleWithDeprecatedOptions = array_intersect(
+                array_keys($rule),
+                array_map(static function (FixerOptionInterface $option): string {
+                    return $option->getName();
+                }, $deprecatedConfigurationOptions)
+            );
+
+            if ([] !== $ruleWithDeprecatedOptions) {
+                return $name;
+            }
+
+            return false;
+        }, $names, $rules));
+
+        self::assertEmpty($filtered, sprintf(
+            'Failed asserting that "%s" ruleset configure its %s "%s" without using %s deprecated configuration options.',
+            $ruleset->getName(),
+            \count($filtered) > 1 ? 'rules' : 'rule',
+            implode('", "', $filtered),
+            \count($filtered) > 1 ? 'their' : 'its'
+        ));
+    }
+
     /** @return string[] */
     private function deprecatedBuiltInFixers(): array
     {
+        /** @var string[] $builtInFixers */
         $builtInFixers = $this->builtInFixers();
+
+        /** @var string[] $cleanBuiltInFixers */
         $cleanBuiltInFixers = $this->builtInFixers(false);
 
         return array_diff($builtInFixers, $cleanBuiltInFixers);
@@ -122,10 +178,11 @@ abstract class AbstractRulesetTestCase extends TestCase
      * Rules defined by PhpCsFixer.
      *
      * @param bool $withDeprecated
+     * @param bool $withFixers
      *
-     * @return string[]
+     * @return array<string, FixerInterface>|string[]
      */
-    private function builtInFixers(bool $withDeprecated = true): array
+    private function builtInFixers(bool $withDeprecated = true, bool $withFixers = false): array
     {
         $fixerFactory = new FixerFactory();
         $fixerFactory->registerBuiltInFixers();
@@ -140,6 +197,10 @@ abstract class AbstractRulesetTestCase extends TestCase
         $builtInFixers = array_map(static function (FixerInterface $fixer): string {
             return $fixer->getName();
         }, $fixers);
+
+        if ($withFixers) {
+            return array_combine($builtInFixers, $fixers) ?: [];
+        }
 
         return $builtInFixers;
     }

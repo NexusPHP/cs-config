@@ -61,9 +61,9 @@ final class Nexus74 extends AbstractRuleset
             'cast_spaces' => ['space' => 'single'],
             'class_attributes_separation' => [
                 'elements' => [
-                    'const',
-                    'method',
-                    'property',
+                    'const' => 'one',
+                    'method' => 'one',
+                    'property' => 'one',
                 ],
             ],
             'class_definition' => [
@@ -163,7 +163,6 @@ final class Nexus74 extends AbstractRuleset
             'mb_str_functions' => false, // risky
             'method_argument_space' => [
                 'after_heredoc' => true,
-                'ensure_fully_multiline' => true,
                 'keep_multiple_spaces_after_comma' => false,
                 'on_multiline' => 'ensure_fully_multiline',
             ],
