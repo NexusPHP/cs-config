@@ -5,6 +5,13 @@ All notable changes to this library will be documented in this file:
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v3.0.0](https://github.com/NexusPHP/cs-config/compare/v2.2.1...v3.0.0) - 2021-05-06
+
+- Update `friendsofphp/php-cs-fixer` to v3.0.0 Constitution
+- New ruleset: `Nexus80`, targeting PHP 8.0+
+- Add `Tachycardia` for profiling of slow tests
+- Build action is also run on schedule
+
 ## [v2.2.1](https://github.com/NexusPHP/cs-config/compare/v2.2.0...v2.2.1) - 2021-05-06
 
 - Fixed faulty build action on running `php-cs-fixer`
