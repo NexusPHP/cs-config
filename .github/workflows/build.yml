@@ -3,8 +3,7 @@ name: build
 on:
   push:
     branches:
-      - '2.0'
-      - '3.0'
+      - develop
       - master
       - feature/**
       - bugfix/**
@@ -15,11 +14,11 @@ on:
       - .github/workflows/build.yml
   pull_request:
     branches:
-      - '2.0'
-      - '3.0'
+      - develop
     paths:
       - src/**
       - tests/**
+      - .github/workflows/build.yml
 
 jobs:
   main:
