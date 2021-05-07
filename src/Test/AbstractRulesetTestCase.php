@@ -45,11 +45,30 @@ abstract class AbstractRulesetTestCase extends TestCase
         return new $className();
     }
 
+    final public function testAllNondeprecatedBuiltInRulesAreConfigured(): void
+    {
+        $fixersNotConfigured = array_diff(
+            $this->builtInFixers(false),
+            $this->configuredFixers()
+        );
+
+        sort($fixersNotConfigured);
+        $c = \count($fixersNotConfigured);
+
+        self::assertEmpty($fixersNotConfigured, sprintf(
+            'Failed asserting that non-deprecated built-in %s "%s" %s configured in "%s" ruleset.',
+            $c > 1 ? 'rules' : 'rule',
+            implode('", "', $fixersNotConfigured),
+            $c > 1 ? 'are' : 'is',
+            static::createRuleset()->getName()
+        ));
+    }
+
     final public function testAllConfiguredRulesAreBuiltIn(): void
     {
         $fixersNotBuiltIn = array_diff(
             $this->configuredFixers(),
-            $this->builtInFixers()
+            $this->builtInFixers(false)
         );
 
         sort($fixersNotBuiltIn);
