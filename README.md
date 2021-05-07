@@ -5,6 +5,7 @@
 [![Coverage Status](https://coveralls.io/repos/github/NexusPHP/cs-config/badge.svg?branch=develop)](https://coveralls.io/github/NexusPHP/cs-config?branch=develop)
 [![Latest Stable Version](https://poser.pugx.org/nexusphp/cs-config/v)](//packagist.org/packages/nexusphp/cs-config)
 [![license MIT](https://img.shields.io/github/license/nexusphp/cs-config)](LICENSE)
+[![Total Downloads](https://poser.pugx.org/nexusphp/cs-config/downloads)](//packagist.org/packages/nexusphp/cs-config)
 
 This library provides a factory for custom rulesets for [`friendsofphp/php-cs-fixer`][1].
 

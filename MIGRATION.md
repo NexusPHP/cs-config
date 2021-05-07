@@ -21,9 +21,8 @@ to be chained with either `forProjects` or `forLibrary` public methods.
 - `Factory::createForLibrary` was removed. Use the public method `forLibrary` to get similar effect.
 - The `Liaison` and `CodeIgniter4` rulesets were removed.
 - The deprecated `BaseRuleset` class was removed.
-- Custom fixers were removed and moved to a new repository, [NexusPHP CS Fixers][1].
+- Custom fixers were removed.
 
-[1]: https://github.com/NexusPHP/cs-fixers
-
-Please have a look at this library's [`.php_cs.dist`](.php_cs.dist) to have a glance of the new changes
-in action. You can also refer to the [README](README.md) for additional details.
+Please have a look at this library's [`.php-cs-fixer.dist.php`](.php-cs-fixer.dist.php) to
+have a glance of the new changes in action. You can also refer to
+the [README](README.md) for additional details.
