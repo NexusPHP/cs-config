@@ -84,7 +84,7 @@ final class Factory
         ;
 
         // Resolve Config options
-        $options['cacheFile'] = $options['cacheFile'] ?? '.php_cs.cache';
+        $options['cacheFile'] = $options['cacheFile'] ?? '.php-cs-fixer.cache';
         $options['customFixers'] = $options['customFixers'] ?? [];
         $options['finder'] = $options['finder'] ?? $defaultFinder;
         $options['format'] = $options['format'] ?? 'txt';

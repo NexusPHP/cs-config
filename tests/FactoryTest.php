@@ -16,6 +16,8 @@ namespace Nexus\CsConfig\Tests;
 use Nexus\CsConfig\Factory;
 use Nexus\CsConfig\Ruleset\Nexus73;
 use Nexus\CsConfig\Ruleset\RulesetInterface;
+use PhpCsFixer\Config;
+use PhpCsFixer\Finder;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -44,10 +46,10 @@ final class FactoryTest extends TestCase
     public function testFactoryReturnsInstanceOfConfig(): void
     {
         $config = Factory::create($this->mockRuleset())->forProjects();
-        self::assertInstanceOf('PhpCsFixer\Config', $config);
+        self::assertInstanceOf(Config::class, $config);
 
         $config = Factory::create($this->mockRuleset())->forLibrary('Library', 'John Doe', 'email', 2020);
-        self::assertInstanceOf('PhpCsFixer\Config', $config);
+        self::assertInstanceOf(Config::class, $config);
     }
 
     public function testFactoryPassesSameRulesFromRuleset(): void
@@ -73,9 +75,9 @@ final class FactoryTest extends TestCase
     {
         $config = Factory::create($this->mockRuleset())->forProjects();
 
-        self::assertSame('.php_cs.cache', $config->getCacheFile());
+        self::assertSame('.php-cs-fixer.cache', $config->getCacheFile());
         self::assertSame([], $config->getCustomFixers());
-        self::assertInstanceOf('PhpCsFixer\Finder', $config->getFinder());
+        self::assertInstanceOf(Finder::class, $config->getFinder());
         self::assertSame('txt', $config->getFormat());
         self::assertFalse($config->getHideProgress());
         self::assertSame('    ', $config->getIndent());
@@ -88,7 +90,7 @@ final class FactoryTest extends TestCase
     public function testFactoryConsumesPassedOptionsToIt(): void
     {
         $options = [
-            'cacheFile' => __DIR__ . '/../../build/.php_cs.cache',
+            'cacheFile' => __DIR__ . '/../../build/.php-cs-fixer.cache',
             'format' => 'junit',
             'hideProgress' => true,
             'indent' => "\t",

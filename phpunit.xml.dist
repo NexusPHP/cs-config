@@ -30,6 +30,14 @@
     </coverage>
 
     <extensions>
-        <extension class="Nexus\PHPUnit\Extension\Tachycardia" />
+        <extension class="Nexus\PHPUnit\Extension\Tachycardia">
+            <arguments>
+                <array>
+                    <element key="precision">
+                        <integer>2</integer>
+                    </element>
+                </array>
+            </arguments>
+        </extension>
     </extensions>
 </phpunit>
