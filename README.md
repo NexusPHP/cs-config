@@ -26,7 +26,7 @@ then you should add it as a development-time dependency:
 
 ## Configuration
 
-* Create a `.php_cs.dist` at the root of your project:
+* Create a `.php-cs-fixer.dist.php` at the root of your project:
 
 ```php
 <?php
@@ -45,8 +45,8 @@ default, the cache file will be saved in the project root.
 vendor/
 
 +# php-cs-fixer
-+.php_cs
-+.php_cs.cache
++.php-cs-fixer.php
++.php-cs-fixer.cache
 ```
 
 ## Advanced Configuration
@@ -144,7 +144,7 @@ containing your desired options.
 
 | Key            | Allowed Types                            | Default                              |
 | -------------- | :--------------------------------------: | :----------------------------------: |
-| cacheFile      | `string`                                 | `.php_cs.cache`                      |
+| cacheFile      | `string`                                 | `.php-cs-fixer.cache`                |
 | customFixers   | `FixerInterface[], iterable, \Traversable` | `[]`                                 |
 | finder         | `iterable, string[], \Traversable`         | default `PhpCsFixer\Finder` instance |
 | format         | `string`                                 | `txt`                                |
@@ -202,7 +202,7 @@ final class MyCompany extends AbstractRuleset
 
 ```
 
-Then, in creating your `.php_cs.dist`, use your own ruleset.
+Then, in creating your `.php-cs-fixer.dist.php`, use your own ruleset.
 
 ```php
 <?php
