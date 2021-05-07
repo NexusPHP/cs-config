@@ -85,7 +85,7 @@ abstract class AbstractRulesetTestCase extends TestCase
 
     final public function testHeaderCommentFixerIsDisabledByDefault(): void
     {
-        $rules = self::createRuleset()->getRules();
+        $rules = static::createRuleset()->getRules();
 
         self::assertArrayHasKey('header_comment', $rules);
         self::assertFalse($rules['header_comment']);
@@ -93,7 +93,7 @@ abstract class AbstractRulesetTestCase extends TestCase
 
     final public function testDeprecatedFixersAreNoLongerUsed(): void
     {
-        $rules = array_keys(self::createRuleset()->getRules());
+        $rules = array_keys(static::createRuleset()->getRules());
         $fixers = $this->deprecatedBuiltInFixers();
 
         $rulesWithoutDeprecatedRules = array_filter(
@@ -108,13 +108,13 @@ abstract class AbstractRulesetTestCase extends TestCase
         self::assertEmpty($notRemovedDeprecatedRules, sprintf(
             'Failed asserting that deprecated rules "%s" are removed from "%s" ruleset.',
             implode('", "', $notRemovedDeprecatedRules),
-            self::createRuleset()->getName()
+            static::createRuleset()->getName()
         ));
     }
 
     final public function testRulesetDoesNotUseDeprecatedConfigurationOptions(): void
     {
-        $ruleset = self::createRuleset();
+        $ruleset = static::createRuleset();
 
         $rules = $ruleset->getRules();
         $names = array_keys($rules);
