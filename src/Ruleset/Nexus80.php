@@ -22,7 +22,7 @@ final class Nexus80 extends AbstractRuleset
 {
     public function __construct()
     {
-        $this->name = 'Nexus80';
+        $this->name = 'Nexus for PHP 8.0';
         $this->rules = [
             'align_multiline_comment' => ['comment_type' => 'all_multiline'],
             'array_indentation' => true,
