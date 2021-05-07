@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Update branch alias to `3.x-dev`
 - Fixed default cache file in `Factory`
 - Update references of old configuration in README
+- Fix `Nexus74` ruleset to enable `phpdoc_to_property_type`
 
 ## [v3.0.0](https://github.com/NexusPHP/cs-config/compare/v2.2.1...v3.0.0) - 2021-05-06
 

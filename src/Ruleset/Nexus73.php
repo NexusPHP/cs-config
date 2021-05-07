@@ -331,7 +331,7 @@ final class Nexus73 extends AbstractRuleset
             'phpdoc_tag_type' => true,
             'phpdoc_to_comment' => true,
             'phpdoc_to_param_type' => false, // risky
-            'phpdoc_to_property_type' => false, // risky, for PHP 8.0+
+            'phpdoc_to_property_type' => false, // risky, for PHP 7.4+
             'phpdoc_to_return_type' => false, // risky
             'phpdoc_trim' => true,
             'phpdoc_trim_consecutive_blank_line_separation' => true,
