@@ -23,8 +23,48 @@ use PhpCsFixer\FixerFactory;
 use PhpCsFixer\RuleSet\RuleSet;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * Used for testing the rulesets.
+ *
+ * @codeCoverageIgnore
+ */
 abstract class AbstractRulesetTestCase extends TestCase
 {
+    /** @var string[] */
+    private static $configured = [];
+
+    /** @var string[] */
+    private static $builtInFixers = [];
+
+    /** @var string[] */
+    private static $cleanBuiltInFixers = [];
+
+    /** @var string[] */
+    private static $deprecatedBuiltInFixers = [];
+
+    public static function setUpBeforeClass(): void
+    {
+        self::reset();
+
+        self::$configured = self::configuredFixers();
+        self::$builtInFixers = self::builtInFixers(); // @phpstan-ignore-line
+        self::$cleanBuiltInFixers = self::builtInFixers(false); // @phpstan-ignore-line
+        self::$deprecatedBuiltInFixers = array_diff(self::$builtInFixers, self::$cleanBuiltInFixers); // @phpstan-ignore-line
+    }
+
+    public static function tearDownAfterClass(): void
+    {
+        self::reset();
+    }
+
+    final public static function reset(): void
+    {
+        self::$configured = [];
+        self::$builtInFixers = [];
+        self::$cleanBuiltInFixers = [];
+        self::$deprecatedBuiltInFixers = [];
+    }
+
     /**
      * @codeCoverageIgnore
      *
@@ -45,11 +85,56 @@ abstract class AbstractRulesetTestCase extends TestCase
         return new $className();
     }
 
+    /**
+     * Rules defined by PhpCsFixer.
+     *
+     * @param bool $withDeprecated
+     * @param bool $withFixers
+     *
+     * @return array<string, FixerInterface>|string[]
+     */
+    private static function builtInFixers(bool $withDeprecated = true, bool $withFixers = false): array
+    {
+        $fixerFactory = new FixerFactory();
+        $fixerFactory->registerBuiltInFixers();
+        $fixers = $fixerFactory->getFixers();
+
+        if (! $withDeprecated) {
+            $fixers = array_filter($fixers, static function (FixerInterface $fixer): bool {
+                return ! $fixer instanceof DeprecatedFixerInterface;
+            });
+        }
+
+        $builtInFixers = array_map(static function (FixerInterface $fixer): string {
+            return $fixer->getName();
+        }, $fixers);
+
+        if ($withFixers) {
+            return array_combine($builtInFixers, $fixers) ?: [];
+        }
+
+        return $builtInFixers;
+    }
+
+    /**
+     * Rules defined by this ruleset.
+     *
+     * @return string[]
+     */
+    private static function configuredFixers(): array
+    {
+        $rules = array_map(static function ($ruleConfiguration): bool {
+            return true;
+        }, static::createRuleset()->getRules());
+
+        return array_keys((new RuleSet($rules))->getRules());
+    }
+
     final public function testAllNondeprecatedBuiltInRulesAreConfigured(): void
     {
         $fixersNotConfigured = array_diff(
-            $this->builtInFixers(false),
-            $this->configuredFixers()
+            self::$cleanBuiltInFixers,
+            self::$configured
         );
 
         sort($fixersNotConfigured);
@@ -67,8 +152,8 @@ abstract class AbstractRulesetTestCase extends TestCase
     final public function testAllConfiguredRulesAreBuiltIn(): void
     {
         $fixersNotBuiltIn = array_diff(
-            $this->configuredFixers(),
-            $this->builtInFixers(false)
+            self::$configured,
+            self::$cleanBuiltInFixers
         );
 
         sort($fixersNotBuiltIn);
@@ -113,12 +198,11 @@ abstract class AbstractRulesetTestCase extends TestCase
     final public function testDeprecatedFixersAreNoLongerUsed(): void
     {
         $rules = array_keys(static::createRuleset()->getRules());
-        $fixers = $this->deprecatedBuiltInFixers();
 
         $rulesWithoutDeprecatedRules = array_filter(
             $rules,
-            static function (string $fixer) use ($fixers): bool {
-                return ! \in_array($fixer, $fixers, true);
+            static function (string $fixer): bool {
+                return ! \in_array($fixer, self::$deprecatedBuiltInFixers, true);
             }
         );
 
@@ -137,7 +221,7 @@ abstract class AbstractRulesetTestCase extends TestCase
 
         $rules = $ruleset->getRules();
         $names = array_keys($rules);
-        $fixers = $this->builtInFixers(false, true);
+        $fixers = self::builtInFixers(false, true);
 
         $filtered = array_filter(array_map(static function (string $name, $rule) use ($fixers) {
             if (! \is_array($rule)) {
@@ -179,62 +263,5 @@ abstract class AbstractRulesetTestCase extends TestCase
             implode('", "', $filtered),
             \count($filtered) > 1 ? 'their' : 'its'
         ));
-    }
-
-    /** @return string[] */
-    private function deprecatedBuiltInFixers(): array
-    {
-        /** @var string[] $builtInFixers */
-        $builtInFixers = $this->builtInFixers();
-
-        /** @var string[] $cleanBuiltInFixers */
-        $cleanBuiltInFixers = $this->builtInFixers(false);
-
-        return array_diff($builtInFixers, $cleanBuiltInFixers);
-    }
-
-    /**
-     * Rules defined by PhpCsFixer.
-     *
-     * @param bool $withDeprecated
-     * @param bool $withFixers
-     *
-     * @return array<string, FixerInterface>|string[]
-     */
-    private function builtInFixers(bool $withDeprecated = true, bool $withFixers = false): array
-    {
-        $fixerFactory = new FixerFactory();
-        $fixerFactory->registerBuiltInFixers();
-        $fixers = $fixerFactory->getFixers();
-
-        if (! $withDeprecated) {
-            $fixers = array_filter($fixers, static function (FixerInterface $fixer): bool {
-                return ! $fixer instanceof DeprecatedFixerInterface;
-            });
-        }
-
-        $builtInFixers = array_map(static function (FixerInterface $fixer): string {
-            return $fixer->getName();
-        }, $fixers);
-
-        if ($withFixers) {
-            return array_combine($builtInFixers, $fixers) ?: [];
-        }
-
-        return $builtInFixers;
-    }
-
-    /**
-     * Rules defined by this ruleset.
-     *
-     * @return string[]
-     */
-    private function configuredFixers(): array
-    {
-        $rules = array_map(static function ($ruleConfiguration): bool {
-            return true;
-        }, static::createRuleset()->getRules());
-
-        return array_keys((new RuleSet($rules))->getRules());
     }
 }

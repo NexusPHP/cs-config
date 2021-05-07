@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [v3.0.3](https://github.com/NexusPHP/cs-config/compare/v3.0.2...v3.0.3) - 2021-05-07
 
 - Add test for checking missing built-in rules in ruleset
+- Optimize tests' execution times
 
 ## [v3.0.2](https://github.com/NexusPHP/cs-config/compare/v3.0.1...v3.0.2) - 2021-05-07
 
