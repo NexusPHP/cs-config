@@ -118,7 +118,9 @@ final class FactoryTest extends TestCase
         self::assertStringContainsString('(c) 2020 Foo Bar <foo@bar.com>', $header);
     }
 
-    /** @return \PHPUnit\Framework\MockObject\MockObject&\Nexus\CsConfig\Ruleset\RulesetInterface */
+    /**
+     * @return \PHPUnit\Framework\MockObject\MockObject&\Nexus\CsConfig\Ruleset\RulesetInterface
+     */
     private function mockRuleset()
     {
         return $this->createMock(RulesetInterface::class);

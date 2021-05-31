@@ -30,16 +30,24 @@ use PHPUnit\Framework\TestCase;
  */
 abstract class AbstractRulesetTestCase extends TestCase
 {
-    /** @var string[] */
+    /**
+     * @var string[]
+     */
     private static $configured = [];
 
-    /** @var string[] */
+    /**
+     * @var string[]
+     */
     private static $builtInFixers = [];
 
-    /** @var string[] */
+    /**
+     * @var string[]
+     */
     private static $cleanBuiltInFixers = [];
 
-    /** @var string[] */
+    /**
+     * @var string[]
+     */
     private static $deprecatedBuiltInFixers = [];
 
     public static function setUpBeforeClass(): void

@@ -306,11 +306,7 @@ final class Nexus73 extends AbstractRuleset
             'phpdoc_annotation_without_dot' => true,
             'phpdoc_indent' => true,
             'phpdoc_inline_tag_normalizer' => true,
-            'phpdoc_line_span' => [
-                'const' => 'single',
-                'method' => 'single',
-                'property' => 'single',
-            ],
+            'phpdoc_line_span' => true,
             'phpdoc_no_access' => true,
             'phpdoc_no_alias_tag' => true,
             'phpdoc_no_empty_return' => false,
@@ -324,7 +320,7 @@ final class Nexus73 extends AbstractRuleset
             'phpdoc_single_line_var_spacing' => true,
             'phpdoc_summary' => true,
             'phpdoc_tag_casing' => true,
-            'phpdoc_tag_type' => true,
+            'phpdoc_tag_type' => ['tags' => ['inheritDoc' => 'inline']],
             'phpdoc_to_comment' => true,
             'phpdoc_to_param_type' => false, // risky
             'phpdoc_to_property_type' => false, // risky, for PHP 7.4+
