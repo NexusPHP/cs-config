@@ -178,9 +178,8 @@ final class Nexus74 extends AbstractRuleset
             ],
             'native_function_casing' => true,
             'native_function_invocation' => [ // risky
-                'include' => [
-                    '@compiler_optimized',
-                ],
+                'exclude' => [],
+                'include' => ['@compiler_optimized'],
                 'scope' => 'namespaced',
                 'strict' => true,
             ],
