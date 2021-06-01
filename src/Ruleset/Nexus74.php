@@ -170,8 +170,13 @@ final class Nexus74 extends AbstractRuleset
             'multiline_comment_opening_closing' => true,
             'multiline_whitespace_before_semicolons' => ['strategy' => 'new_line_for_chained_calls'],
             'native_constant_invocation' => [ // risky
-                'fix_built_in' => true,
-                'include' => [],
+                'fix_built_in' => false,
+                'include' => [
+                    'DIRECTORY_SEPARATOR',
+                    'PHP_INT_SIZE',
+                    'PHP_SAPI',
+                    'PHP_VERSION_ID',
+                ],
                 'scope' => 'namespaced',
                 'strict' => true,
             ],

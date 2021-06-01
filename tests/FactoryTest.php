@@ -95,7 +95,7 @@ final class FactoryTest extends TestCase
             'hideProgress' => true,
             'indent' => "\t",
             'lineEnding' => "\r\n",
-            'phpExecutable' => \PHP_BINARY,
+            'phpExecutable' => PHP_BINARY,
             'usingCache' => false,
         ];
         $config = Factory::create($this->mockRuleset(), [], $options)->forProjects();
