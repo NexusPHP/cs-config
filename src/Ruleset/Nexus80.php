@@ -130,7 +130,6 @@ final class Nexus80 extends AbstractRuleset
             'function_typehint_space' => true,
             'general_phpdoc_annotation_remove' => [
                 'annotations' => [
-                    'author',
                     'package',
                     'subpackage',
                 ],
