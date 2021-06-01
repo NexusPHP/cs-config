@@ -5,6 +5,14 @@ All notable changes to this library will be documented in this file:
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v3.1.0](https://github.com/NexusPHP/cs-config/compare/v3.0.3...v3.1.0) - 2021-06-01
+
+- Changed `native_constant_invocation` to fix all built in constants
+- Completed options for `native_function_invocation`
+- Changed `phpdoc_line_span` and `phpdoc_tag_type` rules
+- Allow `@author` tags in `general_phpdoc_annotation_remove` rule
+- Await `one_if_phpdoc` option for `class_attributes_separation`
+
 ## [v3.0.3](https://github.com/NexusPHP/cs-config/compare/v3.0.2...v3.0.3) - 2021-05-07
 
 - Add test for checking missing built-in rules in ruleset
