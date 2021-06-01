@@ -61,9 +61,9 @@ final class Nexus73 extends AbstractRuleset
             'cast_spaces' => ['space' => 'single'],
             'class_attributes_separation' => [
                 'elements' => [
-                    'const' => 'one',
+                    'const' => /* 'one_if_phpdoc' */ 'one',
                     'method' => 'one',
-                    'property' => 'one',
+                    'property' => /* 'one_if_phpdoc' */ 'one',
                 ],
             ],
             'class_definition' => [
