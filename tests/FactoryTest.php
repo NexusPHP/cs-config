@@ -22,6 +22,8 @@ use PHPUnit\Framework\TestCase;
 
 /**
  * @internal
+ *
+ * @covers \Nexus\CsConfig\Factory
  */
 final class FactoryTest extends TestCase
 {
@@ -60,6 +62,10 @@ final class FactoryTest extends TestCase
         self::assertSame($ruleset->getRules(), $config->getRules());
     }
 
+    /**
+     * @covers \Nexus\CsConfig\Ruleset\AbstractRuleset
+     * @covers \Nexus\CsConfig\Ruleset\Nexus73
+     */
     public function testFactoryAllowsOverrideOfRules(): void
     {
         $config = Factory::create(new Nexus73())->forProjects();
