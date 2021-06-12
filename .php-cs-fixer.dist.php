@@ -22,10 +22,7 @@ $finder = Finder::create()
     ->append([__FILE__])
 ;
 
-$overrides = [
-    'binary_operator_spaces' => ['default' => 'single_space'],
-];
-
+$overrides = [];
 $options = [
     'finder' => $finder,
     'cacheFile' => 'build/.php-cs-fixer.cache',

@@ -14,7 +14,7 @@ declare(strict_types=1);
 namespace Nexus\CsConfig\Ruleset;
 
 /**
- * Ruleset for `NexusPHP` group.
+ * Ruleset for `Nexus` group.
  *
  * @internal
  */
@@ -32,9 +32,6 @@ final class Nexus80 extends AbstractRuleset
             'binary_operator_spaces' => [
                 'default' => 'single_space',
                 'operators' => [
-                    '=>' => 'align_single_space_minimal',
-                    '.=' => 'align_single_space_minimal',
-                    '||' => 'align_single_space_minimal',
                     '|' => 'no_space', // Temporary fix for union types
                 ],
             ],
@@ -76,15 +73,15 @@ final class Nexus80 extends AbstractRuleset
             'clean_namespace' => true,
             'combine_consecutive_issets' => true,
             'combine_consecutive_unsets' => true,
-            'combine_nested_dirname' => true, // risky
-            'comment_to_phpdoc' => true, // risky
+            'combine_nested_dirname' => true,
+            'comment_to_phpdoc' => true,
             'compact_nullable_typehint' => true,
             'concat_space' => ['spacing' => 'one'],
             'constant_case' => ['case' => 'lower'],
             'date_time_immutable' => true,
             'declare_equal_normalize' => ['space' => 'none'],
             'declare_strict_types' => true,
-            'dir_constant' => true, // risky
+            'dir_constant' => true,
             'doctrine_annotation_array_assignment' => false,
             'doctrine_annotation_braces' => false,
             'doctrine_annotation_indentation' => false,
@@ -96,12 +93,12 @@ final class Nexus80 extends AbstractRuleset
             ],
             'elseif' => true,
             'encoding' => true,
-            'ereg_to_preg' => true, // risky
+            'ereg_to_preg' => true,
             'error_suppression' => [
                 'mute_deprecation_error' => true,
                 'noise_remaining_usages' => false,
                 'noise_remaining_usages_exclude' => [],
-            ], // risky
+            ],
             'escape_implicit_backslashes' => [
                 'double_quoted' => true,
                 'heredoc_syntax' => true,
@@ -109,16 +106,16 @@ final class Nexus80 extends AbstractRuleset
             ],
             'explicit_indirect_variable' => true,
             'explicit_string_variable' => true,
-            'final_class' => false, // risky
-            'final_internal_class' => true, // risky
-            'final_public_method_for_abstract_class' => false, // risky
-            'fopen_flag_order' => true, // risky
-            'fopen_flags' => ['b_mode' => true], // risky
+            'final_class' => false,
+            'final_internal_class' => true,
+            'final_public_method_for_abstract_class' => false,
+            'fopen_flag_order' => true,
+            'fopen_flags' => ['b_mode' => true],
             'full_opening_tag' => true,
             'fully_qualified_strict_types' => true,
             'function_declaration' => ['closure_function_spacing' => 'one'],
             'function_to_constant' => [
-                'functions' => [ // risky
+                'functions' => [
                     'get_called_class',
                     'get_class',
                     'get_class_this',
@@ -145,32 +142,32 @@ final class Nexus80 extends AbstractRuleset
             'header_comment' => false,
             'heredoc_indentation' => true,
             'heredoc_to_nowdoc' => true,
-            'implode_call' => true, // risky
+            'implode_call' => true,
             'include' => true,
             'increment_style' => ['style' => 'pre'],
             'indentation_type' => true,
-            'is_null' => true, // risky
+            'is_null' => true,
             'lambda_not_used_import' => true,
             'line_ending' => true,
             'linebreak_after_opening_tag' => true,
             'list_syntax' => ['syntax' => 'short'],
-            'logical_operators' => true, // risky
+            'logical_operators' => true,
             'lowercase_cast' => true,
             'lowercase_keywords' => true,
             'lowercase_static_reference' => true,
             'magic_constant_casing' => true,
             'magic_method_casing' => true,
-            'mb_str_functions' => false, // risky
+            'mb_str_functions' => false,
             'method_argument_space' => [
                 'after_heredoc' => true,
                 'keep_multiple_spaces_after_comma' => false,
                 'on_multiline' => 'ensure_fully_multiline',
             ],
             'method_chaining_indentation' => true,
-            'modernize_types_casting' => true, // risky
+            'modernize_types_casting' => true,
             'multiline_comment_opening_closing' => true,
             'multiline_whitespace_before_semicolons' => ['strategy' => 'new_line_for_chained_calls'],
-            'native_constant_invocation' => [ // risky
+            'native_constant_invocation' => [
                 'fix_built_in' => false,
                 'include' => [
                     'DIRECTORY_SEPARATOR',
@@ -182,7 +179,7 @@ final class Nexus80 extends AbstractRuleset
                 'strict' => true,
             ],
             'native_function_casing' => true,
-            'native_function_invocation' => [ // risky
+            'native_function_invocation' => [
                 'exclude' => [],
                 'include' => ['@compiler_optimized'],
                 'scope' => 'namespaced',
@@ -190,7 +187,7 @@ final class Nexus80 extends AbstractRuleset
             ],
             'native_function_type_declaration_casing' => true,
             'new_with_braces' => true,
-            'no_alias_functions' => true, // risky
+            'no_alias_functions' => true,
             'no_alias_language_construct_call' => true,
             'no_alternative_syntax' => false,
             'no_binary_string' => true,
@@ -219,13 +216,13 @@ final class Nexus80 extends AbstractRuleset
                     'default',
                 ],
             ],
-            'no_homoglyph_names' => true, // risky
+            'no_homoglyph_names' => true,
             'no_leading_import_slash' => true,
             'no_leading_namespace_whitespace' => true,
             'no_mixed_echo_print' => ['use' => 'echo'],
             'no_multiline_whitespace_around_double_arrow' => true,
             'no_null_property_initialization' => true,
-            'no_php4_constructor' => true, // risky
+            'no_php4_constructor' => true,
             'no_short_bool_cast' => true,
             'no_singleline_whitespace_before_semicolons' => true,
             'no_spaces_after_function_name' => true,
@@ -242,20 +239,20 @@ final class Nexus80 extends AbstractRuleset
             'no_trailing_comma_in_singleline_array' => true,
             'no_trailing_whitespace' => true,
             'no_trailing_whitespace_in_comment' => true,
-            'no_trailing_whitespace_in_string' => true, // risky
+            'no_trailing_whitespace_in_string' => true,
             'no_unneeded_control_parentheses' => true,
             'no_unneeded_curly_braces' => ['namespaces' => true],
-            'no_unneeded_final_method' => true, // risky
-            'no_unreachable_default_argument_value' => true, // risky
+            'no_unneeded_final_method' => true,
+            'no_unreachable_default_argument_value' => true,
             'no_unset_cast' => true,
-            'no_unset_on_property' => false, // risky
+            'no_unset_on_property' => false,
             'no_unused_imports' => true,
             'no_useless_else' => true,
             'no_useless_return' => true,
-            'no_useless_sprintf' => true, // risky
+            'no_useless_sprintf' => true,
             'no_whitespace_before_comma_in_array' => true,
             'no_whitespace_in_blank_line' => true,
-            'non_printable_character' => true, // risky
+            'non_printable_character' => true,
             'normalize_index_brace' => true,
             'not_operator_with_space' => false,
             'not_operator_with_successor_space' => true,
@@ -287,24 +284,24 @@ final class Nexus80 extends AbstractRuleset
                 ],
             ],
             'ordered_imports' => true,
-            'ordered_interfaces' => false, // risky
+            'ordered_interfaces' => false,
             'ordered_traits' => true,
-            'php_unit_construct' => true, // risky
-            'php_unit_dedicate_assert' => ['target' => 'newest'], // risky
-            'php_unit_dedicate_assert_internal_type' => ['target' => 'newest'], // risky
-            'php_unit_expectation' => true, // risky
+            'php_unit_construct' => true,
+            'php_unit_dedicate_assert' => ['target' => 'newest'],
+            'php_unit_dedicate_assert_internal_type' => ['target' => 'newest'],
+            'php_unit_expectation' => true,
             'php_unit_fqcn_annotation' => true,
             'php_unit_internal_class' => true,
             'php_unit_method_casing' => true,
-            'php_unit_mock' => true, // risky
-            'php_unit_mock_short_will_return' => true, // risky
-            'php_unit_namespaced' => true, // risky
-            'php_unit_no_expectation_annotation' => true, // risky
-            'php_unit_set_up_tear_down_visibility' => true, // risky
+            'php_unit_mock' => true,
+            'php_unit_mock_short_will_return' => true,
+            'php_unit_namespaced' => true,
+            'php_unit_no_expectation_annotation' => true,
+            'php_unit_set_up_tear_down_visibility' => true,
             'php_unit_size_class' => false,
-            'php_unit_strict' => true, // risky
-            'php_unit_test_annotation' => false, // risky
-            'php_unit_test_case_static_method_calls' => ['call_type' => 'self'], // risky
+            'php_unit_strict' => true,
+            'php_unit_test_annotation' => false,
+            'php_unit_test_case_static_method_calls' => ['call_type' => 'self'],
             'php_unit_test_class_requires_covers' => false,
             'phpdoc_add_missing_param_annotation' => ['only_untyped' => false],
             'phpdoc_align' => true,
@@ -327,9 +324,9 @@ final class Nexus80 extends AbstractRuleset
             'phpdoc_tag_casing' => true,
             'phpdoc_tag_type' => ['tags' => ['inheritDoc' => 'inline']],
             'phpdoc_to_comment' => true,
-            'phpdoc_to_param_type' => false, // risky
-            'phpdoc_to_property_type' => ['scalar_types' => true], // risky
-            'phpdoc_to_return_type' => false, // risky
+            'phpdoc_to_param_type' => false,
+            'phpdoc_to_property_type' => ['scalar_types' => true],
+            'phpdoc_to_return_type' => false,
             'phpdoc_trim' => true,
             'phpdoc_trim_consecutive_blank_line_separation' => true,
             'phpdoc_types' => true,
@@ -340,13 +337,13 @@ final class Nexus80 extends AbstractRuleset
             'protected_to_private' => true,
             'psr_autoloading' => ['dir' => null],
             'random_api_migration' => true,
-            'regular_callable_call' => true, // risky
+            'regular_callable_call' => true,
             'return_assignment' => true,
             'return_type_declaration' => true,
-            'self_accessor' => true, // risky
+            'self_accessor' => true,
             'self_static_accessor' => true,
             'semicolon_after_instruction' => true,
-            'set_type_to_cast' => true, // risky
+            'set_type_to_cast' => true,
             'short_scalar_cast' => true,
             'simple_to_complex_string_variable' => true,
             'simplified_if_return' => true,
@@ -364,20 +361,20 @@ final class Nexus80 extends AbstractRuleset
             'space_after_semicolon' => true,
             'standardize_increment' => true,
             'standardize_not_equals' => true,
-            'static_lambda' => true, // risky
-            'strict_comparison' => true, // risky
-            'strict_param' => true, // risky
-            'string_line_ending' => true, // risky
+            'static_lambda' => true,
+            'strict_comparison' => true,
+            'strict_param' => true,
+            'string_line_ending' => true,
             'switch_case_semicolon_to_colon' => true,
             'switch_case_space' => true,
             'switch_continue_to_break' => true,
             'ternary_operator_spaces' => true,
-            'ternary_to_elvis_operator' => true, // risky
+            'ternary_to_elvis_operator' => true,
             'ternary_to_null_coalescing' => true,
             'trailing_comma_in_multiline' => true,
             'trim_array_spaces' => true,
             'unary_operator_spaces' => true,
-            'use_arrow_functions' => true, // risky
+            'use_arrow_functions' => true,
             'visibility_required' => [
                 'elements' => [
                     'const',
@@ -385,7 +382,7 @@ final class Nexus80 extends AbstractRuleset
                     'property',
                 ],
             ],
-            'void_return' => false, // risky
+            'void_return' => false,
             'whitespace_after_comma_in_array' => true,
             'yoda_style' => [
                 'always_move_variable' => true,
