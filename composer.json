@@ -20,7 +20,6 @@
     "require-dev": {
         "nexusphp/tachycardia": "^1.3",
         "phpstan/phpstan": "^0.12",
-        "phpstan/phpstan-strict-rules": "^0.12",
         "phpunit/phpunit": "^9.5"
     },
     "config": {
