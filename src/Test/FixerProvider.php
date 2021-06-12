@@ -25,18 +25,18 @@ use PhpCsFixer\RuleSet\RuleSet;
 final class FixerProvider
 {
     /**
-     * Configured fixers from a ruleset.
-     *
-     * @var array<int, string>
-     */
-    private $configured = [];
-
-    /**
      * Built-in fixers from php-cs-fixer.
      *
      * @var array<string, FixerInterface>
      */
     private static $builtIn = [];
+
+    /**
+     * Configured fixers from a ruleset.
+     *
+     * @var array<int, string>
+     */
+    private $configured = [];
 
     /**
      * @param array<int, string> $configured
@@ -75,6 +75,11 @@ final class FixerProvider
         self::$builtIn = [];
     }
 
+    /**
+     * Returns the names and instances of built-in fixers.
+     *
+     * @return array<string, FixerInterface>
+     */
     public function builtin(): array
     {
         return self::$builtIn;
@@ -82,6 +87,8 @@ final class FixerProvider
 
     /**
      * Returns the names of the configured fixers.
+     *
+     * @return array<int, string>
      */
     public function configured(): array
     {
