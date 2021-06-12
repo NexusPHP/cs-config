@@ -1,4 +1,4 @@
-# NexusPHP CS Config
+# Nexus CS Config
 
 [![PHP version](https://img.shields.io/packagist/php-v/nexusphp/cs-config)](https://php.net)
 ![build](https://github.com/NexusPHP/cs-config/workflows/build/badge.svg?branch=develop)

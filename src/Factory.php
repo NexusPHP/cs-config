@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * This file is part of NexusPHP CS Config.
+ * This file is part of Nexus CS Config.
  *
  * (c) 2020 John Paul E. Balandan, CPA <paulbalandan@gmail.com>
  *
@@ -19,7 +19,7 @@ use PhpCsFixer\ConfigInterface;
 use PhpCsFixer\Finder;
 
 /**
- * The Factory class is invoked on each project's `.php_cs` to create
+ * The Factory class is invoked on each project's `.php-cs-fixer.dist.php` to create
  * the specific ruleset for the project.
  *
  * @internal

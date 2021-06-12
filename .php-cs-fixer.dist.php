@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * This file is part of NexusPHP CS Config.
+ * This file is part of Nexus CS Config.
  *
  * (c) 2020 John Paul E. Balandan, CPA <paulbalandan@gmail.com>
  *
@@ -32,7 +32,7 @@ $options = [
 ];
 
 return Factory::create(new Nexus73(), $overrides, $options)->forLibrary(
-    'NexusPHP CS Config',
+    'Nexus CS Config',
     'John Paul E. Balandan, CPA',
     'paulbalandan@gmail.com',
     2020
