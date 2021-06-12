@@ -17,23 +17,17 @@ interface RulesetInterface
 {
     /**
      * Name of this ruleset.
-     *
-     * @return string
      */
     public function getName(): string;
 
     /**
      * Defined rules for this ruleset.
-     *
-     * @return array
      */
     public function getRules(): array;
 
     /**
      * Returns the minimum `PHP_VERSION_ID`
      * that is required by this ruleset.
-     *
-     * @return int
      */
     public function getRequiredPHPVersion(): int;
 
@@ -45,8 +39,6 @@ interface RulesetInterface
      *
      * Set this flag to `true` to automatically setup
      * the `$isRiskyAllowed` flag.
-     *
-     * @return bool
      */
     public function willAutoActivateIsRiskyAllowed(): bool;
 }

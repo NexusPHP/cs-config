@@ -75,8 +75,6 @@ abstract class AbstractRulesetTestCase extends TestCase
 
     /**
      * @codeCoverageIgnore
-     *
-     * @return iterable
      */
     final public static function ruleNamesProvider(): iterable
     {
@@ -95,9 +93,6 @@ abstract class AbstractRulesetTestCase extends TestCase
 
     /**
      * Rules defined by PhpCsFixer.
-     *
-     * @param bool $withDeprecated
-     * @param bool $withFixers
      *
      * @return array<string, FixerInterface>|string[]
      */
@@ -178,11 +173,6 @@ abstract class AbstractRulesetTestCase extends TestCase
 
     /**
      * @dataProvider ruleNamesProvider
-     *
-     * @param string $source
-     * @param array  $rules
-     *
-     * @return void
      */
     final public function testRulesAreSortedByName(string $source, array $rules): void
     {
