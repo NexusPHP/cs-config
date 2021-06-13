@@ -20,6 +20,7 @@ use Nexus\CsConfig\Test\AbstractRulesetTestCase;
  *
  * @covers \Nexus\CsConfig\Ruleset\AbstractRuleset
  * @covers \Nexus\CsConfig\Ruleset\Nexus73
+ * @covers \Nexus\CsConfig\Test\AbstractRulesetTestCase
  */
 final class Nexus73Test extends AbstractRulesetTestCase
 {
