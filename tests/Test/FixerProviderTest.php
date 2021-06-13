@@ -78,6 +78,14 @@ final class FixerProviderTest extends TestCase
         self::assertLessThan(\count($configured), \count($enabled));
     }
 
+    public function testEnabledMethodPassesSameRulesAsCallingRulesetRulesDirectly(): void
+    {
+        $enabledByProvider = FixerProvider::create(new Nexus73())->enabled();
+        $enabledByRuleset = (new Nexus73())->getRules();
+
+        self::assertSame($enabledByRuleset, $enabledByProvider);
+    }
+
     /**
      * @return \PHPUnit\Framework\MockObject\MockObject&\Nexus\CsConfig\Ruleset\RulesetInterface
      */
