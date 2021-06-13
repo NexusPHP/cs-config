@@ -62,7 +62,7 @@ final class FixerProvider
                 (new FixerFactory())->registerBuiltInFixers()->getFixers(),
                 static function (FixerInterface $fixer): bool {
                     return ! $fixer instanceof DeprecatedFixerInterface;
-                }
+                },
             );
             $names = array_map(static function (FixerInterface $fixer): string {
                 return $fixer->getName();

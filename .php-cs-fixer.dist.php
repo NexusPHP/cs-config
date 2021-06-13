@@ -32,5 +32,5 @@ return Factory::create(new Nexus73(), $overrides, $options)->forLibrary(
     'Nexus CS Config',
     'John Paul E. Balandan, CPA',
     'paulbalandan@gmail.com',
-    2020
+    2020,
 );

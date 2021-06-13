@@ -65,7 +65,7 @@ final class Factory
                 'The "%s" ruleset requires a minimum PHP_VERSION_ID of "%d" but current PHP_VERSION_ID is "%d".',
                 $ruleset->getName(),
                 $ruleset->getRequiredPHPVersion(),
-                \PHP_VERSION_ID
+                \PHP_VERSION_ID,
             ));
         }
 
@@ -124,7 +124,7 @@ final class Factory
             $library,
             $year,
             $author,
-            $email
+            $email,
         );
 
         return $this->invoke([
