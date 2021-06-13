@@ -142,7 +142,10 @@ abstract class AbstractRulesetTestCase extends TestCase
 
     public function provideConfigurableFixersCases(): iterable
     {
-        foreach (FixerProvider::create(static::createRuleset())->builtin() as $name => $fixer) {
+        $fixers = FixerProvider::create(static::createRuleset())->builtin();
+        ksort($fixers);
+
+        foreach ($fixers as $name => $fixer) {
             if ($fixer instanceof ConfigurableFixerInterface) {
                 $options = $fixer->getConfigurationDefinition()->getOptions();
 
