@@ -113,14 +113,14 @@ final class Factory
         }
 
         $header = sprintf(
-            '
-This file is part of %s.
+            <<<'HEADER'
+                This file is part of %s.
 
-(c) %s%s%s
+                (c) %s%s%s
 
-For the full copyright and license information, please view
-the LICENSE file that was distributed with this source code.
-            ',
+                For the full copyright and license information, please view
+                the LICENSE file that was distributed with this source code.
+                HEADER,
             $library,
             $year,
             $author,
@@ -131,6 +131,8 @@ the LICENSE file that was distributed with this source code.
             'header_comment' => [
                 'header' => trim($header),
                 'comment_type' => 'PHPDoc',
+                'location' => 'after_declare_strict',
+                'separate' => 'both',
             ],
         ]);
     }
