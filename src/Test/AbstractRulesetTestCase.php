@@ -171,23 +171,22 @@ abstract class AbstractRulesetTestCase extends TestCase
      */
     final public function testEnabledConfigurableFixerUsesAllAvailableOptionsNotDeprecated(string $name, array $goodOptions, array $deprecatedOptions): void
     {
+        /** @var array<string, bool|string|string[]>|bool $ruleConfiguration */
         $ruleConfiguration = self::$enabledFixers[$name];
 
         if (false === $ruleConfiguration) {
-            $this->addToAssertionCount(1);
-
-            return;
-        }
-
-        if (\is_array($ruleConfiguration) && \count($ruleConfiguration) === \count($goodOptions)) {
+            // fixer is turned off
             $this->addToAssertionCount(1);
 
             return;
         }
 
         $ruleConfiguration = \is_array($ruleConfiguration) ? $ruleConfiguration : [];
-        $missingOptions = array_diff($goodOptions, array_keys($ruleConfiguration));
-        $usedDeprecatedOptions = array_intersect($deprecatedOptions, array_keys($ruleConfiguration));
+        $ruleConfiguration = array_keys($ruleConfiguration);
+
+        $missingOptions = array_diff($goodOptions, $ruleConfiguration);
+        $usedDeprecatedOptions = array_intersect($deprecatedOptions, $ruleConfiguration);
+        $extraUsedOptions = array_diff($ruleConfiguration, $goodOptions);
 
         self::assertEmpty($missingOptions, sprintf(
             'Failed asserting that enabled configurable fixer "%s" uses its available array %s "%s". Missing %s: "%s".',
@@ -202,6 +201,13 @@ abstract class AbstractRulesetTestCase extends TestCase
             $name,
             \count($usedDeprecatedOptions) > 1 ? 'options' : 'option',
             implode('", "', $usedDeprecatedOptions)
+        ));
+        self::assertEmpty($extraUsedOptions, sprintf(
+            'Failed asserting that %s "%s" for enabled configurable fixer "%s" %s defined by PhpCsFixer.',
+            \count($extraUsedOptions) > 1 ? 'options' : 'option',
+            implode('", "', $extraUsedOptions),
+            $name,
+            \count($extraUsedOptions) > 1 ? 'are' : 'is'
         ));
     }
 }
