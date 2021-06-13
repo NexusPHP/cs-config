@@ -58,17 +58,17 @@ final class FixerProvider
     public static function create(RulesetInterface $ruleset): self
     {
         if ([] === self::$builtIn) {
-            $builtIn = array_filter(
+            $fixers = array_filter(
                 (new FixerFactory())->registerBuiltInFixers()->getFixers(),
                 static function (FixerInterface $fixer): bool {
                     return ! $fixer instanceof DeprecatedFixerInterface;
                 },
             );
-            $names = array_map(static function (FixerInterface $fixer): string {
-                return $fixer->getName();
-            }, $builtIn);
 
-            self::$builtIn = array_combine($names, $builtIn);
+            foreach ($fixers as $fixer) {
+                // workaround for using `array_combine` with PHPStan on PHP < 80000
+                self::$builtIn[$fixer->getName()] = $fixer;
+            }
         }
 
         $rules = $ruleset->getRules();
