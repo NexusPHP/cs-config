@@ -5,6 +5,16 @@ All notable changes to this library will be documented in this file:
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v3.2.0](https://github.com/NexusPHP/cs-config/compare/v3.1.1...v3.2.0) - 2021-06-19
+
+- Enable PHP 8.1 build workflow
+- Forbid importing global functions and constants in addition to global classes
+- \[Possible BC break\] Refactored stricter `AbstractRulesetTestCase`
+- Removed superfluous PHPDoc tags if present in method signature
+- Changed default rule for `binary_operator_spaces` to `single_space` for all rulesets
+- Changed parent namespace to "Nexus"
+- Dropped `phpstan/phpstan-strict-rules`
+
 ## [v3.1.1](https://github.com/NexusPHP/cs-config/compare/v3.1.0...v3.1.1) - 2021-06-01
 
 - Changed `native_constant_invocation` to fix only a subset of built in constants
