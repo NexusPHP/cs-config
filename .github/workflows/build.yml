@@ -26,7 +26,6 @@ jobs:
   main:
     name: Build [PHP ${{ matrix.php-version }}]
     runs-on: ubuntu-latest
-    continue-on-error: ${{ matrix.php-version == '8.1' }}
 
     strategy:
       fail-fast: false
@@ -35,7 +34,9 @@ jobs:
           - '7.3'
           - '7.4'
           - '8.0'
-        # - '8.1'
+        include:
+          - php-version: '8.1'
+            flags: '--ignore-platform-req=php'
 
     steps:
       - name: Checkout
@@ -80,16 +81,22 @@ jobs:
         run: composer config --global github-oauth.github.com ${{ secrets.ACCESS_TOKEN }}
 
       - name: Install dependencies
-        run: composer update --ansi --no-scripts --no-interaction
+        run: composer update --ansi --no-scripts --no-interaction ${{ matrix.flags }}
 
       - name: Run PHP-CS-Fixer
-        run: vendor/bin/php-cs-fixer fix --ansi --verbose --dry-run --using-cache=no
+        run: |
+          if [ '${{ matrix.php-version }}' = '8.1' ]; then
+            PHP_CS_FIXER_IGNORE_ENV=1 vendor/bin/php-cs-fixer fix --ansi --verbose --dry-run --using-cache=no
+          else
+            vendor/bin/php-cs-fixer fix --ansi --verbose --dry-run --using-cache=no
+          fi
 
       - name: Run PHPStan Static Analysis Check
         run: vendor/bin/phpstan analyse --ansi
 
       - name: Run Nexus CS Config TestSuite
         run: vendor/bin/phpunit --colors=always
+        continue-on-error: ${{ matrix.php-version == '8.1' }}
         env:
           TACHYCARDIA_MONITOR_GA: enabled
 
