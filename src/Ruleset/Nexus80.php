@@ -173,8 +173,8 @@ final class Nexus80 extends AbstractRuleset
             ],
             'global_namespace_import' => [
                 'import_classes' => false,
-                'import_constants' => null,
-                'import_functions' => null,
+                'import_constants' => false,
+                'import_functions' => false,
             ],
             'group_import' => false,
             'header_comment' => false,
