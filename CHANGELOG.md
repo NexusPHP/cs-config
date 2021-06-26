@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased](https://github.com/NexusPHP/cs-config/compare/v3.2.0...HEAD)
 
+- Remove `@test` annotations from tests
 - Disable `php_unit_test_class_requires_covers`. Let PHPUnit do the job instead.
 
 ## [v3.2.0](https://github.com/NexusPHP/cs-config/compare/v3.1.1...v3.2.0) - 2021-06-19

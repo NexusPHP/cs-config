@@ -374,7 +374,7 @@ final class Nexus80 extends AbstractRuleset
                     'assertNotEquals',
                 ],
             ],
-            'php_unit_test_annotation' => false,
+            'php_unit_test_annotation' => ['style' => 'prefix'],
             'php_unit_test_case_static_method_calls' => [
                 'call_type' => 'self',
                 'methods' => [],
