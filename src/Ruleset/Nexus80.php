@@ -142,7 +142,7 @@ final class Nexus80 extends AbstractRuleset
                 'annotation_include' => ['@internal'],
                 'consider_absent_docblock_as_internal_class' => false,
             ],
-            'final_public_method_for_abstract_class' => false,
+            'final_public_method_for_abstract_class' => true,
             'fopen_flag_order' => true,
             'fopen_flags' => ['b_mode' => true],
             'full_opening_tag' => true,

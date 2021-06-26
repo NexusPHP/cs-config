@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased](https://github.com/NexusPHP/cs-config/compare/v3.2.0...HEAD)
 
+- \[Nexus80\] Enable `final_public_method_for_abstract_class`
 - \[Nexus80\] Enable `phpdoc_to_param_type` and `phpdoc_to_return_type`
 - Remove `@test` annotations from tests
 - Disable `php_unit_test_class_requires_covers`. Let PHPUnit do the job instead.
