@@ -37,6 +37,7 @@ jobs:
         include:
           - php-version: '8.1'
             flags: '--ignore-platform-req=php'
+            PHP_CS_FIXER_IGNORE_ENV: 1
 
     steps:
       - name: Checkout
@@ -84,12 +85,9 @@ jobs:
         run: composer update --ansi --no-scripts --no-interaction ${{ matrix.flags }}
 
       - name: Run PHP-CS-Fixer
-        run: |
-          if [ '${{ matrix.php-version }}' = '8.1' ]; then
-            PHP_CS_FIXER_IGNORE_ENV=1 vendor/bin/php-cs-fixer fix --ansi --verbose --dry-run --using-cache=no
-          else
-            vendor/bin/php-cs-fixer fix --ansi --verbose --dry-run --using-cache=no
-          fi
+        run: vendor/bin/php-cs-fixer fix --ansi --verbose --dry-run --using-cache=no
+        env:
+          PHP_CS_FIXER_IGNORE_ENV: ${{ matrix.PHP_CS_FIXER_IGNORE_ENV }}
 
       - name: Run PHPStan Static Analysis Check
         run: vendor/bin/phpstan analyse --ansi
