@@ -251,12 +251,7 @@ final class Nexus73 extends AbstractRuleset
             'no_short_bool_cast' => true,
             'no_singleline_whitespace_before_semicolons' => true,
             'no_spaces_after_function_name' => true,
-            'no_spaces_around_offset' => [
-                'positions' => [
-                    'inside',
-                    'outside',
-                ],
-            ],
+            'no_spaces_around_offset' => ['positions' => ['inside', 'outside']],
             'no_spaces_inside_parenthesis' => true,
             'no_superfluous_elseif' => true,
             'no_superfluous_phpdoc_tags' => [
@@ -297,10 +292,7 @@ final class Nexus73 extends AbstractRuleset
             'not_operator_with_successor_space' => true,
             'nullable_type_declaration_for_default_null_value' => ['use_nullable_type_declaration' => true],
             'object_operator_without_whitespace' => true,
-            'operator_linebreak' => [
-                'only_booleans' => false,
-                'position' => 'beginning',
-            ],
+            'operator_linebreak' => ['only_booleans' => true, 'position' => 'beginning'],
             'ordered_class_elements' => [
                 'order' => [
                     'use_trait',
