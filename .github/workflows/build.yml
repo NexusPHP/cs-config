@@ -90,6 +90,7 @@ jobs:
           PHP_CS_FIXER_IGNORE_ENV: ${{ matrix.PHP_CS_FIXER_IGNORE_ENV }}
 
       - name: Run PHPStan Static Analysis Check
+        if: matrix.php-version != '8.1'
         run: vendor/bin/phpstan analyse --ansi
 
       - name: Run Nexus CS Config TestSuite
@@ -101,7 +102,7 @@ jobs:
       - name: Run Coveralls
         run: |
           composer global require --ansi php-coveralls/php-coveralls
-          php-coveralls --coverage_clover=build/logs/clover.xml -v
+          php-coveralls --verbose --coverage_clover=build/phpunit/logs/clover.xml --json_path=build/phpunit/logs/coverage.json
         env:
           COVERALLS_REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           COVERALLS_PARALLEL: true
