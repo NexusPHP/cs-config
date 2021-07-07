@@ -174,8 +174,12 @@ abstract class AbstractRulesetTestCase extends TestCase
      */
     final public function testEnabledConfigurableFixerUsesAllAvailableOptionsNotDeprecated(string $name, array $goodOptions, array $deprecatedOptions): void
     {
-        /** @var array<string, bool|string|string[]>|bool $ruleConfiguration */
-        $ruleConfiguration = self::$enabledFixers[$name];
+        /** @var null|array<string, bool|string|string[]>|bool $ruleConfiguration */
+        $ruleConfiguration = self::$enabledFixers[$name] ?? null;
+
+        if (null === $ruleConfiguration) {
+            self::markTestSkipped(sprintf('`%s` is not yet defined in this ruleset.', $name)); // @codeCoverageIgnore
+        }
 
         if (false === $ruleConfiguration) {
             // fixer is turned off
