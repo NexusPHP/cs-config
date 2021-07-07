@@ -128,15 +128,7 @@ final class Nexus74 extends AbstractRuleset
             'explicit_string_variable' => true,
             'final_class' => false,
             'final_internal_class' => [
-                'annotation_exclude' => [
-                    '@final',
-                    '@Entity',
-                    '@ORM\\Entity',
-                    '@ORM\\Mapping\\Entity',
-                    '@Mapping\\Entity',
-                    '@Document',
-                    '@ODM\\Document',
-                ],
+                'annotation_exclude' => ['@final', '@no-final'],
                 'annotation_include' => ['@internal'],
                 'consider_absent_docblock_as_internal_class' => false,
             ],

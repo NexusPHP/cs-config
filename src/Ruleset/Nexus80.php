@@ -130,17 +130,9 @@ final class Nexus80 extends AbstractRuleset
             'explicit_string_variable' => true,
             'final_class' => false,
             'final_internal_class' => [
-                'annotation_exclude' => [
-                    '@final',
-                    '@Entity',
-                    '@ORM\\Entity',
-                    '@ORM\\Mapping\\Entity',
-                    '@Mapping\\Entity',
-                    '@Document',
-                    '@ODM\\Document',
-                ],
+                'annotation_exclude' => ['@final', '@no-final'],
                 'annotation_include' => ['@internal'],
-                'consider_absent_docblock_as_internal_class' => false,
+                'consider_absent_docblock_as_internal_class' => true,
             ],
             'final_public_method_for_abstract_class' => true,
             'fopen_flag_order' => true,
@@ -593,7 +585,7 @@ final class Nexus80 extends AbstractRuleset
             'unary_operator_spaces' => true,
             'use_arrow_functions' => true,
             'visibility_required' => ['elements' => ['const', 'method', 'property']],
-            'void_return' => false,
+            'void_return' => true,
             'whitespace_after_comma_in_array' => true,
             'yoda_style' => [
                 'always_move_variable' => true,
