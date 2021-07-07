@@ -1,44 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.4/phpunit.xsd"
+         xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd"
          bootstrap="vendor/autoload.php"
-         cacheResultFile="build/test-results"
+         cacheResultFile="build/phpunit/test-results"
          colors="true"
-         convertErrorsToExceptions="true"
-         convertNoticesToExceptions="true"
-         convertWarningsToExceptions="true"
+         columns="max"
+         failOnRisky="true"
+         failOnWarning="true"
          forceCoversAnnotation="true"
-         stopOnError="false"
-         stopOnFailure="false"
-         stopOnIncomplete="false"
-         stopOnSkipped="false"
-         verbose="true">
+         beStrictAboutOutputDuringTests="true"
+         beStrictAboutTodoAnnotatedTests="true"
+         verbose="true"
+>
+
     <testsuites>
-        <testsuite name="NexusPHP CS Config TestSuite">
+        <testsuite name="NexusPHP CS Config Test Suite">
             <directory suffix="Test.php">tests</directory>
         </testsuite>
     </testsuites>
 
-    <coverage cacheDirectory="build/code-coverage" processUncoveredFiles="true">
+    <coverage cacheDirectory="build/phpunit/code-coverage"
+              ignoreDeprecatedCodeUnits="true"
+              processUncoveredFiles="true"
+              >
         <include>
             <directory suffix=".php">src</directory>
         </include>
 
         <report>
-            <clover outputFile="build/logs/clover.xml"/>
-            <html outputDirectory="build/logs/html"/>
+            <clover outputFile="build/phpunit/logs/clover.xml"/>
+            <html outputDirectory="build/phpunit/logs/html"/>
         </report>
     </coverage>
 
     <extensions>
-        <extension class="Nexus\PHPUnit\Extension\Tachycardia">
-            <arguments>
-                <array>
-                    <element key="precision">
-                        <integer>2</integer>
-                    </element>
-                </array>
-            </arguments>
-        </extension>
+        <extension class="Nexus\PHPUnit\Extension\Tachycardia" />
     </extensions>
 </phpunit>
