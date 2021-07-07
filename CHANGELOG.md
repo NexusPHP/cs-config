@@ -5,8 +5,14 @@ All notable changes to this library will be documented in this file:
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased](https://github.com/NexusPHP/cs-config/compare/v3.2.0...HEAD)
+## [v3.2.1](https://github.com/NexusPHP/cs-config/compare/v3.2.0...v3.21) - 2021-07-07
 
+- Forbid running PHPStan on PHP8.1 (for now)
+- Standardize `phpunit.xml.dist` structure.
+- Remove `include/require` from statements requiring blank line before.
+- Fix for `AbstractRulesetTestCase` when configurable fixer is not yet defined by the ruleset.
+- \[Nexus80\] Enable `void_return` fixer
+- Limit excluded annotations to `@final` and `@no-final` only
 - \[Nexus80\] Enable `final_public_method_for_abstract_class`
 - \[Nexus80\] Enable `phpdoc_to_param_type` and `phpdoc_to_return_type`
 - Remove `@test` annotations from tests
