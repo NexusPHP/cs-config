@@ -34,10 +34,10 @@ jobs:
           - '7.3'
           - '7.4'
           - '8.0'
-        include:
-          - php-version: '8.1'
-            flags: '--ignore-platform-req=php'
-            PHP_CS_FIXER_IGNORE_ENV: 1
+      # include:
+      #   - php-version: '8.1'
+      #     flags: '--ignore-platform-req=php'
+      #     PHP_CS_FIXER_IGNORE_ENV: 1
 
     steps:
       - name: Checkout
@@ -86,8 +86,6 @@ jobs:
 
       - name: Run PHP-CS-Fixer
         run: vendor/bin/php-cs-fixer fix --ansi --verbose --dry-run --using-cache=no
-        env:
-          PHP_CS_FIXER_IGNORE_ENV: ${{ matrix.PHP_CS_FIXER_IGNORE_ENV }}
 
       - name: Run PHPStan Static Analysis Check
         if: matrix.php-version != '8.1'
@@ -95,7 +93,6 @@ jobs:
 
       - name: Run Nexus CS Config TestSuite
         run: vendor/bin/phpunit --colors=always
-        continue-on-error: ${{ matrix.php-version == '8.1' }}
         env:
           TACHYCARDIA_MONITOR_GA: enabled
 
