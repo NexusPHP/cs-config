@@ -5,7 +5,11 @@ All notable changes to this library will be documented in this file:
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [v3.2.1](https://github.com/NexusPHP/cs-config/compare/v3.2.0...v3.21) - 2021-07-07
+## [v3.2.2](https://github.com/NexusPHP/cs-config/compare/v3.2.1...v3.2.2) - 2021-08-07
+
+- Add support for `trait_import` in `class_attributes_separation`
+
+## [v3.2.1](https://github.com/NexusPHP/cs-config/compare/v3.2.0...v3.2.1) - 2021-07-07
 
 - Forbid running PHPStan on PHP8.1 (for now)
 - Standardize `phpunit.xml.dist` structure.
