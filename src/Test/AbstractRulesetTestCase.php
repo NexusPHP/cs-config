@@ -65,6 +65,7 @@ abstract class AbstractRulesetTestCase extends TestCase
 
     protected static function createRuleset(): RulesetInterface
     {
+        /** @phpstan-var class-string<RulesetInterface> $className */
         $className = Preg::replace('/^(Nexus\\\\CsConfig)\\\\Tests(\\\\.+)Test$/', '$1$2', static::class);
 
         return new $className();
