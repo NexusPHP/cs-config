@@ -66,8 +66,8 @@ final class Nexus73 extends AbstractRuleset
             'cast_spaces' => ['space' => 'single'],
             'class_attributes_separation' => [
                 'elements' => [
-                    'const' => /* 'only_if_meta' */ 'one',
-                    'property' => /* 'only_if_meta' */ 'one',
+                    'const' => 'only_if_meta',
+                    'property' => 'only_if_meta',
                     'method' => 'one',
                     'trait_import' => 'none',
                 ],
@@ -76,8 +76,8 @@ final class Nexus73 extends AbstractRuleset
                 'multi_line_extends_each_single_line' => false,
                 'single_item_single_line' => true,
                 'single_line' => true,
+                'space_before_parenthesis' => false,
             ],
-            'class_keyword_remove' => false,
             'clean_namespace' => true,
             'combine_consecutive_issets' => true,
             'combine_consecutive_unsets' => true,
@@ -97,6 +97,7 @@ final class Nexus73 extends AbstractRuleset
             'constant_case' => ['case' => 'lower'],
             'date_time_immutable' => true,
             'declare_equal_normalize' => ['space' => 'none'],
+            'declare_parentheses' => true,
             'declare_strict_types' => true,
             'dir_constant' => true,
             'doctrine_annotation_array_assignment' => false,
@@ -109,6 +110,7 @@ final class Nexus73 extends AbstractRuleset
                 'shorten_simple_statements_only' => true,
             ],
             'elseif' => true,
+            'empty_loop_body' => ['style' => 'braces'],
             'encoding' => true,
             'ereg_to_preg' => true,
             'error_suppression' => [
@@ -448,7 +450,7 @@ final class Nexus73 extends AbstractRuleset
             'phpdoc_summary' => true,
             'phpdoc_tag_casing' => ['tags' => ['inheritDoc']],
             'phpdoc_tag_type' => ['tags' => ['inheritDoc' => 'inline']],
-            'phpdoc_to_comment' => true,
+            'phpdoc_to_comment' => ['ignored_tags' => []],
             'phpdoc_to_param_type' => false,
             'phpdoc_to_property_type' => false, // for PHP 7.4+
             'phpdoc_to_return_type' => false,
@@ -569,6 +571,7 @@ final class Nexus73 extends AbstractRuleset
                 'elements' => ['arrays', 'arguments'],
             ],
             'trim_array_spaces' => true,
+            'types_spaces' => ['space' => 'none'],
             'unary_operator_spaces' => true,
             'use_arrow_functions' => false,
             'visibility_required' => ['elements' => ['const', 'method', 'property']],

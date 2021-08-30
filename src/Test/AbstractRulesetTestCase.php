@@ -116,7 +116,7 @@ abstract class AbstractRulesetTestCase extends TestCase
         $c = \count($fixersNotBuiltIn);
 
         self::assertEmpty($fixersNotBuiltIn, sprintf(
-            'Failed asserting that %s "%s" %s are built-in and not deprecated in PhpCsFixer.',
+            'Failed asserting that %s "%s" %s built-in and not deprecated in PhpCsFixer.',
             $c > 1 ? 'fixers' : 'fixer',
             implode('", "', $fixersNotBuiltIn),
             $c > 1 ? 'are' : 'is',
