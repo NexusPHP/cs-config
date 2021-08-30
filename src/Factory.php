@@ -21,8 +21,6 @@ use PhpCsFixer\Finder;
 /**
  * The Factory class is invoked on each project's `.php-cs-fixer.dist.php` to create
  * the specific ruleset for the project.
- *
- * @internal
  */
 final class Factory
 {

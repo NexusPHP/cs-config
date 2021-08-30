@@ -19,9 +19,6 @@ use PhpCsFixer\Fixer\FixerInterface;
 use PhpCsFixer\FixerFactory;
 use PhpCsFixer\RuleSet\RuleSet;
 
-/**
- * @internal
- */
 final class FixerProvider
 {
     /**

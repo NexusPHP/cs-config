@@ -21,8 +21,6 @@ use Symfony\Component\Finder\SplFileInfo;
 /**
  * Provides a generator of custom fixers for registration in `PhpCsFixer\Config`.
  *
- * @internal
- *
  * @implements \IteratorAggregate<FixerInterface>
  */
 final class FixerGenerator implements \IteratorAggregate
