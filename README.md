@@ -11,8 +11,6 @@ This library provides a factory for custom rulesets for [`friendsofphp/php-cs-fi
 
 [1]: https://github.com/FriendsOfPHP/PHP-CS-Fixer
 
-*This is the drop-in replacement for [Liaison CS Config Factory](https://github.com/paulbalandan/liaison-cs-config), but is not fully backwards compatible. See [MIGRATION.md](MIGRATION.md) for details.*
-
 ## Installation
 
 You can add this library as a local, per-project dependency to your project
@@ -43,7 +41,7 @@ return Factory::create(new Nexus73())->forProjects();
 default, the cache file will be saved in the project root.
 
 ```diff
-vendor/
+ vendor/
 
 +# php-cs-fixer
 +.php-cs-fixer.php
@@ -60,10 +58,10 @@ two optional arguments (the email address and starting year of license).
 
 * Scenario 1: Providing all arguments
 ```diff
-<?php
+ <?php
 
-use Nexus\CsConfig\Factory;
-use Nexus\CsConfig\Ruleset\Nexus73;
+ use Nexus\CsConfig\Factory;
+ use Nexus\CsConfig\Ruleset\Nexus73;
 
 -return Factory::create(new Nexus73())->forProjects();
 +return Factory::create(new Nexus73())->forLibrary('My Library', 'John Doe', 'john@doe.com', 2020);
@@ -94,8 +92,8 @@ these will not be shown on the license header allowing flexibility on the copyri
 ```diff
 <?php
 
-use Nexus\CsConfig\Factory;
-use Nexus\CsConfig\Ruleset\Nexus73;
+ use Nexus\CsConfig\Factory;
+ use Nexus\CsConfig\Ruleset\Nexus73;
 
 -return Factory::create(new Nexus73())->forProjects();
 +return Factory::create(new Nexus73())->forLibrary('My Library', 'John Doe');
@@ -123,10 +121,10 @@ namespace Nexus\CsConfig;
 If you feel that a specific rule in the ruleset is not appropriate for you, you can override it instead of creating a new ruleset:
 
 ```diff
-<?php
+ <?php
 
-use Nexus\CsConfig\Factory;
-use Nexus\CsConfig\Ruleset\Nexus73;
+ use Nexus\CsConfig\Factory;
+ use Nexus\CsConfig\Ruleset\Nexus73;
 
 -return Factory::create(new Nexus73())->forProjects();
 +return Factory::create(new Nexus73(), [
@@ -158,10 +156,10 @@ containing your desired options.
 | customRules    | `array`                                  | `[]`                                 |
 
 ```diff
-<?php
+ <?php
 
-use Nexus\CsConfig\Factory;
-use Nexus\CsConfig\Ruleset\Nexus73;
+ use Nexus\CsConfig\Factory;
+ use Nexus\CsConfig\Ruleset\Nexus73;
 
 -return Factory::create(new Nexus73())->forProjects();
 +return Factory::create(new Nexus73(), [], [
@@ -214,13 +212,6 @@ use MyCompany\CodingStandards\Ruleset\MyCompany;
 return Factory::create(new MyCompany())->forProjects();
 
 ```
-
-## Migrating from Liaison CS Config Factory
-
-If you are coming from the use of Liaison CS Config Factory, be warned that this is not 100% backwards
-compatible. Though some class methods were retained, a lot were refactored for the `Factory` class.
-
-See [MIGRATION.md](MIGRATION.md) for more details.
 
 ## Credits
 
