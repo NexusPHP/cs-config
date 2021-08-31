@@ -77,6 +77,10 @@ final class SpaceAfterCommentStartFixer extends AbstractCustomFixer
                 continue;
             }
 
+            if ('//' === $comment) {
+                continue;
+            }
+
             Preg::match('/^\/\/(\s*)(.+)/', $comment, $matches);
 
             if (' ' === $matches[1]) {

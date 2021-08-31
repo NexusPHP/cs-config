@@ -65,5 +65,30 @@ final class SpaceAfterCommentStartFixerTest extends AbstractCustomFixerTestCase
             '<?php // many spaces turned into one',
             '<?php //           many spaces turned into one',
         ];
+
+        yield 'multi-lined' => [
+            '<?php
+
+            // a comment
+            //
+            // another comment
+            ',
+            '<?php
+
+            //a comment
+            //
+            //  another comment
+            ',
+        ];
+
+        yield 'multi-empty' => [
+            '<?php
+
+            //
+            //
+            //
+            // a comment
+            ',
+        ];
     }
 }
