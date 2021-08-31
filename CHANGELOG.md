@@ -5,9 +5,22 @@ All notable changes to this library will be documented in this file:
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v3.3.0](https://github.com/NexusPHP/cs-config/compare/v3.2.2...v3.3.0) - 2021-08-31
+
+- Fix grammar usages
+- Enable all `class_definition` rules
+- Remove references to `liaison/cs-config`
+- Add NoCodeSeparatorCommentFixer
+- Add SpaceAfterCommentStartFixer
+- Remove `@internal` annotation from classes in public API
+- Bump to php-cs-fixer v3.1
+- Add FixerGenerator
+- Use phpstan's bleeding edge
+
 ## [v3.2.2](https://github.com/NexusPHP/cs-config/compare/v3.2.1...v3.2.2) - 2021-08-07
 
 - Add support for `trait_import` in `class_attributes_separation`
+- Do not test on PHP 8.1 yet
 
 ## [v3.2.1](https://github.com/NexusPHP/cs-config/compare/v3.2.0...v3.2.1) - 2021-07-07
 
