@@ -122,16 +122,14 @@ abstract class AbstractCustomFixerTestCase extends TestCase
 
         self::assertTrue(
             $nameValidator->isValid($customFixerName, true),
-            sprintf('[%s] Fixer name "%s" is not valid.', static::class, $customFixerName),
+            sprintf('Fixer name "%s" is not valid.', $customFixerName),
         );
     }
 
-    final public function testFixerAreFinal(): void
+    final public function testFixerIsFinal(): void
     {
-        $reflection = new \ReflectionClass($this->fixer);
-
         self::assertTrue(
-            $reflection->isFinal(),
+            (new \ReflectionClass($this->fixer))->isFinal(),
             sprintf('Fixer "%s" must be declared "final".', $this->fixer->getName()),
         );
     }

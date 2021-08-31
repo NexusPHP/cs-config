@@ -86,7 +86,7 @@ abstract class AbstractRulesetTestCase extends TestCase
         );
 
         self::assertEmpty($fixersThatArePresets, sprintf(
-            'Failed asserting that "%s" ruleset is not using rule sets (presets) as fixers. Found: "%s".',
+            '[%s] Ruleset should not be using rule sets (presets) as fixers. Found: "%s".',
             static::createRuleset()->getName(),
             implode('", "', array_keys($fixersThatArePresets)),
         ));
@@ -100,11 +100,11 @@ abstract class AbstractRulesetTestCase extends TestCase
         $c = \count($fixersNotConfigured);
 
         self::assertEmpty($fixersNotConfigured, sprintf(
-            'Failed asserting that non-deprecated built-in %s "%s" %s configured in the "%s" ruleset.',
+            '[%s] Non-deprecated built-in %s "%s" %s not configured in the ruleset.',
+            static::createRuleset()->getName(),
             $c > 1 ? 'fixers' : 'fixer',
             implode('", "', $fixersNotConfigured),
             $c > 1 ? 'are' : 'is',
-            static::createRuleset()->getName(),
         ));
     }
 
@@ -116,7 +116,8 @@ abstract class AbstractRulesetTestCase extends TestCase
         $c = \count($fixersNotBuiltIn);
 
         self::assertEmpty($fixersNotBuiltIn, sprintf(
-            'Failed asserting that %s "%s" %s built-in and not deprecated in PhpCsFixer.',
+            '[%s] Ruleset used %s "%s" which %s unknown and/or deprecated in PhpCsFixer.',
+            static::createRuleset()->getName(),
             $c > 1 ? 'fixers' : 'fixer',
             implode('", "', $fixersNotBuiltIn),
             $c > 1 ? 'are' : 'is',
@@ -130,7 +131,7 @@ abstract class AbstractRulesetTestCase extends TestCase
         sort($sorted);
 
         self::assertSame($sorted, $fixers, sprintf(
-            'Failed asserting that the fixers in "%s" ruleset are sorted by name.',
+            '[%s] Fixers are not sorted by name.',
             static::createRuleset()->getName(),
         ));
     }
@@ -197,7 +198,7 @@ abstract class AbstractRulesetTestCase extends TestCase
         $extraUsedOptions = array_diff($ruleConfiguration, $goodOptions);
 
         self::assertEmpty($missingOptions, sprintf(
-            'Failed asserting that enabled configurable fixer "%s" uses its available array %s "%s". Missing %s: "%s".',
+            'Enabled configurable fixer "%s" does not use its available array %s "%s". Missing %s: "%s".',
             $name,
             \count($goodOptions) > 1 ? 'options' : 'option',
             implode('", "', $goodOptions),
@@ -205,14 +206,14 @@ abstract class AbstractRulesetTestCase extends TestCase
             implode('", "', $missingOptions),
         ));
         self::assertEmpty($usedDeprecatedOptions, sprintf(
-            'Failed asserting that enabled configurable fixer "%s" uses options not yet deprecated. Found deprecated %s: "%s".',
+            'Enabled configurable fixer "%s" uses deprecated %s: "%s".',
             $name,
             \count($usedDeprecatedOptions) > 1 ? 'options' : 'option',
             implode('", "', $usedDeprecatedOptions),
         ));
         self::assertEmpty($extraUsedOptions, sprintf(
-            'Failed asserting that %s "%s" for enabled configurable fixer "%s" %s defined by PhpCsFixer.',
-            \count($extraUsedOptions) > 1 ? 'options' : 'option',
+            '%s "%s" for enabled configurable fixer "%s" %s not defined by PhpCsFixer.',
+            \count($extraUsedOptions) > 1 ? 'Options' : 'Option',
             implode('", "', $extraUsedOptions),
             $name,
             \count($extraUsedOptions) > 1 ? 'are' : 'is',
