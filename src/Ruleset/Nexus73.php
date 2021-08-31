@@ -73,10 +73,10 @@ final class Nexus73 extends AbstractRuleset
                 ],
             ],
             'class_definition' => [
-                'multi_line_extends_each_single_line' => false,
+                'multi_line_extends_each_single_line' => true,
                 'single_item_single_line' => true,
                 'single_line' => true,
-                'space_before_parenthesis' => false,
+                'space_before_parenthesis' => true,
             ],
             'clean_namespace' => true,
             'combine_consecutive_issets' => true,
