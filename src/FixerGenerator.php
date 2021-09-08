@@ -51,7 +51,7 @@ final class FixerGenerator implements \IteratorAggregate
         }
 
         if (! is_dir($path)) {
-            throw new \RuntimeException('Path "%s" is not a valid directory.');
+            throw new \RuntimeException(sprintf('Path "%s" is not a valid directory.', $path));
         }
 
         if ('' === $vendor) {

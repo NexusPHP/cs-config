@@ -27,9 +27,10 @@ final class FixerGeneratorTest extends TestCase
     /**
      * @dataProvider provideInvalidParametersCases
      */
-    public function testInvalidParametersThrowRuntimeException(string $path, string $vendor): void
+    public function testInvalidParametersThrowRuntimeException(string $path, string $vendor, string $message): void
     {
         $this->expectException(\RuntimeException::class);
+        $this->expectExceptionMessage($message);
         FixerGenerator::create($path, $vendor);
     }
 
@@ -38,15 +39,15 @@ final class FixerGeneratorTest extends TestCase
      */
     public function provideInvalidParametersCases(): iterable
     {
-        yield 'empty-path' => ['', 'Nexus'];
+        yield 'empty-path' => ['', 'Nexus', 'Path to custom fixers cannot be empty.'];
 
-        yield 'path-not-dir' => ['foo', 'Nexus'];
+        yield 'path-not-dir' => ['foo', 'Nexus', 'Path "foo" is not a valid directory.'];
 
-        yield 'path-is-file' => [__FILE__, 'Nexus'];
+        yield 'path-is-file' => [__FILE__, 'Nexus', sprintf('Path "%s" is not a valid directory.', __FILE__)];
 
-        yield 'empty-vendor' => [__DIR__, ''];
+        yield 'empty-vendor' => [__DIR__, '', 'Vendor namespace cannot be empty.'];
 
-        yield 'invalid-vendor' => [__DIR__, 'Nexus()'];
+        yield 'invalid-vendor' => [__DIR__, 'Nexus()', 'Vendor namespace "Nexus()" is not valid.'];
     }
 
     public function testCreateMethodReturnsSelf(): void
