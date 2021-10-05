@@ -238,7 +238,6 @@ final class Nexus73 extends AbstractRuleset
                     'return',
                     'throw',
                     'use',
-                    'use_trait',
                     'switch',
                     'case',
                     'default',

@@ -240,7 +240,6 @@ final class Nexus80 extends AbstractRuleset
                     'return',
                     'throw',
                     'use',
-                    'use_trait',
                     'switch',
                     'case',
                     'default',
