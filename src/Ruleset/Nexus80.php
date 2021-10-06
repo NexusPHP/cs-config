@@ -67,8 +67,8 @@ final class Nexus80 extends AbstractRuleset
             'cast_spaces' => ['space' => 'single'],
             'class_attributes_separation' => [
                 'elements' => [
-                    'const' => 'only_if_meta',
-                    'property' => 'only_if_meta',
+                    'const' => 'none',
+                    'property' => 'none',
                     'method' => 'one',
                     'trait_import' => 'none',
                 ],
