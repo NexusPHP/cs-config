@@ -5,6 +5,16 @@ All notable changes to this library will be documented in this file:
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v3.3.3](https://github.com/NexusPHP/cs-config/compare/v3.3.2...v3.3.3) - 2021-10-06
+
+- Enable `no_alternative_syntax` rule
+- Change class attributes separation to `none` except for methods
+- Remove operator override for braces in Nexus80
+- Add support for new fixers added in v3.2.0
+- Remove deprecated "tokens: use_trait" option
+- Use own custom fixers
+- Fix phpstan error on v0.12.99
+
 ## [v3.3.2](https://github.com/NexusPHP/cs-config/compare/v3.3.1...v3.3.2) - 2021-09-08
 
 - Fix missing string substitution when `FixerGenerator::create()` fails
