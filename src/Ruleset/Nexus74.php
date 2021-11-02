@@ -456,7 +456,10 @@ final class Nexus74 extends AbstractRuleset
             'phpdoc_summary' => true,
             'phpdoc_tag_casing' => ['tags' => ['inheritDoc']],
             'phpdoc_tag_type' => ['tags' => ['inheritDoc' => 'inline']],
-            'phpdoc_to_comment' => ['ignored_tags' => []],
+            'phpdoc_to_comment' => ['ignored_tags' => [
+                'phpstan-var',
+                'phpstan-return',
+            ]],
             'phpdoc_to_param_type' => false,
             'phpdoc_to_property_type' => ['scalar_types' => true],
             'phpdoc_to_return_type' => false,
