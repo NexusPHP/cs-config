@@ -34,14 +34,36 @@ final class Factory
     /**
      * Array of resolved options.
      *
-     * @var array<string, mixed>
+     * @phpstan-var array{
+     *     cacheFile: string,
+     *     customFixers: iterable<\PhpCsFixer\Fixer\FixerInterface>,
+     *     finder: \PhpCsFixer\Finder|iterable<string>,
+     *     format: string,
+     *     hideProgress: bool,
+     *     indent: string,
+     *     lineEnding: string,
+     *     phpExecutable: null|string,
+     *     isRiskyAllowed: bool,
+     *     usingCache: bool,
+     *     rules: array<string, mixed>
+     * }
      */
-    private $options = [];
+    private $options;
 
     /**
-     * Constructor.
-     *
-     * @param array<string, mixed> $options
+     * @param array{
+     *     cacheFile: string,
+     *     customFixers: iterable<\PhpCsFixer\Fixer\FixerInterface>,
+     *     finder: \PhpCsFixer\Finder|iterable<string>,
+     *     format: string,
+     *     hideProgress: bool,
+     *     indent: string,
+     *     lineEnding: string,
+     *     phpExecutable: null|string,
+     *     isRiskyAllowed: bool,
+     *     usingCache: bool,
+     *     rules: array<string, mixed>
+     * } $options
      */
     private function __construct(RulesetInterface $ruleset, array $options)
     {
@@ -54,7 +76,19 @@ final class Factory
      * is created.
      *
      * @param array<string, mixed> $overrides
-     * @param array<string, mixed> $options
+     * @param array{
+     *     cacheFile?: string,
+     *     customFixers?: iterable<\PhpCsFixer\Fixer\FixerInterface>,
+     *     finder?: \PhpCsFixer\Finder|iterable<string>,
+     *     format?: string,
+     *     hideProgress?: bool,
+     *     indent?: string,
+     *     lineEnding?: string,
+     *     phpExecutable?: null|string,
+     *     isRiskyAllowed?: bool,
+     *     usingCache?: bool,
+     *     customRules?: array<string, mixed>
+     * } $options
      */
     public static function create(RulesetInterface $ruleset, array $overrides = [], array $options = []): self
     {
