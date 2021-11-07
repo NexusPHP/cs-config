@@ -4,23 +4,19 @@ on:
   schedule:
     - cron: '0 0 * * *'
   push:
-    branches:
-      - develop
-      - master
-      - feature/**
-      - bugfix/**
-      - release/**
     paths:
-      - src/**
-      - tests/**
+      - '**.php'
       - .github/workflows/build.yml
+      - composer.json
+      - phpstan.neon.dist
+      - phpunit.xml.dist
   pull_request:
-    branches:
-      - develop
     paths:
-      - src/**
-      - tests/**
+      - '**.php'
       - .github/workflows/build.yml
+      - composer.json
+      - phpstan.neon.dist
+      - phpunit.xml.dist
 
 jobs:
   main:
@@ -34,10 +30,6 @@ jobs:
           - '7.3'
           - '7.4'
           - '8.0'
-      # include:
-      #   - php-version: '8.1'
-      #     flags: '--ignore-platform-req=php'
-      #     PHP_CS_FIXER_IGNORE_ENV: 1
 
     steps:
       - name: Checkout
@@ -59,7 +51,7 @@ jobs:
         run: echo "::set-output name=dir::$(composer config cache-files-dir)"
 
       - name: Create composer cache directory
-        run: mkdir -p ${{ steps.composer-cache.outputs.dir }}
+        run: mkdir --parents ${{ steps.composer-cache.outputs.dir }}
 
       - name: Cache composer dependencies
         uses: actions/cache@v2
@@ -69,7 +61,7 @@ jobs:
           restore-keys: ${{ runner.os }}-composer-
 
       - name: Create PHPStan cache directory
-        run: mkdir -p build/phpstan
+        run: mkdir --parents build/phpstan
 
       - name: Cache PHPStan cache directory
         uses: actions/cache@v2
@@ -79,17 +71,16 @@ jobs:
           restore-keys: ${{ runner.os }}-phpstan-
 
       - name: Setup Composer's GitHub OAuth access
-        run: composer config --global github-oauth.github.com ${{ secrets.ACCESS_TOKEN }}
+        run: composer config --global github-oauth.github.com ${{ secrets.GITHUB_TOKEN }}
 
       - name: Install dependencies
         run: composer update --ansi --no-scripts --no-interaction ${{ matrix.flags }}
 
       - name: Run PHP-CS-Fixer
-        run: vendor/bin/php-cs-fixer fix --ansi --verbose --dry-run --using-cache=no
+        run: vendor/bin/php-cs-fixer fix --ansi --verbose --dry-run --diff --using-cache=no
 
       - name: Run PHPStan Static Analysis Check
-        if: matrix.php-version != '8.1'
-        run: vendor/bin/phpstan analyse --ansi
+        run: vendor/bin/phpstan analyse --ansi --verbose
 
       - name: Run Nexus CS Config TestSuite
         run: vendor/bin/phpunit --colors=always
