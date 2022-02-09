@@ -87,7 +87,7 @@ final class FixerProviderTest extends TestCase
     }
 
     /**
-     * @return \PHPUnit\Framework\MockObject\MockObject&\Nexus\CsConfig\Ruleset\RulesetInterface
+     * @return \Nexus\CsConfig\Ruleset\RulesetInterface&\PHPUnit\Framework\MockObject\MockObject
      */
     private function mockRuleset()
     {
