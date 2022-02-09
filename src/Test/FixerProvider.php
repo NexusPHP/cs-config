@@ -26,21 +26,21 @@ final class FixerProvider
      *
      * @var array<string, FixerInterface>
      */
-    private static $builtIn = [];
+    private static array $builtIn = [];
 
     /**
      * Configured fixers from a ruleset.
      *
      * @var array<int, string>
      */
-    private $configured = [];
+    private array $configured = [];
 
     /**
      * Enabled fixers from a ruleset.
      *
      * @var array<string, array<string, bool|string|string[]>|bool>
      */
-    private $enabled = [];
+    private array $enabled = [];
 
     /**
      * @param array<int, string>                                      $configured
@@ -57,9 +57,7 @@ final class FixerProvider
         if ([] === self::$builtIn) {
             $fixers = array_filter(
                 (new FixerFactory())->registerBuiltInFixers()->getFixers(),
-                static function (FixerInterface $fixer): bool {
-                    return ! $fixer instanceof DeprecatedFixerInterface;
-                },
+                static fn (FixerInterface $fixer): bool => ! $fixer instanceof DeprecatedFixerInterface,
             );
 
             foreach ($fixers as $fixer) {

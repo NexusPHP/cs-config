@@ -25,15 +25,8 @@ use Symfony\Component\Finder\SplFileInfo;
  */
 final class FixerGenerator implements \IteratorAggregate
 {
-    /**
-     * @var string
-     */
-    private $path;
-
-    /**
-     * @var string
-     */
-    private $vendor;
+    private string $path;
+    private string $vendor;
 
     private function __construct(string $path, string $vendor)
     {
@@ -91,9 +84,7 @@ final class FixerGenerator implements \IteratorAggregate
                 return new $fixer();
             },
             iterator_to_array($finder, false),
-        ), static function (object $fixer): bool {
-            return $fixer instanceof FixerInterface;
-        });
+        ), static fn (object $fixer): bool => $fixer instanceof FixerInterface);
 
         yield from $fixers;
     }

@@ -17,31 +17,23 @@ abstract class AbstractRuleset implements RulesetInterface
 {
     /**
      * Name of the ruleset.
-     *
-     * @var string
      */
-    protected $name;
+    protected string $name;
 
     /**
      * Rules for the ruleset.
-     *
-     * @var array
      */
-    protected $rules = [];
+    protected array $rules = [];
 
     /**
      * Minimum PHP version.
-     *
-     * @var int
      */
-    protected $requiredPHPVersion = 0;
+    protected int $requiredPHPVersion = 0;
 
     /**
      * Have this ruleset turn on `$isRiskyAllowed` flag?
-     *
-     * @var bool
      */
-    protected $autoActivateIsRiskyAllowed = false;
+    protected bool $autoActivateIsRiskyAllowed = false;
 
     /**
      * {@inheritDoc}

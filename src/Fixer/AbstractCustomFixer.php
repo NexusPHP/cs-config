@@ -20,10 +20,8 @@ abstract class AbstractCustomFixer extends AbstractFixer
 {
     /**
      * Vendor namespace in fixer's name.
-     *
-     * @var null|string
      */
-    protected static $namespace;
+    protected static ?string $namespace;
 
     /**
      * Returns the fixer name for easy use in fixer registration and usage.

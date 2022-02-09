@@ -42,15 +42,8 @@ use PHPUnit\Framework\TestCase;
  */
 abstract class AbstractCustomFixerTestCase extends TestCase
 {
-    /**
-     * @var AbstractCustomFixer
-     */
-    protected $fixer;
-
-    /**
-     * @var LinterInterface
-     */
-    protected $linter;
+    protected AbstractCustomFixer $fixer;
+    protected LinterInterface $linter;
 
     protected function setUp(): void
     {
@@ -321,9 +314,7 @@ abstract class AbstractCustomFixerTestCase extends TestCase
 
             self::assertSame(
                 \count($tokens),
-                \count(array_unique(array_map(static function (Token $token): string {
-                    return spl_object_hash($token);
-                }, $tokensArray))),
+                \count(array_unique(array_map(static fn (Token $token): string => spl_object_hash($token), $tokensArray))),
                 'Token items inside Tokens collection must be unique.',
             );
 

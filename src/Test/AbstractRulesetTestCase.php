@@ -29,17 +29,17 @@ abstract class AbstractRulesetTestCase extends TestCase
     /**
      * @var array<string, FixerInterface>
      */
-    private static $builtInFixers = [];
+    private static array $builtInFixers = [];
 
     /**
      * @var array<int, string>
      */
-    private static $configuredFixers = [];
+    private static array $configuredFixers = [];
 
     /**
      * @var array<string, array<string, bool|string|string[]>|bool>
      */
-    private static $enabledFixers = [];
+    private static array $enabledFixers = [];
 
     /**
      * @codeCoverageIgnore
@@ -79,9 +79,7 @@ abstract class AbstractRulesetTestCase extends TestCase
     {
         $fixersThatArePresets = array_filter(
             self::$enabledFixers,
-            static function (string $fixer): bool {
-                return substr($fixer, 0, 1) === '@';
-            },
+            static fn (string $fixer): bool => substr($fixer, 0, 1) === '@',
             ARRAY_FILTER_USE_KEY,
         );
 
@@ -154,17 +152,21 @@ abstract class AbstractRulesetTestCase extends TestCase
             if ($fixer instanceof ConfigurableFixerInterface) {
                 $options = $fixer->getConfigurationDefinition()->getOptions();
 
-                $goodOptions = array_map(static function (FixerOptionInterface $option): string {
-                    return $option->getName();
-                }, array_filter($options, static function (FixerOptionInterface $option): bool {
-                    return ! $option instanceof DeprecatedFixerOptionInterface;
-                }));
+                $goodOptions = array_map(
+                    static fn (FixerOptionInterface $option): string => $option->getName(),
+                    array_filter(
+                        $options,
+                        static fn (FixerOptionInterface $option): bool => ! $option instanceof DeprecatedFixerOptionInterface,
+                    ),
+                );
 
-                $deprecatedOptions = array_map(static function (FixerOptionInterface $option): string {
-                    return $option->getName();
-                }, array_filter($options, static function (FixerOptionInterface $option): bool {
-                    return $option instanceof DeprecatedFixerOptionInterface;
-                }));
+                $deprecatedOptions = array_map(
+                    static fn (FixerOptionInterface $option): string => $option->getName(),
+                    array_filter(
+                        $options,
+                        static fn (FixerOptionInterface $option): bool => $option instanceof DeprecatedFixerOptionInterface,
+                    ),
+                );
 
                 yield $name => [$name, $goodOptions, $deprecatedOptions];
             }

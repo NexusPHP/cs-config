@@ -26,10 +26,8 @@ final class Factory
 {
     /**
      * Current RulesetInterface instance.
-     *
-     * @var \Nexus\CsConfig\Ruleset\RulesetInterface
      */
-    private $ruleset;
+    private RulesetInterface $ruleset;
 
     /**
      * Array of resolved options.
@@ -48,7 +46,7 @@ final class Factory
      *     rules: array<string, mixed>
      * }
      */
-    private $options;
+    private array $options;
 
     /**
      * @param array{
@@ -112,16 +110,16 @@ final class Factory
         ;
 
         // Resolve Config options
-        $options['cacheFile'] = $options['cacheFile'] ?? '.php-cs-fixer.cache';
-        $options['customFixers'] = $options['customFixers'] ?? [];
-        $options['finder'] = $options['finder'] ?? $defaultFinder;
-        $options['format'] = $options['format'] ?? 'txt';
-        $options['hideProgress'] = $options['hideProgress'] ?? false;
-        $options['indent'] = $options['indent'] ?? '    ';
-        $options['lineEnding'] = $options['lineEnding'] ?? "\n";
-        $options['phpExecutable'] = $options['phpExecutable'] ?? null;
+        $options['cacheFile'] ??= '.php-cs-fixer.cache';
+        $options['customFixers'] ??= [];
+        $options['finder'] ??= $defaultFinder;
+        $options['format'] ??= 'txt';
+        $options['hideProgress'] ??= false;
+        $options['indent'] ??= '    ';
+        $options['lineEnding'] ??= "\n";
+        $options['phpExecutable'] ??= null;
         $options['isRiskyAllowed'] = $options['isRiskyAllowed'] ?? ($ruleset->willAutoActivateIsRiskyAllowed() ?: false);
-        $options['usingCache'] = $options['usingCache'] ?? true;
+        $options['usingCache'] ??= true;
         $options['rules'] = array_merge($ruleset->getRules(), $overrides, $options['customRules'] ?? []);
 
         return new self($ruleset, $options);

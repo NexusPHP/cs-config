@@ -15,7 +15,7 @@ use Nexus\CsConfig\Factory;
 use Nexus\CsConfig\Fixer\Comment\NoCodeSeparatorCommentFixer;
 use Nexus\CsConfig\Fixer\Comment\SpaceAfterCommentStartFixer;
 use Nexus\CsConfig\FixerGenerator;
-use Nexus\CsConfig\Ruleset\Nexus73;
+use Nexus\CsConfig\Ruleset\Nexus74;
 use PhpCsFixer\Finder;
 
 $finder = Finder::create()
@@ -36,4 +36,4 @@ $options = [
     ],
 ];
 
-return Factory::create(new Nexus73(), $overrides, $options)->forLibrary('Nexus CS Config', 'John Paul E. Balandan, CPA', 'paulbalandan@gmail.com', 2020);
+return Factory::create(new Nexus74(), $overrides, $options)->forLibrary('Nexus CS Config', 'John Paul E. Balandan, CPA', 'paulbalandan@gmail.com', 2020);
