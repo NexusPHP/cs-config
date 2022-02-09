@@ -17,6 +17,8 @@ namespace Nexus\CsConfig\Ruleset;
  * Ruleset for `Nexus` group.
  *
  * @internal
+ *
+ * @deprecated v3.4.0
  */
 final class Nexus73 extends AbstractRuleset
 {

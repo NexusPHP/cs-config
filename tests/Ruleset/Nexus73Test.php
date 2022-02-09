@@ -21,6 +21,8 @@ use Nexus\CsConfig\Test\AbstractRulesetTestCase;
  * @covers \Nexus\CsConfig\Ruleset\AbstractRuleset
  * @covers \Nexus\CsConfig\Ruleset\Nexus73
  * @covers \Nexus\CsConfig\Test\AbstractRulesetTestCase
+ *
+ * @deprecated v3.4.0
  */
 final class Nexus73Test extends AbstractRulesetTestCase
 {

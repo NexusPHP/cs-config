@@ -13,7 +13,7 @@ declare(strict_types=1);
 
 namespace Nexus\CsConfig\Tests\Test;
 
-use Nexus\CsConfig\Ruleset\Nexus73;
+use Nexus\CsConfig\Ruleset\Nexus74;
 use Nexus\CsConfig\Ruleset\RulesetInterface;
 use Nexus\CsConfig\Test\FixerProvider;
 use PhpCsFixer\Fixer\DeprecatedFixerInterface;
@@ -69,10 +69,10 @@ final class FixerProviderTest extends TestCase
 
     public function testCreateMethodGivesConfiguredRulesAllEnabled(): void
     {
-        $provider = FixerProvider::create(new Nexus73());
+        $provider = FixerProvider::create(new Nexus74());
         $configured = $provider->configured();
         $builtin = $provider->builtin();
-        $enabled = array_filter((new Nexus73())->getRules());
+        $enabled = array_filter((new Nexus74())->getRules());
 
         self::assertSame(\count($builtin), \count($configured));
         self::assertLessThan(\count($configured), \count($enabled));
@@ -80,8 +80,8 @@ final class FixerProviderTest extends TestCase
 
     public function testEnabledMethodPassesSameRulesAsCallingRulesetRulesDirectly(): void
     {
-        $enabledByProvider = FixerProvider::create(new Nexus73())->enabled();
-        $enabledByRuleset = (new Nexus73())->getRules();
+        $enabledByProvider = FixerProvider::create(new Nexus74())->enabled();
+        $enabledByRuleset = (new Nexus74())->getRules();
 
         self::assertSame($enabledByRuleset, $enabledByProvider);
     }
