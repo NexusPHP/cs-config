@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace Nexus\CsConfig\Fixer\Comment;
 
 use Nexus\CsConfig\Fixer\AbstractCustomFixer;
+use PhpCsFixer\Fixer\DeprecatedFixerInterface;
 use PhpCsFixer\FixerDefinition\CodeSample;
 use PhpCsFixer\FixerDefinition\FixerDefinition;
 use PhpCsFixer\FixerDefinition\FixerDefinitionInterface;
@@ -23,8 +24,10 @@ use PhpCsFixer\Tokenizer\Tokens;
 
 /**
  * Simple comments should have one space after the `//`.
+ *
+ * @deprecated
  */
-final class SpaceAfterCommentStartFixer extends AbstractCustomFixer
+final class SpaceAfterCommentStartFixer extends AbstractCustomFixer implements DeprecatedFixerInterface
 {
     /**
      * {@inheritDoc}
@@ -38,6 +41,14 @@ final class SpaceAfterCommentStartFixer extends AbstractCustomFixer
                 new CodeSample("<?php\n    //  this is another comment\n"),
             ],
         );
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getSuccessorsNames(): array
+    {
+        return ['single_line_comment_spacing'];
     }
 
     /**
