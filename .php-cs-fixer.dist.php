@@ -13,7 +13,6 @@ declare(strict_types=1);
 
 use Nexus\CsConfig\Factory;
 use Nexus\CsConfig\Fixer\Comment\NoCodeSeparatorCommentFixer;
-use Nexus\CsConfig\Fixer\Comment\SpaceAfterCommentStartFixer;
 use Nexus\CsConfig\FixerGenerator;
 use Nexus\CsConfig\Ruleset\Nexus74;
 use PhpCsFixer\Finder;
@@ -32,7 +31,6 @@ $options = [
     'customFixers' => FixerGenerator::create('src/Fixer', 'Nexus\\CsConfig\\Fixer'),
     'customRules' => [
         NoCodeSeparatorCommentFixer::name() => true,
-        SpaceAfterCommentStartFixer::name() => true,
     ],
 ];
 
