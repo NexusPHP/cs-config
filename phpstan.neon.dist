@@ -23,3 +23,5 @@ parameters:
   reportMaybesInMethodSignatures: true
   reportStaticMethodSignatures: true
   checkTooWideReturnTypesInProtectedAndPublicMethods: true
+  featureToggles:
+    disableCheckMissingIterableValueType: false
