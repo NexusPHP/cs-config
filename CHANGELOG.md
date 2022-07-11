@@ -5,6 +5,16 @@ All notable changes to this library will be documented in this file:
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v3.5.0](https://github.com/NexusPHP/cs-config/compare/v3.4.0...v3.5.0) - 2022-07-11
+
+- Change 'concat_space' to none
+- Configure new rules in v3.9.1
+- \[BC BREAK\] Drop Nexus73 ruleset
+- Suppress missing iterable value type hints
+- Remove use of deprecated rule
+- Deprecate `Nexus/space_after_comment_start`
+- Configure new rules in v3.8
+
 ## [v3.4.0](https://github.com/NexusPHP/cs-config/compare/v3.3.4...v3.4.0) - 2022-02-09
 
 - Fix code style lint
