@@ -78,7 +78,7 @@ final class FixerGenerator implements \IteratorAggregate
                     trim($this->vendor, '\\'),
                     strtr($file->getRelativePath(), \DIRECTORY_SEPARATOR, '\\'),
                     $file->getRelativePath() !== '' ? '\\' : '',
-                    $file->getBasename('.' . $file->getExtension()),
+                    $file->getBasename('.'.$file->getExtension()),
                 );
 
                 return new $fixer();

@@ -97,7 +97,7 @@ final class Nexus81 extends AbstractRuleset
                 ],
             ],
             'compact_nullable_typehint' => true,
-            'concat_space' => ['spacing' => 'one'],
+            'concat_space' => ['spacing' => 'none'],
             'constant_case' => ['case' => 'lower'],
             'control_structure_braces' => true,
             'control_structure_continuation_position' => ['position' => 'same_line'],

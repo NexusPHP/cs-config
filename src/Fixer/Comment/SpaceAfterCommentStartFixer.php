@@ -102,7 +102,7 @@ final class SpaceAfterCommentStartFixer extends AbstractCustomFixer implements D
                 continue;
             }
 
-            $tokens[$index] = new Token([T_COMMENT, '// ' . $matches[2]]);
+            $tokens[$index] = new Token([T_COMMENT, '// '.$matches[2]]);
         }
     }
 }

@@ -139,7 +139,7 @@ final class Factory
 
         if ('' !== $email) {
             $email = trim($email, '<>');
-            $email = ' <' . $email . '>';
+            $email = ' <'.$email.'>';
         }
 
         $header = sprintf(

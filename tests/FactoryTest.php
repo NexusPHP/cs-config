@@ -92,7 +92,7 @@ final class FactoryTest extends TestCase
     public function testFactoryConsumesPassedOptionsToIt(): void
     {
         $options = [
-            'cacheFile' => __DIR__ . '/../../build/.php-cs-fixer.cache',
+            'cacheFile' => __DIR__.'/../../build/.php-cs-fixer.cache',
             'format' => 'junit',
             'hideProgress' => true,
             'indent' => "\t",
