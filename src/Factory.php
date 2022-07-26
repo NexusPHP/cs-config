@@ -35,7 +35,7 @@ final class Factory
      * @phpstan-var array{
      *     cacheFile: string,
      *     customFixers: iterable<\PhpCsFixer\Fixer\FixerInterface>,
-     *     finder: \PhpCsFixer\Finder|iterable<string>,
+     *     finder: \PhpCsFixer\Finder|iterable<\SplFileInfo>,
      *     format: string,
      *     hideProgress: bool,
      *     indent: string,
@@ -52,7 +52,7 @@ final class Factory
      * @param array{
      *     cacheFile: string,
      *     customFixers: iterable<\PhpCsFixer\Fixer\FixerInterface>,
-     *     finder: \PhpCsFixer\Finder|iterable<string>,
+     *     finder: \PhpCsFixer\Finder|iterable<\SplFileInfo>,
      *     format: string,
      *     hideProgress: bool,
      *     indent: string,
@@ -77,7 +77,7 @@ final class Factory
      * @param array{
      *     cacheFile?: string,
      *     customFixers?: iterable<\PhpCsFixer\Fixer\FixerInterface>,
-     *     finder?: \PhpCsFixer\Finder|iterable<string>,
+     *     finder?: \PhpCsFixer\Finder|iterable<\SplFileInfo>,
      *     format?: string,
      *     hideProgress?: bool,
      *     indent?: string,
