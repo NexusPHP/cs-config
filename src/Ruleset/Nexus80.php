@@ -613,7 +613,7 @@ final class Nexus80 extends AbstractRuleset
             'use_arrow_functions' => true,
             'visibility_required' => ['elements' => ['const', 'method', 'property']],
             'void_return' => true,
-            'whitespace_after_comma_in_array' => true,
+            'whitespace_after_comma_in_array' => ['ensure_single_space' => true],
             'yoda_style' => [
                 'always_move_variable' => true,
                 'equal' => true,
