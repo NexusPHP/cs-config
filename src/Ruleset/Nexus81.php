@@ -290,6 +290,9 @@ final class Nexus81 extends AbstractRuleset
                 'remove_inheritdoc' => false,
             ],
             'no_trailing_comma_in_list_call' => true,
+            'no_trailing_comma_in_singleline' => [
+                'elements' => ['arguments', 'array', 'array_destructuring', 'group_import'],
+            ],
             'no_trailing_comma_in_singleline_array' => true,
             'no_trailing_comma_in_singleline_function_call' => true,
             'no_trailing_whitespace' => true,
