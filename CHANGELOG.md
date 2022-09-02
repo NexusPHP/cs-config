@@ -5,6 +5,18 @@ All notable changes to this library will be documented in this file:
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v3.6.0](https://github.com/NexusPHP/cs-config/compare/v3.5.0...v3.6.0) - 2022-09-02
+
+- Add new option to `phpdoc_separation`
+- Remove deprecated rules
+- Configure `no_trailing_comma_in_singleline`
+- Bump php-cs-fixer to ^3.11
+- Configure `whitespace_after_comma_in_array`
+- Use available option of `phpdoc_order`
+- Configure `no_multiple_statements_per_line` rule
+- Bump php-cs-fixer to v3.10
+- Fix PHPStan error
+
 ## [v3.5.0](https://github.com/NexusPHP/cs-config/compare/v3.4.0...v3.5.0) - 2022-07-11
 
 - Change 'concat_space' to none
