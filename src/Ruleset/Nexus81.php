@@ -313,6 +313,7 @@ final class Nexus81 extends AbstractRuleset
             'no_unset_cast' => true,
             'no_unset_on_property' => false,
             'no_unused_imports' => true,
+            'no_useless_concat_operator' => ['juggle_simple_strings' => true],
             'no_useless_else' => true,
             'no_useless_nullsafe_operator' => true,
             'no_useless_return' => true,
