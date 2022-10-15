@@ -5,6 +5,13 @@ All notable changes to this library will be documented in this file:
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v3.7.0](https://github.com/NexusPHP/cs-config/compare/v3.6.0...v3.7.0) - 2022-10-15
+
+- Use dependabot for updates
+- Bump php-cs-fixer version to v3.12
+- Use phpstan baseline
+- Update action workflows
+
 ## [v3.6.0](https://github.com/NexusPHP/cs-config/compare/v3.5.0...v3.6.0) - 2022-09-02
 
 - Add new option to `phpdoc_separation`
