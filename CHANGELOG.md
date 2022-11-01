@@ -5,6 +5,12 @@ All notable changes to this library will be documented in this file:
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v3.8.0](https://github.com/NexusPHP/cs-config/compare/v3.7.0...v3.8.0) - 2022-11-01
+
+- Bump php-cs-fixer to v3.13
+- Add 'case_sensitive' option to 'general_phpdoc_annotation_remove'
+- Add 'closure_fn_spacing' option to 'function_declaration'
+
 ## [v3.7.0](https://github.com/NexusPHP/cs-config/compare/v3.6.0...v3.7.0) - 2022-10-15
 
 - Use dependabot for updates
