@@ -174,6 +174,7 @@ final class Nexus80 extends AbstractRuleset
                     'package',
                     'subpackage',
                 ],
+                'case_sensitive' => false,
             ],
             'general_phpdoc_tag_rename' => [
                 'case_sensitive' => false,
