@@ -85,7 +85,7 @@ final class FactoryTest extends TestCase
         self::assertSame('    ', $config->getIndent());
         self::assertSame("\n", $config->getLineEnding());
         self::assertNull($config->getPhpExecutable());
-        self::assertIsBool($config->getRiskyAllowed());
+        self::assertFalse($config->getRiskyAllowed());
         self::assertTrue($config->getUsingCache());
     }
 
