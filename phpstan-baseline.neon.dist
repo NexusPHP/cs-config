@@ -1,6 +1,16 @@
 parameters:
   ignoreErrors:
     -
+      message: "#^Call to static method PHPUnit\\\\Framework\\\\Assert\\:\\:assertIsInt\\(\\) with int\\<0, max\\> will always evaluate to true\\.$#"
+      count: 1
+      path: src/Test/AbstractCustomFixerTestCase.php
+
+    -
+      message: "#^Call to static method PHPUnit\\\\Framework\\\\Assert\\:\\:assertIsArray\\(\\) with array\\<string, mixed\\> and non\\-falsy\\-string will always evaluate to true\\.$#"
+      count: 1
+      path: src/Test/AbstractCustomFixerTestCase.php
+
+    -
       message: "#^Cannot access offset 'header' on array\\<string, mixed\\>\\|bool\\.$#"
       count: 1
       path: tests/FactoryTest.php
