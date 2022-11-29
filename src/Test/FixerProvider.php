@@ -29,27 +29,11 @@ final class FixerProvider
     private static array $builtIn = [];
 
     /**
-     * Configured fixers from a ruleset.
-     *
-     * @var array<int, string>
+     * @param array<int, string>                                      $configured configured fixers from a ruleset
+     * @param array<string, array<string, bool|string|string[]>|bool> $enabled    enabled fixers from a ruleset
      */
-    private array $configured = [];
-
-    /**
-     * Enabled fixers from a ruleset.
-     *
-     * @var array<string, array<string, bool|string|string[]>|bool>
-     */
-    private array $enabled = [];
-
-    /**
-     * @param array<int, string>                                      $configured
-     * @param array<string, array<string, bool|string|string[]>|bool> $enabled
-     */
-    private function __construct(array $configured, array $enabled)
+    private function __construct(private array $configured, private array $enabled)
     {
-        $this->configured = $configured;
-        $this->enabled = $enabled;
     }
 
     public static function create(RulesetInterface $ruleset): self
@@ -69,8 +53,7 @@ final class FixerProvider
         $rules = $ruleset->getRules();
 
         $configured = array_map(static function ($ruleConfiguration): bool {
-            // force enable all rules
-            return true;
+            return true; // force enable all rules
         }, $rules);
 
         return new self(array_keys((new RuleSet($configured))->getRules()), $rules);

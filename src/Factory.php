@@ -25,30 +25,6 @@ use PhpCsFixer\Finder;
 final class Factory
 {
     /**
-     * Current RulesetInterface instance.
-     */
-    private RulesetInterface $ruleset;
-
-    /**
-     * Array of resolved options.
-     *
-     * @phpstan-var array{
-     *     cacheFile: string,
-     *     customFixers: iterable<\PhpCsFixer\Fixer\FixerInterface>,
-     *     finder: \PhpCsFixer\Finder|iterable<\SplFileInfo>,
-     *     format: string,
-     *     hideProgress: bool,
-     *     indent: string,
-     *     lineEnding: string,
-     *     phpExecutable: null|string,
-     *     isRiskyAllowed: bool,
-     *     usingCache: bool,
-     *     rules: array<string, mixed>
-     * }
-     */
-    private array $options;
-
-    /**
      * @param array{
      *     cacheFile: string,
      *     customFixers: iterable<\PhpCsFixer\Fixer\FixerInterface>,
@@ -61,12 +37,10 @@ final class Factory
      *     isRiskyAllowed: bool,
      *     usingCache: bool,
      *     rules: array<string, mixed>
-     * } $options
+     * } $options Array of resolved options
      */
-    private function __construct(RulesetInterface $ruleset, array $options)
+    private function __construct(private RulesetInterface $ruleset, private array $options)
     {
-        $this->ruleset = $ruleset;
-        $this->options = $options;
     }
 
     /**
