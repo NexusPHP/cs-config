@@ -55,11 +55,10 @@ jobs:
           key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.json') }}
           restore-keys: ${{ runner.os }}-composer-
 
-      - name: Setup Composer's GitHub OAuth access
-        run: composer config --global github-oauth.github.com ${{ secrets.GITHUB_TOKEN }}
-
       - name: Install dependencies
-        run: composer update --ansi
+        run: |
+            composer config --global github-oauth.github.com ${{ secrets.GITHUB_TOKEN }}
+            composer update --ansi
 
       - name: Run PHP-CS-Fixer
         run: vendor/bin/php-cs-fixer fix --ansi --verbose --dry-run --diff --using-cache=no
