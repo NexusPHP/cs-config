@@ -57,14 +57,16 @@ jobs:
 
       - name: Install dependencies
         run: |
-            composer config --global github-oauth.github.com ${{ secrets.GITHUB_TOKEN }}
-            composer update --ansi
+          composer config --global github-oauth.github.com ${{ secrets.GITHUB_TOKEN }}
+          composer update --ansi
 
       - name: Run PHP-CS-Fixer
         run: vendor/bin/php-cs-fixer fix --ansi --verbose --dry-run --diff --using-cache=no
 
       - name: Run PHPStan Static Analysis Check
-        run: vendor/bin/phpstan analyse --ansi --verbose --xdebug
+        run: vendor/bin/phpstan analyse --ansi --verbose
+        env:
+          XDEBUG_MODE: 'off'
 
       - name: Run Nexus CS Config TestSuite
         run: vendor/bin/phpunit --colors=always
