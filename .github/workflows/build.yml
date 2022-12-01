@@ -76,7 +76,7 @@ jobs:
       - name: Run Coveralls
         run: |
           composer global require --ansi php-coveralls/php-coveralls
-          php-coveralls --verbose --coverage_clover=build/phpunit/logs/clover.xml --json_path=build/phpunit/logs/coverage.json
+          php-coveralls --verbose --coverage_clover=build/phpunit/logs/clover.xml --json_path=build/phpunit/logs/coverage.json --exclude-no-stmt --ansi
         env:
           COVERALLS_REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           COVERALLS_PARALLEL: true
