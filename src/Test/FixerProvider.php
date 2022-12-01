@@ -43,11 +43,9 @@ final class FixerProvider
                 (new FixerFactory())->registerBuiltInFixers()->getFixers(),
                 static fn (FixerInterface $fixer): bool => ! $fixer instanceof DeprecatedFixerInterface,
             );
+            $names = array_map(static fn (FixerInterface $fixer): string => $fixer->getName(), $fixers);
 
-            foreach ($fixers as $fixer) {
-                // workaround for using `array_combine` with PHPStan on PHP < 80000
-                self::$builtIn[$fixer->getName()] = $fixer;
-            }
+            self::$builtIn = array_combine($names, $fixers);
         }
 
         $rules = $ruleset->getRules();
