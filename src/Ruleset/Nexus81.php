@@ -487,6 +487,7 @@ final class Nexus81 extends AbstractRuleset
                     ['category', 'package', 'subpackage'],
                     ['property', 'property-read', 'property-write'],
                 ],
+                'skip_unlisted_annotations' => false,
             ],
             'phpdoc_single_line_var_spacing' => true,
             'phpdoc_summary' => true,
