@@ -5,6 +5,25 @@ All notable changes to this library will be documented in this file:
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v3.9.0](https://github.com/NexusPHP/cs-config/compare/v3.8.0...v3.9.0) - 2023-03-05
+
+- Configure `skip_unlisted_annotations` option on `phpdoc_separation` rule
+- Configure `php_unit_data_provider_static` rule
+- Bump php-cs-fixer to v3.14
+- Remove workaround for phpstan
+- Set YAML indentation to 2 spaces
+- Test PHP 8.2
+- Add additional flags to coveralls call
+- Run PHPStan without Xdebug
+- Combine Composer steps in build workflow
+- Remove PHP 7.4 from build workflow
+- Use constructor property promotion when possible
+- Drop support for PHP 7.4
+- Update build.yml
+- Bump to phpstan v1.9.0
+- Fix FactoryTest
+- Use null coalesce
+
 ## [v3.8.0](https://github.com/NexusPHP/cs-config/compare/v3.7.0...v3.8.0) - 2022-11-01
 
 - Bump php-cs-fixer to v3.13
