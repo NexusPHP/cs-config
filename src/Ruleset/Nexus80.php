@@ -58,13 +58,6 @@ final class Nexus80 extends AbstractRuleset
                 ],
             ],
             'blank_line_between_import_groups' => true,
-            'braces' => [
-                'allow_single_line_anonymous_class_with_empty_body' => true,
-                'allow_single_line_closure' => true,
-                'position_after_anonymous_constructs' => 'same',
-                'position_after_control_structures' => 'same',
-                'position_after_functions_and_oop_constructs' => 'next',
-            ],
             'cast_spaces' => ['space' => 'single'],
             'class_attributes_separation' => [
                 'elements' => [
@@ -539,8 +532,10 @@ final class Nexus80 extends AbstractRuleset
             'single_line_comment_style' => ['comment_types' => ['asterisk', 'hash']],
             'single_line_throw' => false,
             'single_quote' => ['strings_containing_single_quote_chars' => false],
-            'single_space_after_construct' => [
-                'constructs' => [
+            'single_space_around_construct' => [
+                'constructs_contain_a_single_space' => ['yield_from'],
+                'constructs_preceded_by_a_single_space' => ['use_lambda'],
+                'constructs_followed_by_a_single_space' => [
                     'abstract',
                     'as',
                     'attribute',
@@ -557,6 +552,7 @@ final class Nexus80 extends AbstractRuleset
                     'echo',
                     'else',
                     'elseif',
+                    'enum',
                     'extends',
                     'final',
                     'finally',
@@ -575,6 +571,7 @@ final class Nexus80 extends AbstractRuleset
                     'interface',
                     'match',
                     'named_argument',
+                    'namespace',
                     'new',
                     'open_tag_with_echo',
                     'php_doc',
@@ -583,13 +580,16 @@ final class Nexus80 extends AbstractRuleset
                     'private',
                     'protected',
                     'public',
+                    'readonly',
                     'require',
                     'require_once',
                     'return',
                     'static',
+                    'switch',
                     'throw',
                     'trait',
                     'try',
+                    'type_colon',
                     'use',
                     'use_lambda',
                     'use_trait',
