@@ -30,10 +30,6 @@ jobs:
           - '8.0'
           - '8.1'
           - '8.2'
-        include:
-          - php-version: '8.2'
-            composer-option: '--ignore-platform-req=php'
-            php-cs-fixer-option: '1'
 
     steps:
       - name: Checkout
@@ -63,12 +59,10 @@ jobs:
       - name: Install dependencies
         run: |
           composer config --global github-oauth.github.com ${{ secrets.GITHUB_TOKEN }}
-          composer update --ansi ${{ matrix.composer-option }}
+          composer update --ansi
 
       - name: Run PHP-CS-Fixer
         run: vendor/bin/php-cs-fixer fix --ansi --verbose --dry-run --diff --using-cache=no
-        env:
-          PHP_CS_FIXER_IGNORE_ENV: ${{ matrix.php-cs-fixer-option || '0' }}
 
       - name: Run PHPStan Static Analysis Check
         run: vendor/bin/phpstan analyse --ansi --verbose
