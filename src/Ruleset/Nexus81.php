@@ -633,7 +633,7 @@ final class Nexus81 extends AbstractRuleset
                 'less_and_greater' => null,
             ],
         ];
-        $this->requiredPHPVersion = 80000;
+        $this->requiredPHPVersion = 80100;
         $this->autoActivateIsRiskyAllowed = true;
     }
 }
