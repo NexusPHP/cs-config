@@ -5,6 +5,13 @@ All notable changes to this library will be documented in this file:
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v3.10.0](https://github.com/NexusPHP/cs-config/compare/v3.9.0...v3.10.0) - 2023-05-05
+
+- Add Nexus82 ruleset
+- Fix required PHP version of Nexus81 ruleset
+- Remove guards to PHP 8.2 build
+- Bump to php-cs-fixer v3.16
+
 ## [v3.9.0](https://github.com/NexusPHP/cs-config/compare/v3.8.0...v3.9.0) - 2023-03-05
 
 - Configure `skip_unlisted_annotations` option on `phpdoc_separation` rule
