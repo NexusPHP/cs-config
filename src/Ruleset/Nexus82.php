@@ -351,6 +351,7 @@ final class Nexus82 extends AbstractRuleset
             ],
             'ordered_interfaces' => false,
             'ordered_traits' => true,
+            'ordered_types' => ['sort_algorithm' => 'alpha', 'null_adjustment' => 'always_first'],
             'php_unit_construct' => [
                 'assertions' => [
                     'assertEquals',

@@ -351,6 +351,7 @@ final class Nexus74 extends AbstractRuleset
             ],
             'ordered_interfaces' => false,
             'ordered_traits' => true,
+            'ordered_types' => false, // PHP 8.0+
             'php_unit_construct' => [
                 'assertions' => [
                     'assertEquals',
