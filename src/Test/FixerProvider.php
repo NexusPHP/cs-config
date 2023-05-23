@@ -32,9 +32,7 @@ final class FixerProvider
      * @param array<int, string>                                      $configured configured fixers from a ruleset
      * @param array<string, array<string, bool|string|string[]>|bool> $enabled    enabled fixers from a ruleset
      */
-    private function __construct(private array $configured, private array $enabled)
-    {
-    }
+    private function __construct(private array $configured, private array $enabled) {}
 
     public static function create(RulesetInterface $ruleset): self
     {

@@ -22,6 +22,4 @@ use Nexus\CsConfig\Test\AbstractRulesetTestCase;
  * @covers \Nexus\CsConfig\Ruleset\Nexus74
  * @covers \Nexus\CsConfig\Test\AbstractRulesetTestCase
  */
-final class Nexus74Test extends AbstractRulesetTestCase
-{
-}
+final class Nexus74Test extends AbstractRulesetTestCase {}

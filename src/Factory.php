@@ -39,9 +39,7 @@ final class Factory
      *     rules: array<string, mixed>
      * } $options Array of resolved options
      */
-    private function __construct(private RulesetInterface $ruleset, private array $options)
-    {
-    }
+    private function __construct(private RulesetInterface $ruleset, private array $options) {}
 
     /**
      * Prepares the ruleset and options before the `PhpCsFixer\Config` object
