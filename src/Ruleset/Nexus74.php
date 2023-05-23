@@ -234,7 +234,7 @@ final class Nexus74 extends AbstractRuleset
             'native_function_type_declaration_casing' => true,
             'new_with_braces' => [
                 'named_class' => true,
-                'anonymous_class' => true,
+                'anonymous_class' => false,
             ],
             'no_alias_functions' => ['sets' => ['@all']],
             'no_alias_language_construct_call' => true,
