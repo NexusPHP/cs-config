@@ -5,6 +5,15 @@ All notable changes to this library will be documented in this file:
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v3.11.0](https://github.com/NexusPHP/cs-config/compare/v3.10.0...v3.11.0) - 2023-05-23
+
+- Do not `()` in anonymous class
+- Remove space after short closure `fn` to match PER 2.0
+- Configure `single_line_empty_body` fixer
+- Configure `phpdoc_param_order` fixer
+- Configure `ordered_types` fixer
+- Bump to php-cs-fixer v3.17
+
 ## [v3.10.0](https://github.com/NexusPHP/cs-config/compare/v3.9.0...v3.10.0) - 2023-05-05
 
 - Add Nexus82 ruleset
