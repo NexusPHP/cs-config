@@ -314,7 +314,7 @@ abstract class AbstractCustomFixerTestCase extends TestCase
 
             self::assertSame(
                 \count($tokens),
-                \count(array_unique(array_map(static fn (Token $token): string => spl_object_hash($token), $tokensArray))),
+                \count(array_unique(array_map(static fn(Token $token): string => spl_object_hash($token), $tokensArray))),
                 'Token items inside Tokens collection must be unique.',
             );
 

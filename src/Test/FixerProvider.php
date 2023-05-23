@@ -39,9 +39,9 @@ final class FixerProvider
         if ([] === self::$builtIn) {
             $fixers = array_filter(
                 (new FixerFactory())->registerBuiltInFixers()->getFixers(),
-                static fn (FixerInterface $fixer): bool => ! $fixer instanceof DeprecatedFixerInterface,
+                static fn(FixerInterface $fixer): bool => ! $fixer instanceof DeprecatedFixerInterface,
             );
-            $names = array_map(static fn (FixerInterface $fixer): string => $fixer->getName(), $fixers);
+            $names = array_map(static fn(FixerInterface $fixer): string => $fixer->getName(), $fixers);
 
             self::$builtIn = array_combine($names, $fixers);
         }

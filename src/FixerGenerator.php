@@ -77,7 +77,7 @@ final class FixerGenerator implements \IteratorAggregate
                 return new $fixer();
             },
             iterator_to_array($finder, false),
-        ), static fn (object $fixer): bool => $fixer instanceof FixerInterface);
+        ), static fn(object $fixer): bool => $fixer instanceof FixerInterface);
 
         yield from $fixers;
     }

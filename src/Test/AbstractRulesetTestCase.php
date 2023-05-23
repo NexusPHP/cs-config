@@ -79,7 +79,7 @@ abstract class AbstractRulesetTestCase extends TestCase
     {
         $fixersThatArePresets = array_filter(
             self::$enabledFixers,
-            static fn (string $fixer): bool => substr($fixer, 0, 1) === '@',
+            static fn(string $fixer): bool => substr($fixer, 0, 1) === '@',
             ARRAY_FILTER_USE_KEY,
         );
 
@@ -153,18 +153,18 @@ abstract class AbstractRulesetTestCase extends TestCase
                 $options = $fixer->getConfigurationDefinition()->getOptions();
 
                 $goodOptions = array_map(
-                    static fn (FixerOptionInterface $option): string => $option->getName(),
+                    static fn(FixerOptionInterface $option): string => $option->getName(),
                     array_filter(
                         $options,
-                        static fn (FixerOptionInterface $option): bool => ! $option instanceof DeprecatedFixerOptionInterface,
+                        static fn(FixerOptionInterface $option): bool => ! $option instanceof DeprecatedFixerOptionInterface,
                     ),
                 );
 
                 $deprecatedOptions = array_map(
-                    static fn (FixerOptionInterface $option): string => $option->getName(),
+                    static fn(FixerOptionInterface $option): string => $option->getName(),
                     array_filter(
                         $options,
-                        static fn (FixerOptionInterface $option): bool => $option instanceof DeprecatedFixerOptionInterface,
+                        static fn(FixerOptionInterface $option): bool => $option instanceof DeprecatedFixerOptionInterface,
                     ),
                 );
 
