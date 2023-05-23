@@ -454,6 +454,7 @@ final class Nexus81 extends AbstractRuleset
                     'uses',
                 ],
             ],
+            'phpdoc_param_order' => true,
             'phpdoc_return_self_reference' => [
                 'replacements' => [
                     'this' => '$this',
