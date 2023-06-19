@@ -541,7 +541,7 @@ final class Nexus74 extends AbstractRuleset
             'single_quote' => ['strings_containing_single_quote_chars' => false],
             'single_space_around_construct' => [
                 'constructs_contain_a_single_space' => ['yield_from'],
-                'constructs_preceded_by_a_single_space' => ['use_lambda'],
+                'constructs_preceded_by_a_single_space' => ['as', 'use_lambda'],
                 'constructs_followed_by_a_single_space' => [
                     'abstract',
                     'as',
