@@ -329,6 +329,7 @@ final class Nexus82 extends AbstractRuleset
             'ordered_class_elements' => [
                 'order' => [
                     'use_trait',
+                    'case',
                     'constant_public',
                     'constant_protected',
                     'constant_private',
@@ -347,6 +348,7 @@ final class Nexus82 extends AbstractRuleset
                     'method_private',
                 ],
                 'sort_algorithm' => 'none',
+                'case_sensitive' => false,
             ],
             'ordered_imports' => [
                 'imports_order' => ['class', 'function', 'const'],
