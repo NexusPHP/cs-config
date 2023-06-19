@@ -141,8 +141,8 @@ final class Nexus74 extends AbstractRuleset
             'explicit_string_variable' => true,
             'final_class' => false,
             'final_internal_class' => [
-                'annotation_exclude' => ['@final', '@no-final'],
-                'annotation_include' => ['@internal'],
+                'exclude' => ['@final', '@no-final'],
+                'include' => ['@internal'],
                 'consider_absent_docblock_as_internal_class' => false,
             ],
             'final_public_method_for_abstract_class' => false,
