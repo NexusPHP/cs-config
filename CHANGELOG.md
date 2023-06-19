@@ -5,6 +5,15 @@ All notable changes to this library will be documented in this file:
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v3.12.0](https://github.com/NexusPHP/cs-config/compare/v3.11.0...v3.12.0) - 2023-06-19
+
+- Remove `@` in exclude/include options
+- Rename options for `final_internal_class`
+- Add "as" in space before construct
+- Add 'case_sensitive' option to `ordered_class_elements`
+- Configure `blank_lines_before_namespace`
+- Bump php-cs-fixer to v3.18
+
 ## [v3.11.0](https://github.com/NexusPHP/cs-config/compare/v3.10.0...v3.11.0) - 2023-05-23
 
 - Do not `()` in anonymous class
