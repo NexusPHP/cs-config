@@ -143,7 +143,7 @@ abstract class AbstractRulesetTestCase extends TestCase
     /**
      * @codeCoverageIgnore
      */
-    public function provideConfigurableFixersCases(): iterable
+    public function provideEnabledConfigurableFixerUsesAllAvailableOptionsNotDeprecatedCases(): iterable
     {
         $fixers = FixerProvider::create(static::createRuleset())->builtin();
         ksort($fixers);
@@ -174,7 +174,7 @@ abstract class AbstractRulesetTestCase extends TestCase
     }
 
     /**
-     * @dataProvider provideConfigurableFixersCases
+     * @dataProvider provideEnabledConfigurableFixerUsesAllAvailableOptionsNotDeprecatedCases
      */
     final public function testEnabledConfigurableFixerUsesAllAvailableOptionsNotDeprecated(string $name, array $goodOptions, array $deprecatedOptions): void
     {

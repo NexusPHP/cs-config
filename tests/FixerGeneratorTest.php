@@ -25,7 +25,7 @@ use PHPUnit\Framework\TestCase;
 final class FixerGeneratorTest extends TestCase
 {
     /**
-     * @dataProvider provideInvalidParametersCases
+     * @dataProvider provideInvalidParametersThrowRuntimeExceptionCases
      */
     public function testInvalidParametersThrowRuntimeException(string $path, string $vendor, string $message): void
     {
@@ -37,7 +37,7 @@ final class FixerGeneratorTest extends TestCase
     /**
      * @return iterable<string, string[]>
      */
-    public function provideInvalidParametersCases(): iterable
+    public function provideInvalidParametersThrowRuntimeExceptionCases(): iterable
     {
         yield 'empty-path' => ['', 'Nexus', 'Path to custom fixers cannot be empty.'];
 

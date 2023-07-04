@@ -365,6 +365,10 @@ final class Nexus80 extends AbstractRuleset
                     'assertNotSame',
                 ],
             ],
+            'php_unit_data_provider_name' => [
+                'prefix' => 'provide',
+                'suffix' => 'Cases',
+            ],
             'php_unit_data_provider_static' => false, // for PHPUnit 10+
             'php_unit_dedicate_assert' => ['target' => 'newest'],
             'php_unit_dedicate_assert_internal_type' => ['target' => 'newest'],

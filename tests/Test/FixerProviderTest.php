@@ -41,14 +41,14 @@ final class FixerProviderTest extends TestCase
     }
 
     /**
-     * @dataProvider provideBuiltinFixersCases
+     * @dataProvider provideCreateMethodGivesNoDeprecatedBuiltInFixersCases
      */
     public function testCreateMethodGivesNoDeprecatedBuiltInFixers(FixerInterface $fixer): void
     {
         self::assertNotInstanceOf(DeprecatedFixerInterface::class, $fixer);
     }
 
-    public function provideBuiltinFixersCases(): iterable
+    public function provideCreateMethodGivesNoDeprecatedBuiltInFixersCases(): iterable
     {
         $builtin = FixerProvider::create($this->mockRuleset())->builtin();
         ksort($builtin, SORT_REGULAR);
