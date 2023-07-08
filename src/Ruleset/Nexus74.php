@@ -165,7 +165,6 @@ final class Nexus74 extends AbstractRuleset
                     'pi',
                 ],
             ],
-            'function_typehint_space' => true,
             'general_phpdoc_annotation_remove' => [
                 'annotations' => [
                     'package',
@@ -631,6 +630,7 @@ final class Nexus74 extends AbstractRuleset
                 'elements' => ['arrays', 'arguments'],
             ],
             'trim_array_spaces' => true,
+            'type_declaration_spaces' => ['elements' => ['function', 'property']],
             'types_spaces' => ['space' => 'none', 'space_multiple_catch' => null],
             'unary_operator_spaces' => true,
             'use_arrow_functions' => true,
