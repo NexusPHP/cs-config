@@ -321,6 +321,7 @@ final class Nexus74 extends AbstractRuleset
             'normalize_index_brace' => true,
             'not_operator_with_space' => false,
             'not_operator_with_successor_space' => true,
+            'nullable_type_declaration' => false, // requires 8.0+
             'nullable_type_declaration_for_default_null_value' => ['use_nullable_type_declaration' => true],
             'object_operator_without_whitespace' => true,
             'octal_notation' => false, // requires 8.1+
