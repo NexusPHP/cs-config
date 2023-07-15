@@ -369,7 +369,7 @@ final class Nexus74 extends AbstractRuleset
                 'prefix' => 'provide',
                 'suffix' => 'Cases',
             ],
-            'php_unit_data_provider_static' => false, // for PHPUnit 10+
+            'php_unit_data_provider_static' => ['force' => true],
             'php_unit_dedicate_assert' => ['target' => 'newest'],
             'php_unit_dedicate_assert_internal_type' => ['target' => 'newest'],
             'php_unit_expectation' => ['target' => 'newest'],
