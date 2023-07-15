@@ -5,6 +5,17 @@ All notable changes to this library will be documented in this file:
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v3.13.0](https://github.com/NexusPHP/cs-config/compare/v3.12.0...v3.13.0) - 2023-07-15
+
+- Run linter
+- Raise phpstan level to 9
+- Remove parallel in phpstan.neon.dist
+- Require static data providers for all PHP versions
+- Bump to php-cs-fixer v3.20
+- Configure `nullable_type_declaration` fixer
+- Configure `type_declaration_spaces` fixer
+- Configure `php_unit_data_provider_name` fixer
+
 ## [v3.12.0](https://github.com/NexusPHP/cs-config/compare/v3.11.0...v3.12.0) - 2023-06-19
 
 - Remove `@` in exclude/include options
