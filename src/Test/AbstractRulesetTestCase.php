@@ -63,6 +63,39 @@ abstract class AbstractRulesetTestCase extends TestCase
         self::$enabledFixers = [];
     }
 
+    /**
+     * @codeCoverageIgnore
+     */
+    public static function provideEnabledConfigurableFixerUsesAllAvailableOptionsNotDeprecatedCases(): iterable
+    {
+        $fixers = FixerProvider::create(static::createRuleset())->builtin();
+        ksort($fixers);
+
+        foreach ($fixers as $name => $fixer) {
+            if ($fixer instanceof ConfigurableFixerInterface) {
+                $options = $fixer->getConfigurationDefinition()->getOptions();
+
+                $goodOptions = array_map(
+                    static fn(FixerOptionInterface $option): string => $option->getName(),
+                    array_filter(
+                        $options,
+                        static fn(FixerOptionInterface $option): bool => ! $option instanceof DeprecatedFixerOptionInterface,
+                    ),
+                );
+
+                $deprecatedOptions = array_map(
+                    static fn(FixerOptionInterface $option): string => $option->getName(),
+                    array_filter(
+                        $options,
+                        static fn(FixerOptionInterface $option): bool => $option instanceof DeprecatedFixerOptionInterface,
+                    ),
+                );
+
+                yield $name => [$name, $goodOptions, $deprecatedOptions];
+            }
+        }
+    }
+
     protected static function createRuleset(): RulesetInterface
     {
         /** @phpstan-var class-string<RulesetInterface> $className */
@@ -138,39 +171,6 @@ abstract class AbstractRulesetTestCase extends TestCase
     {
         self::assertArrayHasKey('header_comment', self::$enabledFixers);
         self::assertFalse(self::$enabledFixers['header_comment']);
-    }
-
-    /**
-     * @codeCoverageIgnore
-     */
-    public function provideEnabledConfigurableFixerUsesAllAvailableOptionsNotDeprecatedCases(): iterable
-    {
-        $fixers = FixerProvider::create(static::createRuleset())->builtin();
-        ksort($fixers);
-
-        foreach ($fixers as $name => $fixer) {
-            if ($fixer instanceof ConfigurableFixerInterface) {
-                $options = $fixer->getConfigurationDefinition()->getOptions();
-
-                $goodOptions = array_map(
-                    static fn(FixerOptionInterface $option): string => $option->getName(),
-                    array_filter(
-                        $options,
-                        static fn(FixerOptionInterface $option): bool => ! $option instanceof DeprecatedFixerOptionInterface,
-                    ),
-                );
-
-                $deprecatedOptions = array_map(
-                    static fn(FixerOptionInterface $option): string => $option->getName(),
-                    array_filter(
-                        $options,
-                        static fn(FixerOptionInterface $option): bool => $option instanceof DeprecatedFixerOptionInterface,
-                    ),
-                );
-
-                yield $name => [$name, $goodOptions, $deprecatedOptions];
-            }
-        }
     }
 
     /**

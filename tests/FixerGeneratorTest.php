@@ -25,19 +25,9 @@ use PHPUnit\Framework\TestCase;
 final class FixerGeneratorTest extends TestCase
 {
     /**
-     * @dataProvider provideInvalidParametersThrowRuntimeExceptionCases
-     */
-    public function testInvalidParametersThrowRuntimeException(string $path, string $vendor, string $message): void
-    {
-        $this->expectException(\RuntimeException::class);
-        $this->expectExceptionMessage($message);
-        FixerGenerator::create($path, $vendor);
-    }
-
-    /**
      * @return iterable<string, string[]>
      */
-    public function provideInvalidParametersThrowRuntimeExceptionCases(): iterable
+    public static function provideInvalidParametersThrowRuntimeExceptionCases(): iterable
     {
         yield 'empty-path' => ['', 'Nexus', 'Path to custom fixers cannot be empty.'];
 
@@ -48,6 +38,16 @@ final class FixerGeneratorTest extends TestCase
         yield 'empty-vendor' => [__DIR__, '', 'Vendor namespace cannot be empty.'];
 
         yield 'invalid-vendor' => [__DIR__, 'Nexus()', 'Vendor namespace "Nexus()" is not valid.'];
+    }
+
+    /**
+     * @dataProvider provideInvalidParametersThrowRuntimeExceptionCases
+     */
+    public function testInvalidParametersThrowRuntimeException(string $path, string $vendor, string $message): void
+    {
+        $this->expectException(\RuntimeException::class);
+        $this->expectExceptionMessage($message);
+        FixerGenerator::create($path, $vendor);
     }
 
     public function testCreateMethodReturnsSelf(): void

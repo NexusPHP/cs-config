@@ -13,7 +13,7 @@ declare(strict_types=1);
 
 namespace Nexus\CsConfig\Tests\Test;
 
-use Nexus\CsConfig\Ruleset\Nexus74;
+use Nexus\CsConfig\Ruleset\Nexus80;
 use Nexus\CsConfig\Ruleset\RulesetInterface;
 use Nexus\CsConfig\Test\FixerProvider;
 use PhpCsFixer\Fixer\DeprecatedFixerInterface;
@@ -32,6 +32,16 @@ final class FixerProviderTest extends TestCase
         FixerProvider::reset();
     }
 
+    public static function provideCreateMethodGivesNoDeprecatedBuiltInFixersCases(): iterable
+    {
+        $builtin = FixerProvider::create(new Nexus80())->builtin();
+        ksort($builtin, SORT_REGULAR);
+
+        foreach ($builtin as $name => $fixer) {
+            yield $name => [$fixer];
+        }
+    }
+
     public function testCreateMethodCreatesSameBuiltInFixers(): void
     {
         $fixerProvider1 = FixerProvider::create($this->mockRuleset());
@@ -48,16 +58,6 @@ final class FixerProviderTest extends TestCase
         self::assertNotInstanceOf(DeprecatedFixerInterface::class, $fixer);
     }
 
-    public function provideCreateMethodGivesNoDeprecatedBuiltInFixersCases(): iterable
-    {
-        $builtin = FixerProvider::create($this->mockRuleset())->builtin();
-        ksort($builtin, SORT_REGULAR);
-
-        foreach ($builtin as $name => $fixer) {
-            yield $name => [$fixer];
-        }
-    }
-
     public function testResetReallyResetsBuiltIn(): void
     {
         $provider = FixerProvider::create($this->mockRuleset());
@@ -69,10 +69,10 @@ final class FixerProviderTest extends TestCase
 
     public function testCreateMethodGivesConfiguredRulesAllEnabled(): void
     {
-        $provider = FixerProvider::create(new Nexus74());
+        $provider = FixerProvider::create(new Nexus80());
         $configured = $provider->configured();
         $builtin = $provider->builtin();
-        $enabled = array_filter((new Nexus74())->getRules());
+        $enabled = array_filter((new Nexus80())->getRules());
 
         self::assertSame(\count($builtin), \count($configured));
         self::assertLessThan(\count($configured), \count($enabled));
@@ -80,8 +80,8 @@ final class FixerProviderTest extends TestCase
 
     public function testEnabledMethodPassesSameRulesAsCallingRulesetRulesDirectly(): void
     {
-        $enabledByProvider = FixerProvider::create(new Nexus74())->enabled();
-        $enabledByRuleset = (new Nexus74())->getRules();
+        $enabledByProvider = FixerProvider::create(new Nexus80())->enabled();
+        $enabledByRuleset = (new Nexus80())->getRules();
 
         self::assertSame($enabledByRuleset, $enabledByProvider);
     }

@@ -24,15 +24,7 @@ use Nexus\CsConfig\Test\AbstractCustomFixerTestCase;
  */
 final class NoCodeSeparatorCommentFixerTest extends AbstractCustomFixerTestCase
 {
-    /**
-     * @dataProvider provideFixCases
-     */
-    public function testFix(string $expected, ?string $input = null): void
-    {
-        $this->doTest($expected, $input);
-    }
-
-    public function provideFixCases(): iterable
+    public static function provideFixCases(): iterable
     {
         yield [
             '<?php
@@ -78,5 +70,13 @@ final class NoCodeSeparatorCommentFixerTest extends AbstractCustomFixerTestCase
             $b = 2;
             ',
         ];
+    }
+
+    /**
+     * @dataProvider provideFixCases
+     */
+    public function testFix(string $expected, ?string $input = null): void
+    {
+        $this->doTest($expected, $input);
     }
 }

@@ -24,15 +24,7 @@ use Nexus\CsConfig\Test\AbstractCustomFixerTestCase;
  */
 final class SpaceAfterCommentStartFixerTest extends AbstractCustomFixerTestCase
 {
-    /**
-     * @dataProvider provideFixCases
-     */
-    public function testFix(string $expected, ?string $input = null): void
-    {
-        $this->doTest($expected, $input);
-    }
-
-    public function provideFixCases(): iterable
+    public static function provideFixCases(): iterable
     {
         yield 'not-simple-comment' => [
             '<?php /* a comment */',
@@ -90,5 +82,13 @@ final class SpaceAfterCommentStartFixerTest extends AbstractCustomFixerTestCase
             // a comment
             ',
         ];
+    }
+
+    /**
+     * @dataProvider provideFixCases
+     */
+    public function testFix(string $expected, ?string $input = null): void
+    {
+        $this->doTest($expected, $input);
     }
 }
