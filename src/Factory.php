@@ -36,7 +36,7 @@ final class Factory
      *     phpExecutable: null|string,
      *     isRiskyAllowed: bool,
      *     usingCache: bool,
-     *     rules: array<string, mixed>
+     *     rules: array<string, array<string, mixed>|bool>
      * } $options Array of resolved options
      */
     private function __construct(private RulesetInterface $ruleset, private array $options) {}
@@ -45,7 +45,7 @@ final class Factory
      * Prepares the ruleset and options before the `PhpCsFixer\Config` object
      * is created.
      *
-     * @param array<string, mixed> $overrides
+     * @param array<string, array<string, mixed>|bool> $overrides
      * @param array{
      *     cacheFile?: string,
      *     customFixers?: iterable<\PhpCsFixer\Fixer\FixerInterface>,
@@ -57,7 +57,7 @@ final class Factory
      *     phpExecutable?: null|string,
      *     isRiskyAllowed?: bool,
      *     usingCache?: bool,
-     *     customRules?: array<string, mixed>
+     *     customRules?: array<string, array<string, mixed>|bool>
      * } $options
      */
     public static function create(RulesetInterface $ruleset, array $overrides = [], array $options = []): self
@@ -150,7 +150,7 @@ final class Factory
     /**
      * The main method of creating the Config instance.
      *
-     * @param array<string, array<string>|bool> $overrides
+     * @param array<string, array<string, mixed>|bool> $overrides
      *
      * @internal
      */

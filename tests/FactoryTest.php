@@ -116,6 +116,7 @@ final class FactoryTest extends TestCase
         $config = Factory::create($this->mockRuleset())->forLibrary('Library', 'Foo Bar', 'foo@bar.com', 2020);
         $header = $config->getRules()['header_comment']['header'];
 
+        self::assertIsString($header);
         self::assertStringContainsString('This file is part of Library.', $header);
         self::assertStringContainsString('(c) 2020 Foo Bar <foo@bar.com>', $header);
     }
