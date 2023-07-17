@@ -18,7 +18,6 @@ use PhpCsFixer\Fixer\DeprecatedFixerInterface;
 use PhpCsFixer\FixerDefinition\CodeSample;
 use PhpCsFixer\FixerDefinition\FixerDefinition;
 use PhpCsFixer\FixerDefinition\FixerDefinitionInterface;
-use PhpCsFixer\Preg;
 use PhpCsFixer\Tokenizer\Token;
 use PhpCsFixer\Tokenizer\Tokens;
 
@@ -92,13 +91,13 @@ final class SpaceAfterCommentStartFixer extends AbstractCustomFixer implements D
                 continue;
             }
 
-            Preg::match('/^\/\/(\s*)(.+)/', $comment, $matches);
+            preg_match('/^\/\/(\s*)(.+)/', $comment, $matches);
 
             if (' ' === $matches[1]) {
                 continue;
             }
 
-            if (Preg::match('/\-+/', $matches[2]) === 1 || Preg::match('/\=+/', $matches[2]) === 1) {
+            if (preg_match('/\-+/', $matches[2]) === 1 || preg_match('/\=+/', $matches[2]) === 1) {
                 continue;
             }
 

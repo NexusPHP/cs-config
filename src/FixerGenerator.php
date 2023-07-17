@@ -15,7 +15,6 @@ namespace Nexus\CsConfig;
 
 use PhpCsFixer\Finder;
 use PhpCsFixer\Fixer\FixerInterface;
-use PhpCsFixer\Preg;
 use Symfony\Component\Finder\SplFileInfo;
 
 /**
@@ -44,7 +43,7 @@ final class FixerGenerator implements \IteratorAggregate
             throw new \RuntimeException('Vendor namespace cannot be empty.');
         }
 
-        if (Preg::match('/^[A-Z][a-zA-Z0-9\\\\]+$/', $vendor) !== 1) {
+        if (preg_match('/^[A-Z][a-zA-Z0-9\\\\]+$/', $vendor) !== 1) {
             throw new \RuntimeException(sprintf('Vendor namespace "%s" is not valid.', $vendor));
         }
 
