@@ -63,47 +63,6 @@ abstract class AbstractRulesetTestCase extends TestCase
         self::$enabledFixers = [];
     }
 
-    /**
-     * @codeCoverageIgnore
-     */
-    public static function provideEnabledConfigurableFixerUsesAllAvailableOptionsNotDeprecatedCases(): iterable
-    {
-        $fixers = FixerProvider::create(static::createRuleset())->builtin();
-        ksort($fixers);
-
-        foreach ($fixers as $name => $fixer) {
-            if ($fixer instanceof ConfigurableFixerInterface) {
-                $options = $fixer->getConfigurationDefinition()->getOptions();
-
-                $goodOptions = array_map(
-                    static fn(FixerOptionInterface $option): string => $option->getName(),
-                    array_filter(
-                        $options,
-                        static fn(FixerOptionInterface $option): bool => ! $option instanceof DeprecatedFixerOptionInterface,
-                    ),
-                );
-
-                $deprecatedOptions = array_map(
-                    static fn(FixerOptionInterface $option): string => $option->getName(),
-                    array_filter(
-                        $options,
-                        static fn(FixerOptionInterface $option): bool => $option instanceof DeprecatedFixerOptionInterface,
-                    ),
-                );
-
-                yield $name => [$name, $goodOptions, $deprecatedOptions];
-            }
-        }
-    }
-
-    protected static function createRuleset(): RulesetInterface
-    {
-        /** @phpstan-var class-string<RulesetInterface> $className */
-        $className = Preg::replace('/^(Nexus\\\\CsConfig)\\\\Tests(\\\\.+)Test$/', '$1$2', static::class);
-
-        return new $className();
-    }
-
     // =========================================================================
     // TESTS
     // =========================================================================
@@ -220,5 +179,46 @@ abstract class AbstractRulesetTestCase extends TestCase
             $name,
             \count($extraUsedOptions) > 1 ? 'are' : 'is',
         ));
+    }
+
+    /**
+     * @codeCoverageIgnore
+     */
+    public static function provideEnabledConfigurableFixerUsesAllAvailableOptionsNotDeprecatedCases(): iterable
+    {
+        $fixers = FixerProvider::create(static::createRuleset())->builtin();
+        ksort($fixers);
+
+        foreach ($fixers as $name => $fixer) {
+            if ($fixer instanceof ConfigurableFixerInterface) {
+                $options = $fixer->getConfigurationDefinition()->getOptions();
+
+                $goodOptions = array_map(
+                    static fn(FixerOptionInterface $option): string => $option->getName(),
+                    array_filter(
+                        $options,
+                        static fn(FixerOptionInterface $option): bool => ! $option instanceof DeprecatedFixerOptionInterface,
+                    ),
+                );
+
+                $deprecatedOptions = array_map(
+                    static fn(FixerOptionInterface $option): string => $option->getName(),
+                    array_filter(
+                        $options,
+                        static fn(FixerOptionInterface $option): bool => $option instanceof DeprecatedFixerOptionInterface,
+                    ),
+                );
+
+                yield $name => [$name, $goodOptions, $deprecatedOptions];
+            }
+        }
+    }
+
+    protected static function createRuleset(): RulesetInterface
+    {
+        /** @phpstan-var class-string<RulesetInterface> $className */
+        $className = Preg::replace('/^(Nexus\\\\CsConfig)\\\\Tests(\\\\.+)Test$/', '$1$2', static::class);
+
+        return new $className();
     }
 }

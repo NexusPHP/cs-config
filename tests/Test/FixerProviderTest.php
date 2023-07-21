@@ -32,16 +32,6 @@ final class FixerProviderTest extends TestCase
         FixerProvider::reset();
     }
 
-    public static function provideCreateMethodGivesNoDeprecatedBuiltInFixersCases(): iterable
-    {
-        $builtin = FixerProvider::create(new Nexus80())->builtin();
-        ksort($builtin, SORT_REGULAR);
-
-        foreach ($builtin as $name => $fixer) {
-            yield $name => [$fixer];
-        }
-    }
-
     public function testCreateMethodCreatesSameBuiltInFixers(): void
     {
         $fixerProvider1 = FixerProvider::create($this->mockRuleset());
@@ -56,6 +46,16 @@ final class FixerProviderTest extends TestCase
     public function testCreateMethodGivesNoDeprecatedBuiltInFixers(FixerInterface $fixer): void
     {
         self::assertNotInstanceOf(DeprecatedFixerInterface::class, $fixer);
+    }
+
+    public static function provideCreateMethodGivesNoDeprecatedBuiltInFixersCases(): iterable
+    {
+        $builtin = FixerProvider::create(new Nexus80())->builtin();
+        ksort($builtin, SORT_REGULAR);
+
+        foreach ($builtin as $name => $fixer) {
+            yield $name => [$fixer];
+        }
     }
 
     public function testResetReallyResetsBuiltIn(): void

@@ -53,36 +53,6 @@ abstract class AbstractCustomFixerTestCase extends TestCase
         $this->linter = $this->getLinter();
     }
 
-    private static function assertTokens(Tokens $expectedTokens, Tokens $inputTokens): void
-    {
-        self::assertSame($expectedTokens->count(), $inputTokens->count(), 'Both Tokens collections should have the same size.');
-
-        /** @var Token $expectedToken */
-        foreach ($expectedTokens as $index => $expectedToken) {
-            /** @var Token $inputToken */
-            $inputToken = $inputTokens[$index];
-
-            self::assertTrue(
-                $expectedToken->equals($inputToken),
-                sprintf("Token at index %d must be:\n%s,\ngot:\n%s.", $index, $expectedToken->toJson(), $inputToken->toJson()),
-            );
-        }
-    }
-
-    private static function assertValidDescription(string $fixerName, string $descriptionType, string $description): void
-    {
-        self::assertMatchesRegularExpression('/^[A-Z`][^"]+\.$/', $description, sprintf('[%s] The %s must start with capital letter or a ` and end with dot.', $fixerName, $descriptionType));
-        self::assertStringNotContainsString('phpdocs', $description, sprintf('[%s] `PHPDoc` must not be in the plural in %s.', $fixerName, $descriptionType));
-        self::assertCorrectCasing($description, 'PHPDoc', sprintf('[%s] `PHPDoc` must be in correct casing in %s.', $fixerName, $descriptionType));
-        self::assertCorrectCasing($description, 'PHPUnit', sprintf('[%s] `PHPUnit` must be in correct casing in %s.', $fixerName, $descriptionType));
-        self::assertFalse(strpos($descriptionType, '``'), sprintf('[%s] The %s must not contain sequential backticks.', $fixerName, $descriptionType));
-    }
-
-    private static function assertCorrectCasing(string $needle, string $haystack, string $message): void
-    {
-        self::assertSame(substr_count(strtolower($haystack), strtolower($needle)), substr_count($haystack, $needle), $message);
-    }
-
     final public function testIsRisky(): void
     {
         $riskyDescription = $this->fixer->getDefinition()->getRiskyDescription();
@@ -369,5 +339,35 @@ abstract class AbstractCustomFixerTestCase extends TestCase
         }
 
         return $linter;
+    }
+
+    private static function assertTokens(Tokens $expectedTokens, Tokens $inputTokens): void
+    {
+        self::assertSame($expectedTokens->count(), $inputTokens->count(), 'Both Tokens collections should have the same size.');
+
+        /** @var Token $expectedToken */
+        foreach ($expectedTokens as $index => $expectedToken) {
+            /** @var Token $inputToken */
+            $inputToken = $inputTokens[$index];
+
+            self::assertTrue(
+                $expectedToken->equals($inputToken),
+                sprintf("Token at index %d must be:\n%s,\ngot:\n%s.", $index, $expectedToken->toJson(), $inputToken->toJson()),
+            );
+        }
+    }
+
+    private static function assertValidDescription(string $fixerName, string $descriptionType, string $description): void
+    {
+        self::assertMatchesRegularExpression('/^[A-Z`][^"]+\.$/', $description, sprintf('[%s] The %s must start with capital letter or a ` and end with dot.', $fixerName, $descriptionType));
+        self::assertStringNotContainsString('phpdocs', $description, sprintf('[%s] `PHPDoc` must not be in the plural in %s.', $fixerName, $descriptionType));
+        self::assertCorrectCasing($description, 'PHPDoc', sprintf('[%s] `PHPDoc` must be in correct casing in %s.', $fixerName, $descriptionType));
+        self::assertCorrectCasing($description, 'PHPUnit', sprintf('[%s] `PHPUnit` must be in correct casing in %s.', $fixerName, $descriptionType));
+        self::assertFalse(strpos($descriptionType, '``'), sprintf('[%s] The %s must not contain sequential backticks.', $fixerName, $descriptionType));
+    }
+
+    private static function assertCorrectCasing(string $needle, string $haystack, string $message): void
+    {
+        self::assertSame(substr_count(strtolower($haystack), strtolower($needle)), substr_count($haystack, $needle), $message);
     }
 }
