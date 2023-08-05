@@ -65,6 +65,7 @@ final class Nexus74 extends AbstractRuleset
             'cast_spaces' => ['space' => 'single'],
             'class_attributes_separation' => [
                 'elements' => [
+                    'case' => 'none',
                     'const' => 'none',
                     'property' => 'none',
                     'method' => 'one',
