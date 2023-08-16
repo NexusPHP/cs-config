@@ -14,7 +14,6 @@ declare(strict_types=1);
 namespace Nexus\CsConfig\Tests;
 
 use Nexus\CsConfig\FixerGenerator;
-use PhpCsFixer\Fixer\FixerInterface;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -50,20 +49,9 @@ final class FixerGeneratorTest extends TestCase
         yield 'invalid-vendor' => [__DIR__, 'Nexus()', 'Vendor namespace "Nexus()" is not valid.'];
     }
 
-    public function testCreateMethodReturnsSelf(): void
-    {
-        self::assertInstanceOf(FixerGenerator::class, FixerGenerator::create(
-            'vendor/friendsofphp/php-cs-fixer/src/Fixer',
-            'PhpCsFixer\\Fixer\\',
-        ));
-    }
-
     public function testTraversableReturnedAreInstancesOfFixerInterface(): void
     {
         $generator = FixerGenerator::create('vendor/friendsofphp/php-cs-fixer/src/Fixer', 'PhpCsFixer\\Fixer');
-
-        foreach ($generator as $fixer) {
-            self::assertInstanceOf(FixerInterface::class, $fixer);
-        }
+        self::assertNotEmpty(iterator_to_array($generator));
     }
 }

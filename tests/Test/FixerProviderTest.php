@@ -74,7 +74,7 @@ final class FixerProviderTest extends TestCase
         $builtin = $provider->builtin();
         $enabled = array_filter((new Nexus80())->getRules());
 
-        self::assertSame(\count($builtin), \count($configured));
+        self::assertCount(\count($builtin), $configured);
         self::assertLessThan(\count($configured), \count($enabled));
     }
 

@@ -73,7 +73,7 @@ final class Factory
 
         // Meant to be used in vendor/ to get to the root directory
         $dir = \dirname(__DIR__, 4);
-        $dir = realpath($dir) ?: $dir;
+        $dir = (string) realpath($dir);
 
         $defaultFinder = Finder::create()
             ->files()
@@ -90,7 +90,7 @@ final class Factory
         $options['indent'] ??= '    ';
         $options['lineEnding'] ??= "\n";
         $options['phpExecutable'] ??= null;
-        $options['isRiskyAllowed'] ??= ($ruleset->willAutoActivateIsRiskyAllowed() ?: false);
+        $options['isRiskyAllowed'] ??= $ruleset->willAutoActivateIsRiskyAllowed();
         $options['usingCache'] ??= true;
         $options['rules'] = array_merge($ruleset->getRules(), $overrides, $options['customRules'] ?? []);
 

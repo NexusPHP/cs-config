@@ -18,15 +18,19 @@ abstract class AbstractRuleset implements RulesetInterface
     /**
      * Name of the ruleset.
      */
-    protected string $name;
+    protected string $name = '';
 
     /**
      * Rules for the ruleset.
+     *
+     * @var array<string, array<string, array<string>|bool|string>|bool>
      */
     protected array $rules = [];
 
     /**
      * Minimum PHP version.
+     *
+     * @phpstan-var int<0, max>
      */
     protected int $requiredPHPVersion = 0;
 
@@ -40,7 +44,17 @@ abstract class AbstractRuleset implements RulesetInterface
      */
     final public function getName(): string
     {
-        return $this->name ?: trim(strrchr(static::class, '\\') ?: static::class, '\\');
+        if ('' !== $this->name) {
+            return $this->name;
+        }
+
+        if (str_contains(static::class, '\\')) {
+            $class = str_replace('\\', '/', static::class);
+
+            return basename($class);
+        }
+
+        return static::class;
     }
 
     /**

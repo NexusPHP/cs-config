@@ -134,6 +134,9 @@ abstract class AbstractRulesetTestCase extends TestCase
 
     /**
      * @dataProvider provideEnabledConfigurableFixerUsesAllAvailableOptionsNotDeprecatedCases
+     *
+     * @param string[] $goodOptions
+     * @param string[] $deprecatedOptions
      */
     final public function testEnabledConfigurableFixerUsesAllAvailableOptionsNotDeprecated(string $name, array $goodOptions, array $deprecatedOptions): void
     {
@@ -183,6 +186,8 @@ abstract class AbstractRulesetTestCase extends TestCase
 
     /**
      * @codeCoverageIgnore
+     *
+     * @return iterable<string, array{0: string, 1: string[], 2: string[]}>
      */
     public static function provideEnabledConfigurableFixerUsesAllAvailableOptionsNotDeprecatedCases(): iterable
     {
