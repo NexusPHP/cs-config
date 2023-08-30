@@ -353,7 +353,11 @@ final class Nexus74 extends AbstractRuleset
                 'sort_algorithm' => 'alpha',
                 'case_sensitive' => false,
             ],
-            'ordered_interfaces' => false,
+            'ordered_interfaces' => [
+                'order' => 'alpha',
+                'direction' => 'ascend',
+                'case_sensitive' => false,
+            ],
             'ordered_traits' => ['case_sensitive' => false],
             'ordered_types' => false, // PHP 8.0+
             'php_unit_construct' => [
