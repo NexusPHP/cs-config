@@ -351,10 +351,15 @@ final class Nexus82 extends AbstractRuleset
             'ordered_imports' => [
                 'imports_order' => ['class', 'function', 'const'],
                 'sort_algorithm' => 'alpha',
+                'case_sensitive' => false,
             ],
             'ordered_interfaces' => false,
-            'ordered_traits' => true,
-            'ordered_types' => ['sort_algorithm' => 'alpha', 'null_adjustment' => 'always_first'],
+            'ordered_traits' => ['case_sensitive' => false],
+            'ordered_types' => [
+                'sort_algorithm' => 'alpha',
+                'null_adjustment' => 'always_first',
+                'case_sensitive' => false,
+            ],
             'php_unit_construct' => [
                 'assertions' => [
                     'assertEquals',
@@ -518,6 +523,7 @@ final class Nexus82 extends AbstractRuleset
             'phpdoc_types_order' => [
                 'null_adjustment' => 'always_first',
                 'sort_algorithm' => 'alpha',
+                'case_sensitive' => false,
             ],
             'phpdoc_var_annotation_correct_order' => true,
             'phpdoc_var_without_name' => true,

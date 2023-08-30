@@ -351,9 +351,10 @@ final class Nexus74 extends AbstractRuleset
             'ordered_imports' => [
                 'imports_order' => ['class', 'function', 'const'],
                 'sort_algorithm' => 'alpha',
+                'case_sensitive' => false,
             ],
             'ordered_interfaces' => false,
-            'ordered_traits' => true,
+            'ordered_traits' => ['case_sensitive' => false],
             'ordered_types' => false, // PHP 8.0+
             'php_unit_construct' => [
                 'assertions' => [
@@ -518,6 +519,7 @@ final class Nexus74 extends AbstractRuleset
             'phpdoc_types_order' => [
                 'null_adjustment' => 'always_first',
                 'sort_algorithm' => 'alpha',
+                'case_sensitive' => false,
             ],
             'phpdoc_var_annotation_correct_order' => true,
             'phpdoc_var_without_name' => true,
