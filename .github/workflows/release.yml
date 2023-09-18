@@ -18,6 +18,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
         with:
-          name: Nexus CS Config ${{ github.ref }}
+          name: Nexus CS Config ${{ github.ref_name }}
           draft: true
           prerelease: false
