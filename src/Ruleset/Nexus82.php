@@ -63,6 +63,15 @@ final class Nexus82 extends AbstractRuleset
                 'min_line_breaks' => 2,
                 'max_line_breaks' => 2,
             ],
+            'braces_position' => [
+                'control_structures_opening_brace' => 'same_line',
+                'functions_opening_brace' => 'next_line_unless_newline_at_signature_end',
+                'anonymous_functions_opening_brace' => 'same_line',
+                'classes_opening_brace' => 'next_line_unless_newline_at_signature_end',
+                'anonymous_classes_opening_brace' => 'same_line',
+                'allow_single_line_empty_anonymous_classes' => true,
+                'allow_single_line_anonymous_functions' => true,
+            ],
             'cast_spaces' => ['space' => 'single'],
             'class_attributes_separation' => [
                 'elements' => [
@@ -95,20 +104,11 @@ final class Nexus82 extends AbstractRuleset
                     'phpstan-ignore-next-line',
                 ],
             ],
-            'compact_nullable_typehint' => true,
+            'compact_nullable_type_declaration' => true,
             'concat_space' => ['spacing' => 'none'],
             'constant_case' => ['case' => 'lower'],
             'control_structure_braces' => true,
             'control_structure_continuation_position' => ['position' => 'same_line'],
-            'curly_braces_position' => [
-                'control_structures_opening_brace' => 'same_line',
-                'functions_opening_brace' => 'next_line_unless_newline_at_signature_end',
-                'anonymous_functions_opening_brace' => 'same_line',
-                'classes_opening_brace' => 'next_line_unless_newline_at_signature_end',
-                'anonymous_classes_opening_brace' => 'same_line',
-                'allow_single_line_empty_anonymous_classes' => true,
-                'allow_single_line_anonymous_functions' => true,
-            ],
             'date_time_create_from_format_call' => true,
             'date_time_immutable' => true,
             'declare_equal_normalize' => ['space' => 'none'],
@@ -209,9 +209,10 @@ final class Nexus82 extends AbstractRuleset
             'magic_method_casing' => true,
             'mb_str_functions' => false,
             'method_argument_space' => [
-                'after_heredoc' => true,
                 'keep_multiple_spaces_after_comma' => false,
                 'on_multiline' => 'ensure_fully_multiline',
+                'after_heredoc' => true,
+                'attribute_placement' => 'standalone',
             ],
             'method_chaining_indentation' => true,
             'modernize_strpos' => true,
@@ -237,8 +238,8 @@ final class Nexus82 extends AbstractRuleset
                 'scope' => 'namespaced',
                 'strict' => true,
             ],
-            'native_function_type_declaration_casing' => true,
-            'new_with_braces' => [
+            'native_type_declaration_casing' => true,
+            'new_with_parentheses' => [
                 'named_class' => true,
                 'anonymous_class' => false,
             ],
@@ -295,6 +296,7 @@ final class Nexus82 extends AbstractRuleset
             'no_trailing_whitespace' => true,
             'no_trailing_whitespace_in_comment' => true,
             'no_trailing_whitespace_in_string' => true,
+            'no_unneeded_braces' => ['namespaces' => true],
             'no_unneeded_control_parentheses' => [
                 'statements' => [
                     'break',
@@ -306,7 +308,6 @@ final class Nexus82 extends AbstractRuleset
                     'yield',
                 ],
             ],
-            'no_unneeded_curly_braces' => ['namespaces' => true],
             'no_unneeded_final_method' => ['private_methods' => true],
             'no_unneeded_import_alias' => true,
             'no_unreachable_default_argument_value' => true,
