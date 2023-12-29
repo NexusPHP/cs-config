@@ -12,11 +12,6 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/src/Test/AbstractCustomFixerTestCase.php',
 ];
 $ignoreErrors[] = [
-	'message' => '#^Cannot access offset \'header\' on array\\<string, mixed\\>\\|bool\\.$#',
-	'count' => 1,
-	'path' => __DIR__ . '/tests/FactoryTest.php',
-];
-$ignoreErrors[] = [
 	'message' => '#^Method Nexus\\\\CsConfig\\\\Tests\\\\Fixer\\\\Comment\\\\NoCodeSeparatorCommentFixerTest\\:\\:provideFixCases\\(\\) return type has no value type specified in iterable type iterable\\.$#',
 	'count' => 1,
 	'path' => __DIR__ . '/tests/Fixer/Comment/NoCodeSeparatorCommentFixerTest.php',

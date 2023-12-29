@@ -13,20 +13,21 @@ declare(strict_types=1);
 
 namespace Nexus\CsConfig\Tests\Fixer\Comment;
 
+use Nexus\CsConfig\Fixer\AbstractCustomFixer;
+use Nexus\CsConfig\Fixer\Comment\NoCodeSeparatorCommentFixer;
 use Nexus\CsConfig\Test\AbstractCustomFixerTestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * @internal
- *
- * @covers \Nexus\CsConfig\Fixer\AbstractCustomFixer
- * @covers \Nexus\CsConfig\Fixer\Comment\NoCodeSeparatorCommentFixer
- * @covers \Nexus\CsConfig\Test\AbstractCustomFixerTestCase
  */
+#[CoversClass(AbstractCustomFixer::class)]
+#[CoversClass(NoCodeSeparatorCommentFixer::class)]
+#[CoversClass(AbstractCustomFixerTestCase::class)]
 final class NoCodeSeparatorCommentFixerTest extends AbstractCustomFixerTestCase
 {
-    /**
-     * @dataProvider provideFixCases
-     */
+    #[DataProvider('provideFixCases')]
     public function testFix(string $expected, ?string $input = null): void
     {
         $this->doTest($expected, $input);

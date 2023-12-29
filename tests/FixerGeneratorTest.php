@@ -14,18 +14,17 @@ declare(strict_types=1);
 namespace Nexus\CsConfig\Tests;
 
 use Nexus\CsConfig\FixerGenerator;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 /**
  * @internal
- *
- * @covers \Nexus\CsConfig\FixerGenerator
  */
+#[CoversClass(FixerGenerator::class)]
 final class FixerGeneratorTest extends TestCase
 {
-    /**
-     * @dataProvider provideInvalidParametersThrowRuntimeExceptionCases
-     */
+    #[DataProvider('provideInvalidParametersThrowRuntimeExceptionCases')]
     public function testInvalidParametersThrowRuntimeException(string $path, string $vendor, string $message): void
     {
         $this->expectException(\RuntimeException::class);

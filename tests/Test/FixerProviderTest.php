@@ -18,14 +18,15 @@ use Nexus\CsConfig\Ruleset\RulesetInterface;
 use Nexus\CsConfig\Test\FixerProvider;
 use PhpCsFixer\Fixer\DeprecatedFixerInterface;
 use PhpCsFixer\Fixer\FixerInterface;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 /**
  * @internal
- *
- * @covers \Nexus\CsConfig\Test\FixerProvider
  */
+#[CoversClass(FixerProvider::class)]
 final class FixerProviderTest extends TestCase
 {
     protected function setUp(): void
@@ -41,9 +42,7 @@ final class FixerProviderTest extends TestCase
         self::assertSame($fixerProvider1->builtin(), $fixerProvider2->builtin());
     }
 
-    /**
-     * @dataProvider provideCreateMethodGivesNoDeprecatedBuiltInFixersCases
-     */
+    #[DataProvider('provideCreateMethodGivesNoDeprecatedBuiltInFixersCases')]
     public function testCreateMethodGivesNoDeprecatedBuiltInFixers(FixerInterface $fixer): void
     {
         self::assertNotInstanceOf(DeprecatedFixerInterface::class, $fixer);

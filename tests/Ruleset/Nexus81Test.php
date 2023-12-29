@@ -13,13 +13,15 @@ declare(strict_types=1);
 
 namespace Nexus\CsConfig\Tests\Ruleset;
 
+use Nexus\CsConfig\Ruleset\AbstractRuleset;
+use Nexus\CsConfig\Ruleset\Nexus81;
 use Nexus\CsConfig\Test\AbstractRulesetTestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
 /**
  * @internal
- *
- * @covers \Nexus\CsConfig\Ruleset\AbstractRuleset
- * @covers \Nexus\CsConfig\Ruleset\Nexus81
- * @covers \Nexus\CsConfig\Test\AbstractRulesetTestCase
  */
+#[CoversClass(AbstractRuleset::class)]
+#[CoversClass(Nexus81::class)]
+#[CoversClass(AbstractRulesetTestCase::class)]
 final class Nexus81Test extends AbstractRulesetTestCase {}

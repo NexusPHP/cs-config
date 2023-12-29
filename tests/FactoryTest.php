@@ -18,14 +18,14 @@ use Nexus\CsConfig\Ruleset\Nexus80;
 use Nexus\CsConfig\Ruleset\RulesetInterface;
 use PhpCsFixer\Config;
 use PhpCsFixer\Finder;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 /**
  * @internal
- *
- * @covers \Nexus\CsConfig\Factory
  */
+#[CoversClass(Factory::class)]
 final class FactoryTest extends TestCase
 {
     public function testFactoryThrowsExceptionOnIncompatibleVersionId(): void
@@ -115,8 +115,13 @@ final class FactoryTest extends TestCase
     public function testCreateForLibraryCreatesPreformattedLicense(): void
     {
         $config = Factory::create($this->mockRuleset())->forLibrary('Library', 'Foo Bar', 'foo@bar.com', 2020);
-        $header = $config->getRules()['header_comment']['header'];
 
+        $rules = $config->getRules();
+        self::assertArrayHasKey('header_comment', $rules);
+        self::assertIsArray($rules['header_comment']);
+        self::assertArrayHasKey('header', $rules['header_comment']);
+
+        $header = $rules['header_comment']['header'];
         self::assertIsString($header);
         self::assertStringContainsString('This file is part of Library.', $header);
         self::assertStringContainsString('(c) 2020 Foo Bar <foo@bar.com>', $header);
