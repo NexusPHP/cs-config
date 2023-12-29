@@ -18,6 +18,7 @@ use Nexus\CsConfig\Ruleset\RulesetInterface;
 use Nexus\CsConfig\Test\FixerProvider;
 use PhpCsFixer\Fixer\DeprecatedFixerInterface;
 use PhpCsFixer\Fixer\FixerInterface;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -86,10 +87,7 @@ final class FixerProviderTest extends TestCase
         self::assertSame($enabledByRuleset, $enabledByProvider);
     }
 
-    /**
-     * @return \Nexus\CsConfig\Ruleset\RulesetInterface&\PHPUnit\Framework\MockObject\MockObject
-     */
-    private function mockRuleset()
+    private function mockRuleset(): MockObject&RulesetInterface
     {
         return $this->createMock(RulesetInterface::class);
     }

@@ -18,6 +18,7 @@ use Nexus\CsConfig\Ruleset\Nexus80;
 use Nexus\CsConfig\Ruleset\RulesetInterface;
 use PhpCsFixer\Config;
 use PhpCsFixer\Finder;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -121,10 +122,7 @@ final class FactoryTest extends TestCase
         self::assertStringContainsString('(c) 2020 Foo Bar <foo@bar.com>', $header);
     }
 
-    /**
-     * @return \Nexus\CsConfig\Ruleset\RulesetInterface&\PHPUnit\Framework\MockObject\MockObject
-     */
-    private function mockRuleset()
+    private function mockRuleset(): MockObject&RulesetInterface
     {
         return $this->createMock(RulesetInterface::class);
     }
