@@ -210,7 +210,7 @@ abstract class AbstractCustomFixerTestCase extends TestCase
 
             self::assertFalse(
                 $duplicatedCodeSample,
-                sprintf('[%s] Sample #%d duplicates #%d.', $fixerName, $counter, ++$duplicatedCodeSample),
+                sprintf('[%s] Sample #%d duplicates #%d.', $fixerName, $counter, (int) $duplicatedCodeSample + 1),
             );
         }
 
