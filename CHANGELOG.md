@@ -5,6 +5,16 @@ All notable changes to this library will be documented in this file:
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v3.20.0](https://github.com/NexusPHP/cs-config/compare/v3.19.0...v3.20.0) - 2024-01-23
+
+- Bump to php-cs-fixer v3.46
+- Enable `union_types` option for phpdoc_to fixers
+- Disable `numeric_literal_separator`
+- Enable `multiline_string_to_heredoc`
+- Disable `heredoc_closing_marker`
+- Enable `spacing` option and add more `tags` to `phpdoc_align`
+- Bump actions/cache from 3 to 4 (#4)
+
 ## [v3.19.0](https://github.com/NexusPHP/cs-config/compare/v3.18.0...v3.19.0) - 2023-12-29
 
 - Bump minimum PHP version to PHP 8.1
