@@ -541,9 +541,18 @@ final class Nexus82 extends AbstractRuleset
                 'allow_before_return_statement' => true,
                 'ignored_tags' => [],
             ],
-            'phpdoc_to_param_type' => ['scalar_types' => true],
-            'phpdoc_to_property_type' => ['scalar_types' => true],
-            'phpdoc_to_return_type' => ['scalar_types' => true],
+            'phpdoc_to_param_type' => [
+                'scalar_types' => true,
+                'union_types' => true,
+            ],
+            'phpdoc_to_property_type' => [
+                'scalar_types' => true,
+                'union_types' => true,
+            ],
+            'phpdoc_to_return_type' => [
+                'scalar_types' => true,
+                'union_types' => true,
+            ],
             'phpdoc_trim' => true,
             'phpdoc_trim_consecutive_blank_line_separation' => true,
             'phpdoc_types' => ['groups' => ['simple', 'alias', 'meta']],
