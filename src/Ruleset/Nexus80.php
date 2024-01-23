@@ -346,6 +346,7 @@ final class Nexus80 extends AbstractRuleset
             'not_operator_with_successor_space' => true,
             'nullable_type_declaration' => ['syntax' => 'question_mark'],
             'nullable_type_declaration_for_default_null_value' => ['use_nullable_type_declaration' => true],
+            'numeric_literal_separator' => false,
             'object_operator_without_whitespace' => true,
             'octal_notation' => false, // requires 8.1+
             'operator_linebreak' => ['only_booleans' => true, 'position' => 'beginning'],
@@ -698,7 +699,7 @@ final class Nexus80 extends AbstractRuleset
                 'less_and_greater' => null,
             ],
         ];
-        $this->requiredPHPVersion = 80000;
+        $this->requiredPHPVersion = 8_00_00;
         $this->autoActivateIsRiskyAllowed = true;
     }
 }
