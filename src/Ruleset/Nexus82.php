@@ -435,9 +435,16 @@ final class Nexus82 extends AbstractRuleset
             'phpdoc_add_missing_param_annotation' => ['only_untyped' => true],
             'phpdoc_align' => [
                 'align' => 'vertical',
+                'spacing' => 1,
                 'tags' => [
                     'method',
                     'param',
+                    'phpstan-assert',
+                    'phpstan-assert-if-true',
+                    'phpstan-assert-if-false',
+                    'phpstan-param',
+                    'phpstan-property',
+                    'phpstan-return',
                     'property',
                     'return',
                     'throws',
