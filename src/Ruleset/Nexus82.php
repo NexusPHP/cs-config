@@ -237,6 +237,7 @@ final class Nexus82 extends AbstractRuleset
             'modernize_strpos' => true,
             'modernize_types_casting' => true,
             'multiline_comment_opening_closing' => true,
+            'multiline_string_to_heredoc' => true,
             'multiline_whitespace_before_semicolons' => ['strategy' => 'new_line_for_chained_calls'],
             'native_constant_invocation' => [
                 'fix_built_in' => false,

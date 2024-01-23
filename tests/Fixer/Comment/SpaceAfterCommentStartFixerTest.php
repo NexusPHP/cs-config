@@ -40,12 +40,14 @@ final class SpaceAfterCommentStartFixerTest extends AbstractCustomFixerTestCase
         ];
 
         yield 'code-separator' => [
-            '<?php
+            <<<'EOD'
+                <?php
 
-            //-------------------------------
+                //-------------------------------
 
-            //===============================
-            ',
+                //===============================
+
+                EOD,
         ];
 
         yield 'no-space' => [
@@ -68,28 +70,34 @@ final class SpaceAfterCommentStartFixerTest extends AbstractCustomFixerTestCase
         ];
 
         yield 'multi-lined' => [
-            '<?php
+            <<<'EOD'
+                <?php
 
-            // a comment
-            //
-            // another comment
-            ',
-            '<?php
+                // a comment
+                //
+                // another comment
 
-            //a comment
-            //
-            //  another comment
-            ',
+                EOD,
+            <<<'EOD'
+                <?php
+
+                //a comment
+                //
+                //  another comment
+
+                EOD,
         ];
 
         yield 'multi-empty' => [
-            '<?php
+            <<<'EOD'
+                <?php
 
-            //
-            //
-            //
-            // a comment
-            ',
+                //
+                //
+                //
+                // a comment
+
+                EOD,
         ];
     }
 }

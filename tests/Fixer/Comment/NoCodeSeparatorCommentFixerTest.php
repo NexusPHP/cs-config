@@ -36,48 +36,58 @@ final class NoCodeSeparatorCommentFixerTest extends AbstractCustomFixerTestCase
     public static function provideFixCases(): iterable
     {
         yield [
-            '<?php
+            <<<'EOD'
+                <?php
 
-            $a = [];
-            ',
-            '<?php
+                $a = [];
 
-            //---------------------
-            $a = [];
-            ',
+                EOD,
+            <<<'EOD'
+                <?php
+
+                //---------------------
+                $a = [];
+
+                EOD,
         ];
 
         yield [
-            '<?php
+            <<<'EOD'
+                <?php
 
-            // - a comment
-            $arr = [];
-            ',
+                // - a comment
+                $arr = [];
+
+                EOD,
         ];
 
         yield [
-            '<?php
+            <<<'EOD'
+                <?php
 
-            //=======================
-            // A Section
-            //=======================
+                //=======================
+                // A Section
+                //=======================
 
-            $a = 1;
+                $a = 1;
 
-            $b = 2;
-            ',
-            '<?php
+                $b = 2;
 
-            //=======================
-            // A Section
-            //=======================
+                EOD,
+            <<<'EOD'
+                <?php
 
-            $a = 1;
+                //=======================
+                // A Section
+                //=======================
 
-            //-----------------------
+                $a = 1;
 
-            $b = 2;
-            ',
+                //-----------------------
+
+                $b = 2;
+
+                EOD,
         ];
     }
 }
