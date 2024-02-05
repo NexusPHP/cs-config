@@ -23,7 +23,7 @@ abstract class AbstractRuleset implements RulesetInterface
     /**
      * Rules for the ruleset.
      *
-     * @var array<string, array<string, array<string>|bool|string>|bool>
+     * @var array<string, array<string, bool|list<string>|string>|bool>
      */
     protected array $rules = [];
 

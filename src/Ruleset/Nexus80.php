@@ -467,6 +467,7 @@ final class Nexus80 extends AbstractRuleset
                 'method' => 'multi',
                 'property' => 'multi',
             ],
+            'phpdoc_list_type' => true,
             'phpdoc_no_access' => true,
             'phpdoc_no_alias_tag' => [
                 'replacements' => [
