@@ -5,6 +5,12 @@ All notable changes to this library will be documented in this file:
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v3.21.0](https://github.com/NexusPHP/cs-config/compare/v3.20.0...v3.21.0) - 2024-02-05
+
+- Bump to php-cs-fixer v3.49
+- Add `string_implicit_slashes` fixer
+- Enable `phpdoc_list_type` fixer
+
 ## [v3.20.0](https://github.com/NexusPHP/cs-config/compare/v3.19.0...v3.20.0) - 2024-01-23
 
 - Bump to php-cs-fixer v3.46
