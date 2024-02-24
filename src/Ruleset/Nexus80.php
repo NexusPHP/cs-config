@@ -302,9 +302,10 @@ final class Nexus80 extends AbstractRuleset
             'no_spaces_around_offset' => ['positions' => ['inside', 'outside']],
             'no_superfluous_elseif' => true,
             'no_superfluous_phpdoc_tags' => [
-                'allow_mixed' => true,
-                'allow_unused_params' => true,
-                'remove_inheritdoc' => false,
+                'allow_hidden_params' => true,
+                'allow_mixed' => false,
+                'allow_unused_params' => false,
+                'remove_inheritdoc' => true,
             ],
             'no_trailing_comma_in_singleline' => [
                 'elements' => ['arguments', 'array', 'array_destructuring', 'group_import'],

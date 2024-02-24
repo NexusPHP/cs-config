@@ -35,9 +35,6 @@ abstract class AbstractCustomFixer extends AbstractFixer
         return $namespace.'/'.Utils::camelCaseToUnderscore($name);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     public function getName(): string
     {
         return self::name();

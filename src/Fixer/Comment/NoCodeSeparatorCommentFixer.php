@@ -25,9 +25,6 @@ use PhpCsFixer\Tokenizer\Tokens;
  */
 final class NoCodeSeparatorCommentFixer extends AbstractCustomFixer
 {
-    /**
-     * {@inheritDoc}
-     */
     public function getDefinition(): FixerDefinitionInterface
     {
         return new FixerDefinition(
@@ -47,9 +44,6 @@ final class NoCodeSeparatorCommentFixer extends AbstractCustomFixer
         );
     }
 
-    /**
-     * {@inheritDoc}
-     */
     public function isCandidate(Tokens $tokens): bool
     {
         return $tokens->isTokenKindFound(T_COMMENT);
@@ -65,9 +59,6 @@ final class NoCodeSeparatorCommentFixer extends AbstractCustomFixer
         return 2;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     protected function applyFix(\SplFileInfo $file, Tokens $tokens): void
     {
         for ($index = 1, $count = $tokens->count(); $index < $count; ++$index) {

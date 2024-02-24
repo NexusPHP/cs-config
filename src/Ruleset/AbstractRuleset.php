@@ -39,9 +39,6 @@ abstract class AbstractRuleset implements RulesetInterface
      */
     protected bool $autoActivateIsRiskyAllowed = false;
 
-    /**
-     * {@inheritDoc}
-     */
     final public function getName(): string
     {
         if ('' !== $this->name) {
@@ -57,25 +54,16 @@ abstract class AbstractRuleset implements RulesetInterface
         return static::class;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     final public function getRules(): array
     {
         return $this->rules;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     final public function getRequiredPHPVersion(): int
     {
         return $this->requiredPHPVersion;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     final public function willAutoActivateIsRiskyAllowed(): bool
     {
         return $this->autoActivateIsRiskyAllowed;
