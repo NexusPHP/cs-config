@@ -449,6 +449,7 @@ final class Nexus80 extends AbstractRuleset
                 ],
             ],
             'phpdoc_annotation_without_dot' => true,
+            'phpdoc_array_type' => true,
             'phpdoc_indent' => true,
             'phpdoc_inline_tag_normalizer' => [
                 'tags' => [

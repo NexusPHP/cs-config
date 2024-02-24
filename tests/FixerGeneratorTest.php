@@ -33,7 +33,7 @@ final class FixerGeneratorTest extends TestCase
     }
 
     /**
-     * @return iterable<string, string[]>
+     * @return iterable<string, list<string>>
      */
     public static function provideInvalidParametersThrowRuntimeExceptionCases(): iterable
     {

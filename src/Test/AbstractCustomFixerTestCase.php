@@ -274,7 +274,7 @@ abstract class AbstractCustomFixerTestCase extends TestCase
 
             $tokens->clearEmptyTokens();
 
-            /** @var Token[] $tokensArray */
+            /** @var list<Token> $tokensArray */
             $tokensArray = $tokens->toArray();
 
             self::assertCount(
