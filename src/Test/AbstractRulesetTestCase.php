@@ -19,6 +19,7 @@ use PhpCsFixer\Fixer\FixerInterface;
 use PhpCsFixer\FixerConfiguration\DeprecatedFixerOptionInterface;
 use PhpCsFixer\FixerConfiguration\FixerOptionInterface;
 use PhpCsFixer\Preg;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -133,11 +134,10 @@ abstract class AbstractRulesetTestCase extends TestCase
     }
 
     /**
-     * @dataProvider provideEnabledConfigurableFixerUsesAllAvailableOptionsNotDeprecatedCases
-     *
      * @param list<string> $goodOptions
      * @param list<string> $deprecatedOptions
      */
+    #[DataProvider('provideEnabledConfigurableFixerUsesAllAvailableOptionsNotDeprecatedCases')]
     final public function testEnabledConfigurableFixerUsesAllAvailableOptionsNotDeprecated(string $name, array $goodOptions, array $deprecatedOptions): void
     {
         /** @var null|array<string, bool|list<string>|string>|bool $ruleConfiguration */
