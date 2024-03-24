@@ -5,6 +5,11 @@ All notable changes to this library will be documented in this file:
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v3.22.1](https://github.com/NexusPHP/cs-config/compare/v3.22.0...v3.22.1) - 2024-03-24
+
+- Allow phpunit v11
+- Remove deprecated option of `nullable_type_declaration_for_default_null_value`
+
 ## [v3.22.0](https://github.com/NexusPHP/cs-config/compare/v3.21.0...v3.22.0) - 2024-02-24
 
 - Bump to php-cs-fixer v3.50
