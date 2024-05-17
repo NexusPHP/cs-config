@@ -17,6 +17,7 @@ use Nexus\CsConfig\Ruleset\RulesetInterface;
 use PhpCsFixer\Config;
 use PhpCsFixer\ConfigInterface;
 use PhpCsFixer\Finder;
+use PhpCsFixer\Runner\Parallel\ParallelConfigFactory;
 
 /**
  * The Factory class is invoked on each project's `.php-cs-fixer.dist.php` to create
@@ -159,6 +160,7 @@ final class Factory
         $rules = array_merge($this->options['rules'], $overrides);
 
         return (new Config($this->ruleset->getName()))
+            ->setParallelConfig(ParallelConfigFactory::detect())
             ->registerCustomFixers($this->options['customFixers'])
             ->setCacheFile($this->options['cacheFile'])
             ->setFinder($this->options['finder'])
