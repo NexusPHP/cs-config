@@ -149,7 +149,6 @@ abstract class AbstractCustomFixerTestCase extends TestCase
     {
         $fixerName = $this->fixer->getName();
         $definition = $this->fixer->getDefinition();
-        $fixerIsConfigurable = $this->fixer instanceof ConfigurableFixerInterface;
 
         self::assertValidDescription($fixerName, 'summary', $definition->getSummary());
 
@@ -172,12 +171,20 @@ abstract class AbstractCustomFixerTestCase extends TestCase
             $config = $sample->getConfiguration();
 
             if (null !== $config) {
-                self::assertTrue($fixerIsConfigurable, sprintf('[%s] Sample #%d has configuration, but the fixer is not configurable.', $fixerName, $counter));
+                self::assertInstanceOf(
+                    ConfigurableFixerInterface::class,
+                    $this->fixer,
+                    sprintf('[%s] Sample #%d has configuration, but the fixer is not configurable.', $fixerName, $counter),
+                );
 
                 $configSamplesProvided[$counter] = $config;
-            } elseif ($fixerIsConfigurable) {
+            } elseif ($this->fixer instanceof ConfigurableFixerInterface) {
                 if (! $sample instanceof VersionSpecificCodeSampleInterface) {
-                    self::assertArrayNotHasKey('default', $configSamplesProvided, sprintf('[%s] Multiple non-versioned samples with default configuration.', $fixerName));
+                    self::assertArrayNotHasKey(
+                        'default',
+                        $configSamplesProvided,
+                        sprintf('[%s] Multiple non-versioned samples with default configuration.', $fixerName),
+                    );
                 }
 
                 $configSamplesProvided['default'] = true;
@@ -187,9 +194,9 @@ abstract class AbstractCustomFixerTestCase extends TestCase
                 continue;
             }
 
-            if ($fixerIsConfigurable) {
+            if ($this->fixer instanceof ConfigurableFixerInterface) {
                 // always re-configure as the fixer might have been configured with diff. configuration from previous sample
-                $this->fixer->configure(null === $config ? [] : $config);
+                $this->fixer->configure($config ?? []);
             }
 
             Tokens::clearCache();
@@ -214,7 +221,7 @@ abstract class AbstractCustomFixerTestCase extends TestCase
             );
         }
 
-        if ($fixerIsConfigurable) {
+        if ($this->fixer instanceof ConfigurableFixerInterface) {
             if (isset($configSamplesProvided['default'])) {
                 reset($configSamplesProvided);
                 self::assertSame('default', key($configSamplesProvided), sprintf('[%s] First sample must be for the default configuration.', $fixerName));
@@ -340,11 +347,11 @@ abstract class AbstractCustomFixerTestCase extends TestCase
     {
         self::assertCount($expectedTokens->count(), $inputTokens, 'Both Tokens collections should have the same size.');
 
-        /** @var Token $expectedToken */
         foreach ($expectedTokens as $index => $expectedToken) {
-            /** @var Token $inputToken */
             $inputToken = $inputTokens[$index];
 
+            self::assertInstanceOf(Token::class, $expectedToken, 'Expected token is null.');
+            self::assertInstanceOf(Token::class, $inputToken, 'Input token is null.');
             self::assertTrue(
                 $expectedToken->equals($inputToken),
                 sprintf("Token at index %d must be:\n%s,\ngot:\n%s.", $index, $expectedToken->toJson(), $inputToken->toJson()),
@@ -363,6 +370,10 @@ abstract class AbstractCustomFixerTestCase extends TestCase
 
     private static function assertCorrectCasing(string $needle, string $haystack, string $message): void
     {
-        self::assertSame(substr_count(strtolower($haystack), strtolower($needle)), substr_count($haystack, $needle), $message);
+        self::assertSame(
+            substr_count(strtolower($haystack), strtolower($needle)),
+            substr_count($haystack, $needle),
+            $message,
+        );
     }
 }
