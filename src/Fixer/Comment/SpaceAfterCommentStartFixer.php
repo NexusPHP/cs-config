@@ -79,7 +79,9 @@ final class SpaceAfterCommentStartFixer extends AbstractCustomFixer implements D
                 continue;
             }
 
-            preg_match('/^\/\/(\s*)(.+)/', $comment, $matches);
+            if (preg_match('/^\/\/(\s*)(.+)/', $comment, $matches) !== 1) {
+                continue;
+            }
 
             if (' ' === $matches[1]) {
                 continue;
