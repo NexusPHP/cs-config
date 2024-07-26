@@ -37,7 +37,7 @@ final class FactoryTest extends TestCase
         ;
 
         $this->expectException(\RuntimeException::class);
-        $this->expectExceptionMessage(sprintf(
+        $this->expectExceptionMessage(\sprintf(
             'The "%s" ruleset requires a minimum PHP_VERSION_ID of "%d" but current PHP_VERSION_ID is "%d".',
             $ruleset->getName(),
             $ruleset->getRequiredPHPVersion(),

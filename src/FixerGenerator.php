@@ -36,7 +36,7 @@ final class FixerGenerator implements \IteratorAggregate
         }
 
         if (! is_dir($path)) {
-            throw new \RuntimeException(sprintf('Path "%s" is not a valid directory.', $path));
+            throw new \RuntimeException(\sprintf('Path "%s" is not a valid directory.', $path));
         }
 
         if ('' === $vendor) {
@@ -44,7 +44,7 @@ final class FixerGenerator implements \IteratorAggregate
         }
 
         if (preg_match('/^[A-Z][a-zA-Z0-9\\\\]+$/', $vendor) !== 1) {
-            throw new \RuntimeException(sprintf('Vendor namespace "%s" is not valid.', $vendor));
+            throw new \RuntimeException(\sprintf('Vendor namespace "%s" is not valid.', $vendor));
         }
 
         return new self($path, $vendor);
@@ -65,7 +65,7 @@ final class FixerGenerator implements \IteratorAggregate
 
         $fixers = array_filter(array_map(
             function (SplFileInfo $file): object {
-                $fixer = sprintf(
+                $fixer = \sprintf(
                     '%s\\%s%s%s',
                     trim($this->vendor, '\\'),
                     strtr($file->getRelativePath(), \DIRECTORY_SEPARATOR, '\\'),

@@ -64,7 +64,7 @@ final class Factory
     public static function create(RulesetInterface $ruleset, array $overrides = [], array $options = []): self
     {
         if (\PHP_VERSION_ID < $ruleset->getRequiredPHPVersion()) {
-            throw new \RuntimeException(sprintf(
+            throw new \RuntimeException(\sprintf(
                 'The "%s" ruleset requires a minimum PHP_VERSION_ID of "%d" but current PHP_VERSION_ID is "%d".',
                 $ruleset->getName(),
                 $ruleset->getRequiredPHPVersion(),
@@ -115,7 +115,7 @@ final class Factory
             $email = ' <'.$email.'>';
         }
 
-        $header = sprintf(
+        $header = \sprintf(
             <<<'HEADER'
                 This file is part of %s.
 

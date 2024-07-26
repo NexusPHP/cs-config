@@ -41,7 +41,7 @@ final class FixerGeneratorTest extends TestCase
 
         yield 'path-not-dir' => ['foo', 'Nexus', 'Path "foo" is not a valid directory.'];
 
-        yield 'path-is-file' => [__FILE__, 'Nexus', sprintf('Path "%s" is not a valid directory.', __FILE__)];
+        yield 'path-is-file' => [__FILE__, 'Nexus', \sprintf('Path "%s" is not a valid directory.', __FILE__)];
 
         yield 'empty-vendor' => [__DIR__, '', 'Vendor namespace cannot be empty.'];
 
