@@ -5,6 +5,14 @@ All notable changes to this library will be documented in this file:
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v3.24.0](https://github.com/NexusPHP/cs-config/compare/v3.23.1...v3.24.0) - 2024-07-28
+
+- Fix phpstan error
+- Remove defunct branch alias
+- Add more files to .gitattributes
+- Apply changes from php-cs-fixer v3.60
+- Implement `FixerGenerator::mergeWith()`
+
 ## [v3.23.1](https://github.com/NexusPHP/cs-config/compare/v3.23.0...v3.23.1) - 2024-06-16
 
 - Refactor AbstractCustomFixerTestCase
