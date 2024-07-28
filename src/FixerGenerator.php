@@ -24,7 +24,15 @@ use Symfony\Component\Finder\SplFileInfo;
  */
 final class FixerGenerator implements \IteratorAggregate
 {
-    private function __construct(private string $path, private string $vendor) {}
+    /**
+     * @var list<\IteratorAggregate<FixerInterface>>
+     */
+    private array $fixerIterators = [];
+
+    private function __construct(
+        private string $path,
+        private string $vendor,
+    ) {}
 
     /**
      * @throws \RuntimeException
@@ -51,6 +59,18 @@ final class FixerGenerator implements \IteratorAggregate
     }
 
     /**
+     * Merge other iterators that yield `FixerInterface` custom fixers.
+     *
+     * @param \IteratorAggregate<FixerInterface> ...$fixerIterators
+     */
+    public function mergeWith(\IteratorAggregate ...$fixerIterators): self
+    {
+        $this->fixerIterators = array_values($fixerIterators);
+
+        return $this;
+    }
+
+    /**
      * @return \Traversable<FixerInterface>
      */
     public function getIterator(): \Traversable
@@ -63,7 +83,16 @@ final class FixerGenerator implements \IteratorAggregate
             ->sortByName()
         ;
 
-        $fixers = array_filter(array_map(
+        $otherFixers = [];
+
+        foreach ($this->fixerIterators as $fixerIterator) {
+            $otherFixers = array_merge(
+                $otherFixers,
+                iterator_to_array($fixerIterator->getIterator(), false),
+            );
+        }
+
+        $fixers = array_values(array_filter(array_map(
             function (SplFileInfo $file): object {
                 $fixer = \sprintf(
                     '%s\\%s%s%s',
@@ -76,8 +105,8 @@ final class FixerGenerator implements \IteratorAggregate
                 return new $fixer();
             },
             iterator_to_array($finder, false),
-        ), static fn(object $fixer): bool => $fixer instanceof FixerInterface);
+        ), static fn(object $fixer): bool => $fixer instanceof FixerInterface));
 
-        yield from $fixers;
+        yield from array_merge($fixers, $otherFixers);
     }
 }

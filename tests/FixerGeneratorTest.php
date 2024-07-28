@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace Nexus\CsConfig\Tests;
 
 use Nexus\CsConfig\FixerGenerator;
+use PhpCsFixer\Fixer\FixerInterface;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
@@ -52,5 +53,16 @@ final class FixerGeneratorTest extends TestCase
     {
         $generator = FixerGenerator::create('vendor/friendsofphp/php-cs-fixer/src/Fixer', 'PhpCsFixer\\Fixer');
         self::assertNotEmpty(iterator_to_array($generator));
+    }
+
+    public function testMergeWithJoinsIteratorsTogether(): void
+    {
+        $generator1 = FixerGenerator::create('src/Fixer', 'Nexus\\CsConfig\\Fixer');
+        $generator2 = FixerGenerator::create('vendor/friendsofphp/php-cs-fixer/src/Fixer', 'PhpCsFixer\\Fixer');
+
+        /** @var list<FixerInterface> $joinedGenerators */
+        $joinedGenerators = iterator_to_array($generator1->mergeWith($generator2)->getIterator(), false);
+        self::assertStringStartsWith('Nexus\\CsConfig\\Fixer', $joinedGenerators[0]::class);
+        self::assertStringStartsWith('PhpCsFixer\\Fixer', $joinedGenerators[\count($joinedGenerators) - 1]::class);
     }
 }
