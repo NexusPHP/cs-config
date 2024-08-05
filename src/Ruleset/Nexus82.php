@@ -386,6 +386,7 @@ final class Nexus82 extends AbstractRuleset
                 'null_adjustment' => 'always_first',
                 'case_sensitive' => false,
             ],
+            'php_unit_assert_new_names' => true,
             'php_unit_attributes' => [
                 'keep_annotations' => false,
             ],
