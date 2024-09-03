@@ -85,7 +85,7 @@ final class Nexus81 extends AbstractRuleset
             'class_definition' => [
                 'multi_line_extends_each_single_line' => true,
                 'single_item_single_line' => true,
-                'single_line' => true,
+                'single_line' => false,
                 'space_before_parenthesis' => true,
                 'inline_constructor_arguments' => true,
             ],
