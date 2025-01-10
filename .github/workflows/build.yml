@@ -21,7 +21,7 @@ on:
 jobs:
   main:
     name: Build [PHP ${{ matrix.php-version }}]
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
 
     strategy:
       fail-fast: false
@@ -92,7 +92,7 @@ jobs:
   coveralls-finish:
     name: Coveralls Finished
     needs: [main]
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
 
     steps:
       - name: Upload to Coveralls API
