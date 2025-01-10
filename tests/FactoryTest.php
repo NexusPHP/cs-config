@@ -85,7 +85,6 @@ final class FactoryTest extends TestCase
         self::assertFalse($config->getHideProgress());
         self::assertSame('    ', $config->getIndent());
         self::assertSame("\n", $config->getLineEnding());
-        self::assertNull($config->getPhpExecutable());
         self::assertFalse($config->getRiskyAllowed());
         self::assertTrue($config->getUsingCache());
     }
@@ -98,7 +97,6 @@ final class FactoryTest extends TestCase
             'hideProgress' => true,
             'indent' => "\t",
             'lineEnding' => "\r\n",
-            'phpExecutable' => PHP_BINARY,
             'usingCache' => false,
         ];
         $config = Factory::create($this->mockRuleset(), [], $options)->forProjects();
@@ -108,7 +106,6 @@ final class FactoryTest extends TestCase
         self::assertTrue($config->getHideProgress());
         self::assertSame($options['indent'], $config->getIndent());
         self::assertSame($options['lineEnding'], $config->getLineEnding());
-        self::assertSame($options['phpExecutable'], $config->getPhpExecutable());
         self::assertFalse($config->getUsingCache());
     }
 

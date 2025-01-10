@@ -150,7 +150,6 @@ containing your desired options.
 | hideProgress   | `bool`                                   | `false`                              |
 | indent         | `string`                                 | `'    '` // 4 spaces                 |
 | lineEnding     | `string`                                 | `"\n"`                               |
-| phpExecutable  | `null, string`                           | `null`                               |
 | isRiskyAllowed | `bool`                                   | `false`                              |
 | usingCache     | `bool`                                   | `true`                               |
 | customRules    | `array`                                  | `[]`                                 |
