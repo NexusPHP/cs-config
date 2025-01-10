@@ -550,14 +550,17 @@ final class Nexus82 extends AbstractRuleset
             ],
             'phpdoc_to_param_type' => [
                 'scalar_types' => true,
+                'types_map' => [],
                 'union_types' => true,
             ],
             'phpdoc_to_property_type' => [
                 'scalar_types' => true,
+                'types_map' => [],
                 'union_types' => true,
             ],
             'phpdoc_to_return_type' => [
                 'scalar_types' => true,
+                'types_map' => [],
                 'union_types' => true,
             ],
             'phpdoc_trim' => true,
