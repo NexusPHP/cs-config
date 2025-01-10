@@ -5,6 +5,22 @@ All notable changes to this library will be documented in this file:
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v3.25.0](https://github.com/NexusPHP/cs-config/compare/v3.24.3...v3.25.0) - 2025-01-10
+
+- Bump to php-cs-fixer v3.67
+- Add `types_map` option to `phpdoc_to_*` fixers
+- Add `general_attribute_remove` fixer
+- Bump to phpstan v2.1
+- Remove `phpExecutable` as `setPhpExecutable()` is now deprecated in upstream
+- Add PHP 8.4 to build
+- Add `@phpstan-ignore` to ignored tags in `comment_to_phpdoc`
+- Remove Nexus80 ruleset as PHP 8.0 is no longer supported
+- Add `Nexus83` and `Nexus84` rulesets
+- Make `Nexus82` depend on `Nexus81`'s rules
+- Use explicit `ubuntu-24.04` in actions
+- Add composer scripts
+- Fix errors in phpstan-baseline
+
 ## [v3.24.3](https://github.com/NexusPHP/cs-config/compare/v3.24.2...v3.24.3) - 2024-09-07
 
 - Add new PHPStan errors to baseline
