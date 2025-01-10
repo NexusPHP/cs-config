@@ -181,6 +181,7 @@ final class Nexus82 extends AbstractRuleset
                     'pi',
                 ],
             ],
+            'general_attribute_remove' => ['attributes' => []],
             'general_phpdoc_annotation_remove' => [
                 'annotations' => [
                     'package',
