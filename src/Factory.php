@@ -27,13 +27,13 @@ final class Factory
 {
     /**
      * @param array{
-     *     cacheFile: string,
+     *     cacheFile: non-empty-string,
      *     customFixers: iterable<\PhpCsFixer\Fixer\FixerInterface>,
      *     finder: \PhpCsFixer\Finder|iterable<\SplFileInfo>,
      *     format: string,
      *     hideProgress: bool,
-     *     indent: string,
-     *     lineEnding: string,
+     *     indent: non-empty-string,
+     *     lineEnding: non-empty-string,
      *     phpExecutable: null|string,
      *     isRiskyAllowed: bool,
      *     usingCache: bool,
@@ -48,13 +48,13 @@ final class Factory
      *
      * @param array<string, array<string, mixed>|bool> $overrides
      * @param array{
-     *     cacheFile?: string,
+     *     cacheFile?: non-empty-string,
      *     customFixers?: iterable<\PhpCsFixer\Fixer\FixerInterface>,
      *     finder?: \PhpCsFixer\Finder|iterable<\SplFileInfo>,
      *     format?: string,
      *     hideProgress?: bool,
-     *     indent?: string,
-     *     lineEnding?: string,
+     *     indent?: non-empty-string,
+     *     lineEnding?: non-empty-string,
      *     phpExecutable?: null|string,
      *     isRiskyAllowed?: bool,
      *     usingCache?: bool,
