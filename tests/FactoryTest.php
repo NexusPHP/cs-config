@@ -14,7 +14,7 @@ declare(strict_types=1);
 namespace Nexus\CsConfig\Tests;
 
 use Nexus\CsConfig\Factory;
-use Nexus\CsConfig\Ruleset\Nexus80;
+use Nexus\CsConfig\Ruleset\Nexus81;
 use Nexus\CsConfig\Ruleset\RulesetInterface;
 use PhpCsFixer\Config;
 use PhpCsFixer\Finder;
@@ -65,10 +65,10 @@ final class FactoryTest extends TestCase
 
     public function testFactoryAllowsOverrideOfRules(): void
     {
-        $config = Factory::create(new Nexus80())->forProjects();
+        $config = Factory::create(new Nexus81())->forProjects();
         self::assertIsArray($config->getRules()['binary_operator_spaces']);
 
-        $config = Factory::create(new Nexus80(), [
+        $config = Factory::create(new Nexus81(), [
             'binary_operator_spaces' => false,
         ])->forProjects();
         self::assertFalse($config->getRules()['binary_operator_spaces']);
