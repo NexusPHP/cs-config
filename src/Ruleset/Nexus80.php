@@ -101,6 +101,7 @@ final class Nexus80 extends AbstractRuleset
                     'codeCoverageIgnore',
                     'codeCoverageIgnoreStart',
                     'codeCoverageIgnoreEnd',
+                    'phpstan-ignore',
                     'phpstan-ignore-line',
                     'phpstan-ignore-next-line',
                 ],
