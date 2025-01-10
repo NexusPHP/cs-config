@@ -49,5 +49,25 @@
         "optimize-autoloader": true,
         "preferred-install": "dist",
         "sort-packages": true
+    },
+    "scripts": {
+        "cs:check": "php-cs-fixer check --ansi --verbose --diff",
+        "cs:fix": "php-cs-fixer fix --ansi --verbose --diff",
+        "phpstan:baseline": "phpstan analyse --ansi --verbose --generate-baseline=phpstan-baseline.php",
+        "phpstan:check": "phpstan analyse --ansi --verbose",
+        "test:all": [
+            "@cs:check",
+            "@phpstan:check",
+            "@test:unit"
+        ],
+        "test:unit": "phpunit --colors=always"
+    },
+    "scripts-descriptions": {
+        "cs:check": "Checks for coding style violations",
+        "cs:fix": "Fixes any coding style violations",
+        "phpstan:baseline": "Runs PHPStan and dumps resulting errors to baseline",
+        "phpstan:check": "Runs PHPStan with identifiers support",
+        "test:all": "Runs all tests",
+        "test:unit": "Runs all PHPUnit tests"
     }
 }
