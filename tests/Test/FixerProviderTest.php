@@ -48,6 +48,9 @@ final class FixerProviderTest extends TestCase
         self::assertNotInstanceOf(DeprecatedFixerInterface::class, $fixer);
     }
 
+    /**
+     * @return iterable<string, array{FixerInterface}>
+     */
     public static function provideCreateMethodGivesNoDeprecatedBuiltInFixersCases(): iterable
     {
         $builtin = FixerProvider::create(new Nexus81())->builtin();

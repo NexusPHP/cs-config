@@ -33,6 +33,9 @@ final class NoCodeSeparatorCommentFixerTest extends AbstractCustomFixerTestCase
         $this->doTest($expected, $input);
     }
 
+    /**
+     * @return iterable<int, list<string>>
+     */
     public static function provideFixCases(): iterable
     {
         yield [

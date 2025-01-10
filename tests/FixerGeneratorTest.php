@@ -52,7 +52,7 @@ final class FixerGeneratorTest extends TestCase
     public function testTraversableReturnedAreInstancesOfFixerInterface(): void
     {
         $generator = FixerGenerator::create('vendor/friendsofphp/php-cs-fixer/src/Fixer', 'PhpCsFixer\\Fixer');
-        self::assertNotEmpty(iterator_to_array($generator));
+        self::assertContainsOnlyInstancesOf(FixerInterface::class, $generator);
     }
 
     public function testMergeWithJoinsIteratorsTogether(): void

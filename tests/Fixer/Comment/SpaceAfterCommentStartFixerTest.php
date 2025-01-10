@@ -33,6 +33,9 @@ final class SpaceAfterCommentStartFixerTest extends AbstractCustomFixerTestCase
         $this->doTest($expected, $input);
     }
 
+    /**
+     * @return iterable<string, list<string>>
+     */
     public static function provideFixCases(): iterable
     {
         yield 'not-simple-comment' => [
