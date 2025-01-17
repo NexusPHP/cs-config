@@ -232,7 +232,7 @@ final class Nexus81 extends AbstractRuleset
                 'attribute_placement' => 'standalone',
             ],
             'method_chaining_indentation' => true,
-            'modernize_strpos' => true,
+            'modernize_strpos' => ['modernize_stripos' => true],
             'modernize_types_casting' => true,
             'multiline_comment_opening_closing' => true,
             'multiline_string_to_heredoc' => true,
