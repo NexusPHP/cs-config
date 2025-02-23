@@ -1,7 +1,7 @@
 # Nexus CS Config
 
 [![PHP version](https://img.shields.io/packagist/php-v/nexusphp/cs-config)](https://php.net)
-![build](https://github.com/NexusPHP/cs-config/workflows/build/badge.svg?branch=develop)
+[![build](https://github.com/NexusPHP/cs-config/actions/workflows/build.yml/badge.svg)](https://github.com/NexusPHP/cs-config/actions/workflows/build.yml)
 [![Coverage Status](https://coveralls.io/repos/github/NexusPHP/cs-config/badge.svg?branch=develop)](https://coveralls.io/github/NexusPHP/cs-config?branch=develop)
 [![Latest Stable Version](https://poser.pugx.org/nexusphp/cs-config/v)](//packagist.org/packages/nexusphp/cs-config)
 [![license MIT](https://img.shields.io/github/license/nexusphp/cs-config)](LICENSE)
