@@ -5,6 +5,10 @@ All notable changes to this library will be documented in this file:
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v3.25.2](https://github.com/NexusPHP/cs-config/compare/v3.25.1...v3.25.2) - 2025-02-23
+
+- Add `php_unit_data_provider_method_order` fixer
+
 ## [v3.25.1](https://github.com/NexusPHP/cs-config/compare/v3.25.0...v3.25.1) - 2025-01-17
 
 - Enable `modernize_stripos` option to `modernize_strpos` fixer
