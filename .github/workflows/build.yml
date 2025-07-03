@@ -1,5 +1,8 @@
 name: build
 
+permissions:
+  contents: read
+
 on:
   schedule:
     - cron: '0 0 * * *'
@@ -92,6 +95,8 @@ jobs:
   coveralls-finish:
     name: Coveralls Finished
     needs: [main]
+    permissions:
+      actions: write
     runs-on: ubuntu-24.04
 
     steps:
