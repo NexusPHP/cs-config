@@ -18,7 +18,6 @@ use PhpCsFixer\Fixer\ConfigurableFixerInterface;
 use PhpCsFixer\Fixer\FixerInterface;
 use PhpCsFixer\FixerConfiguration\DeprecatedFixerOptionInterface;
 use PhpCsFixer\FixerConfiguration\FixerOptionInterface;
-use PhpCsFixer\Preg;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
@@ -149,7 +148,7 @@ abstract class AbstractRulesetTestCase extends TestCase
 
         if (false === $ruleConfiguration) {
             // fixer is turned off
-            $this->addToAssertionCount(1);
+            $this->expectNotToPerformAssertions();
 
             return;
         }
@@ -222,7 +221,7 @@ abstract class AbstractRulesetTestCase extends TestCase
     protected static function createRuleset(): RulesetInterface
     {
         /** @phpstan-var class-string<RulesetInterface> $className */
-        $className = Preg::replace('/^(Nexus\\\\CsConfig)\\\\Tests(\\\\.+)Test$/', '$1$2', static::class);
+        $className = preg_replace('/^(Nexus\\\\CsConfig)\\\\Tests(\\\\.+)Test$/', '$1$2', static::class);
 
         return new $className();
     }
