@@ -687,6 +687,7 @@ final class Nexus81 extends AbstractRuleset
             'standardize_not_equals' => true,
             'statement_indentation' => ['stick_comment_to_next_continuous_control_statement' => true],
             'static_lambda' => true,
+            'static_private_method' => true,
             'strict_comparison' => true,
             'strict_param' => true,
             'string_implicit_backslashes' => [
