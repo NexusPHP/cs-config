@@ -16,6 +16,9 @@ namespace Nexus\CsConfig\Fixer;
 use PhpCsFixer\AbstractFixer;
 use PhpCsFixer\Utils;
 
+/**
+ * @deprecated v3.26.0
+ */
 abstract class AbstractCustomFixer extends AbstractFixer
 {
     /**

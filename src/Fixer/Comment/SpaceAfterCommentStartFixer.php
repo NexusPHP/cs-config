@@ -24,7 +24,7 @@ use PhpCsFixer\Tokenizer\Tokens;
 /**
  * Simple comments should have one space after the `//`.
  *
- * @deprecated
+ * @deprecated v3.26.0
  */
 final class SpaceAfterCommentStartFixer extends AbstractCustomFixer implements DeprecatedFixerInterface
 {

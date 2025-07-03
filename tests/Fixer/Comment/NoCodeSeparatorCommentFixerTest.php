@@ -21,6 +21,8 @@ use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * @internal
+ *
+ * @deprecated v3.26.0
  */
 #[CoversClass(AbstractCustomFixer::class)]
 #[CoversClass(NoCodeSeparatorCommentFixer::class)]

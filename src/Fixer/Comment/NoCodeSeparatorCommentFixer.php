@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace Nexus\CsConfig\Fixer\Comment;
 
 use Nexus\CsConfig\Fixer\AbstractCustomFixer;
+use PhpCsFixer\Fixer\DeprecatedFixerInterface;
 use PhpCsFixer\FixerDefinition\CodeSample;
 use PhpCsFixer\FixerDefinition\FixerDefinition;
 use PhpCsFixer\FixerDefinition\FixerDefinitionInterface;
@@ -22,8 +23,10 @@ use PhpCsFixer\Tokenizer\Tokens;
 
 /**
  * Removes code separator comments except when used as section boundary.
+ *
+ * @deprecated v3.26.0
  */
-final class NoCodeSeparatorCommentFixer extends AbstractCustomFixer
+final class NoCodeSeparatorCommentFixer extends AbstractCustomFixer implements DeprecatedFixerInterface
 {
     public function getDefinition(): FixerDefinitionInterface
     {
@@ -47,6 +50,11 @@ final class NoCodeSeparatorCommentFixer extends AbstractCustomFixer
     public function isCandidate(Tokens $tokens): bool
     {
         return $tokens->isTokenKindFound(T_COMMENT);
+    }
+
+    public function getSuccessorsNames(): array
+    {
+        return [];
     }
 
     /**

@@ -8,6 +8,11 @@ parameters:
   paths:
     - src
     - tests
+  excludePaths:
+    analyseAndScan:
+      - src/Fixer
+      - src/Test/AbstractCustomFixerTestCase.php
+      - tests/Fixer
   bootstrapFiles:
     - vendor/autoload.php
   additionalConstructors:

@@ -37,6 +37,8 @@ use PHPUnit\Framework\TestCase;
  *
  * @author Dariusz Rumiński <dariusz.ruminski@gmail.com>
  * @author John Paul E. Balandan, CPA <paulbalandan@gmail.com>
+ *
+ * @deprecated v3.26.0
  */
 abstract class AbstractCustomFixerTestCase extends TestCase
 {
