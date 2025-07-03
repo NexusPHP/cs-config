@@ -1,5 +1,8 @@
 name: build
 
+permissions:
+  contents: read
+
 on:
   schedule:
     - cron: '0 0 * * *'
@@ -91,12 +94,3 @@ jobs:
 
   coveralls-finish:
     name: Coveralls Finished
-    needs: [main]
-    runs-on: ubuntu-24.04
-
-    steps:
-      - name: Upload to Coveralls API
-        uses: coverallsapp/github-action@master
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          parallel-finished: true
