@@ -235,6 +235,10 @@ final class Nexus81 extends AbstractRuleset
             'modernize_strpos' => ['modernize_stripos' => true],
             'modernize_types_casting' => true,
             'multiline_comment_opening_closing' => true,
+            'multiline_promoted_properties' => [
+                'keep_blank_lines' => false,
+                'minimum_number_of_parameters' => 1,
+            ],
             'multiline_string_to_heredoc' => true,
             'multiline_whitespace_before_semicolons' => ['strategy' => 'new_line_for_chained_calls'],
             'native_constant_invocation' => [
