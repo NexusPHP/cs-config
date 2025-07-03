@@ -261,6 +261,7 @@ final class Nexus81 extends AbstractRuleset
                 'strict' => true,
             ],
             'native_type_declaration_casing' => true,
+            'new_expression_parentheses' => ['use_parentheses' => true],
             'new_with_parentheses' => [
                 'named_class' => true,
                 'anonymous_class' => false,

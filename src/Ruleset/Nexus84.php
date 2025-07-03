@@ -23,7 +23,10 @@ final class Nexus84 extends AbstractRuleset
     public function __construct()
     {
         $this->name = 'Nexus for PHP 8.4';
-        $this->rules = (new Nexus83())->getRules();
+        $this->rules = [
+            ...(new Nexus83())->getRules(),
+            'new_expression_parentheses' => ['use_parentheses' => false],
+        ];
         $this->requiredPHPVersion = 8_04_01;
         $this->autoActivateIsRiskyAllowed = true;
     }
