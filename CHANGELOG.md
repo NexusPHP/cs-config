@@ -5,6 +5,21 @@ All notable changes to this library will be documented in this file:
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v3.26.0](https://github.com/NexusPHP/cs-config/compare/v3.25.2...v3.26.0) - 2025-07-04
+
+- Update build badge
+- Bump to php-cs-fixer v3.76
+- Add `multiline_promoted_properties`  fixer
+- Deprecate own fixers
+- Fix phpstan errors
+- Add `static_private_method` fixer
+- Add `new_expression_parentheses` fixer
+- Do not array unpack known arrays
+- Potential fix for code scanning alert no. 1: Workflow does not contain permissions (#6)
+- Potential fix for code scanning alert no. 2: Workflow does not contain permissions (#7)
+- Support allowUnsupportedPhpVersion option in fixer
+- Cleanup code
+
 ## [v3.25.2](https://github.com/NexusPHP/cs-config/compare/v3.25.1...v3.25.2) - 2025-02-23
 
 - Add `php_unit_data_provider_method_order` fixer
