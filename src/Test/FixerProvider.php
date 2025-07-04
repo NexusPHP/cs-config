@@ -51,7 +51,7 @@ final class FixerProvider
 
         $rules = $ruleset->getRules();
 
-        $configured = array_map(static function ($ruleConfiguration): bool {
+        $configured = array_map(static function (): bool {
             return true; // force enable all rules
         }, $rules);
 

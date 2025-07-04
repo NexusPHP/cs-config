@@ -74,20 +74,15 @@ final class Factory
             ));
         }
 
-        // Meant to be used in vendor/ to get to the root directory
-        $dir = \dirname(__DIR__, 4);
-        $dir = (string) realpath($dir);
-
-        $defaultFinder = Finder::create()
-            ->files()
-            ->in([$dir])
-            ->exclude(['build'])
-        ;
-
         // Resolve Config options
         $options['cacheFile'] ??= '.php-cs-fixer.cache';
         $options['customFixers'] ??= [];
-        $options['finder'] ??= $defaultFinder;
+        // Default finder meant to be used in vendor/ to get to the root directory
+        $options['finder'] ??= Finder::create()
+            ->files()
+            ->in([(string) realpath(\dirname(__DIR__, 4))])
+            ->exclude(['build'])
+        ;
         $options['format'] ??= 'txt';
         $options['hideProgress'] ??= false;
         $options['indent'] ??= '    ';

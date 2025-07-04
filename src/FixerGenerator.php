@@ -29,6 +29,10 @@ final class FixerGenerator implements \IteratorAggregate
      */
     private array $fixerIterators = [];
 
+    /**
+     * @param non-empty-string $path
+     * @param non-empty-string $vendor
+     */
     private function __construct(
         private string $path,
         private string $vendor,
