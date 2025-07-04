@@ -70,15 +70,13 @@ jobs:
 
       - name: Run PHP-CS-Fixer
         run: composer cs:check
-        env:
-          PHP_CS_FIXER_IGNORE_ENV: ${{ matrix.php-version == '8.4' && '1' || '0' }}
 
       - name: Run PHPStan Static Analysis Check
         run: composer phpstan:check
         env:
           XDEBUG_MODE: 'off'
 
-      - name: Run Nexus CS Config TestSuite
+      - name: Run Nexus CS Config Test Suite
         run: composer test:unit
         env:
           TACHYCARDIA_MONITOR_GA: enabled

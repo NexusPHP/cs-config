@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace Nexus\CsConfig;
 
+use Nexus\CsConfig\Ruleset\ConfigurableAllowedUnsupportedPhpVersionRulesetInterface;
 use Nexus\CsConfig\Ruleset\RulesetInterface;
 use PhpCsFixer\Config;
 use PhpCsFixer\ConfigInterface;
@@ -152,14 +153,11 @@ final class Factory
      * The main method of creating the Config instance.
      *
      * @param array<string, array<string, mixed>|bool> $overrides
-     *
-     * @internal
      */
     private function invoke(array $overrides = []): ConfigInterface
     {
-        $rules = array_merge($this->options['rules'], $overrides);
-
-        return (new Config($this->ruleset->getName()))
+        /** @var Config $config */
+        $config = (new Config($this->ruleset->getName()))
             ->setParallelConfig(ParallelConfigFactory::detect())
             ->registerCustomFixers($this->options['customFixers'])
             ->setCacheFile($this->options['cacheFile'])
@@ -170,7 +168,16 @@ final class Factory
             ->setLineEnding($this->options['lineEnding'])
             ->setRiskyAllowed($this->options['isRiskyAllowed'])
             ->setUsingCache($this->options['usingCache'])
-            ->setRules($rules)
+            ->setRules([...$this->options['rules'], ...$overrides])
         ;
+
+        // @todo v4.0.0 Cleanup
+        if ($this->ruleset instanceof ConfigurableAllowedUnsupportedPhpVersionRulesetInterface) {
+            $config = $config->setUnsupportedPhpVersionAllowed(
+                $this->ruleset->isUnsupportedPhpVersionAllowed(),
+            );
+        }
+
+        return $config;
     }
 }
