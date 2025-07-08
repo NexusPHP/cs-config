@@ -19,6 +19,11 @@ namespace Nexus\CsConfig\Ruleset;
 interface ConfigurableAllowedUnsupportedPhpVersionRulesetInterface extends RulesetInterface
 {
     /**
+     * @internal
+     */
+    public const PHP_CS_FIXER_MAX_SUPPORTED_PHP_VERSION_ID = 8_04_99;
+
+    /**
      * Returns whether this ruleset allows unsupported PHP versions.
      *
      * If this returns `true`, the PHP-CS-Fixer will not throw an error
