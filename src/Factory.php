@@ -18,6 +18,7 @@ use Nexus\CsConfig\Ruleset\RulesetInterface;
 use PhpCsFixer\Config;
 use PhpCsFixer\ConfigInterface;
 use PhpCsFixer\Finder;
+use PhpCsFixer\Fixer\FixerInterface;
 use PhpCsFixer\Runner\Parallel\ParallelConfigFactory;
 
 /**
@@ -29,8 +30,8 @@ final class Factory
     /**
      * @param array{
      *     cacheFile: non-empty-string,
-     *     customFixers: iterable<\PhpCsFixer\Fixer\FixerInterface>,
-     *     finder: \PhpCsFixer\Finder|iterable<\SplFileInfo>,
+     *     customFixers: iterable<FixerInterface>,
+     *     finder: Finder|iterable<\SplFileInfo>,
      *     format: string,
      *     hideProgress: bool,
      *     indent: non-empty-string,
@@ -52,8 +53,8 @@ final class Factory
      * @param array<string, array<string, mixed>|bool> $overrides
      * @param array{
      *     cacheFile?: non-empty-string,
-     *     customFixers?: iterable<\PhpCsFixer\Fixer\FixerInterface>,
-     *     finder?: \PhpCsFixer\Finder|iterable<\SplFileInfo>,
+     *     customFixers?: iterable<FixerInterface>,
+     *     finder?: Finder|iterable<\SplFileInfo>,
      *     format?: string,
      *     hideProgress?: bool,
      *     indent?: non-empty-string,
