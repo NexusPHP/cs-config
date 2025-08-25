@@ -5,6 +5,13 @@ All notable changes to this library will be documented in this file:
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v3.26.3](https://github.com/NexusPHP/cs-config/compare/v3.26.2...v3.26.3) - 2025-08-25
+
+- Fix code style
+- Remove phpstan-ignore
+- Bump actions/checkout from 4 to 5 (#8)
+- Disable `phpdoc_annotation_without_dot`
+
 ## [v3.26.2](https://github.com/NexusPHP/cs-config/compare/v3.26.1...v3.26.2) - 2025-07-15
 
 - Bump to php-cs-fixer v3.84
