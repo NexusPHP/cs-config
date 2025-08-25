@@ -464,7 +464,7 @@ final class Nexus81 extends AbstractRuleset
                     'var',
                 ],
             ],
-            'phpdoc_annotation_without_dot' => true,
+            'phpdoc_annotation_without_dot' => false,
             'phpdoc_array_type' => true,
             'phpdoc_indent' => true,
             'phpdoc_inline_tag_normalizer' => [
