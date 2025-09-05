@@ -554,6 +554,7 @@ final class Nexus81 extends AbstractRuleset
             'phpdoc_single_line_var_spacing' => true,
             'phpdoc_summary' => true,
             'phpdoc_tag_casing' => ['tags' => ['inheritDoc']],
+            'phpdoc_tag_no_named_arguments' => false,
             'phpdoc_tag_type' => ['tags' => ['inheritDoc' => 'inline']],
             'phpdoc_to_comment' => [
                 'allow_before_return_statement' => true,
