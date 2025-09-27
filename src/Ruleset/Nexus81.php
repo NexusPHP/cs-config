@@ -490,10 +490,11 @@ final class Nexus81 extends AbstractRuleset
             'phpdoc_no_access' => true,
             'phpdoc_no_alias_tag' => [
                 'replacements' => [
+                    'const' => 'var',
+                    'link' => 'see',
                     'property-read' => 'property',
                     'property-write' => 'property',
                     'type' => 'var',
-                    'link' => 'see',
                 ],
             ],
             'phpdoc_no_empty_return' => false,
