@@ -16,7 +16,9 @@ namespace Nexus\CsConfig;
 use Nexus\CsConfig\Ruleset\ConfigurableAllowedUnsupportedPhpVersionRulesetInterface;
 use Nexus\CsConfig\Ruleset\RulesetInterface;
 use PhpCsFixer\Config;
+use PhpCsFixer\Config\RuleCustomisationPolicyInterface;
 use PhpCsFixer\ConfigInterface;
+use PhpCsFixer\Console\Application;
 use PhpCsFixer\Finder;
 use PhpCsFixer\Fixer\FixerInterface;
 use PhpCsFixer\Runner\Parallel\ParallelConfigFactory;
@@ -38,6 +40,7 @@ final class Factory
      *     lineEnding: non-empty-string,
      *     isRiskyAllowed: bool,
      *     usingCache: bool,
+     *     ruleCustomisers: null|RuleCustomisationPolicyInterface,
      *     rules: array<string, array<string, mixed>|bool>
      * } $options Array of resolved options
      */
@@ -61,6 +64,7 @@ final class Factory
      *     lineEnding?: non-empty-string,
      *     isRiskyAllowed?: bool,
      *     usingCache?: bool,
+     *     ruleCustomisers?: null|RuleCustomisationPolicyInterface,
      *     customRules?: array<string, array<string, mixed>|bool>
      * } $options
      */
@@ -90,6 +94,7 @@ final class Factory
         $options['lineEnding'] ??= "\n";
         $options['isRiskyAllowed'] ??= $ruleset->willAutoActivateIsRiskyAllowed();
         $options['usingCache'] ??= true;
+        $options['ruleCustomisers'] ??= null;
         $options['rules'] = array_merge($ruleset->getRules(), $overrides, $options['customRules'] ?? []);
 
         return new self($ruleset, $options);
@@ -169,9 +174,16 @@ final class Factory
 
         // @todo v4.0.0 Cleanup
         if ($this->ruleset instanceof ConfigurableAllowedUnsupportedPhpVersionRulesetInterface) {
+            /** @var Config $config */
             $config = $config->setUnsupportedPhpVersionAllowed(
                 $this->ruleset->isUnsupportedPhpVersionAllowed(),
             );
+        }
+
+        // @todo v4.0.0 Cleanup
+        if (version_compare(Application::VERSION, '3.92.0', '>=')) {
+            /** @var Config $config */
+            $config = $config->setRuleCustomisationPolicy($this->options['ruleCustomisers']);
         }
 
         return $config;

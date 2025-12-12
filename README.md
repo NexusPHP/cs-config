@@ -153,6 +153,7 @@ containing your desired options.
 | isRiskyAllowed | `bool`                                   | `false`                              |
 | usingCache     | `bool`                                   | `true`                               |
 | customRules    | `array`                                  | `[]`                                 |
+| ruleCustomisers | `RuleCustomisationPolicyInterface` or `null` | `null`                            |
 
 ```diff
  <?php

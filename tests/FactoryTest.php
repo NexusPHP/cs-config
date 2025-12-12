@@ -17,6 +17,7 @@ use Nexus\CsConfig\Factory;
 use Nexus\CsConfig\Ruleset\Nexus81;
 use Nexus\CsConfig\Ruleset\RulesetInterface;
 use PhpCsFixer\Config;
+use PhpCsFixer\Config\RuleCustomisationPolicyInterface;
 use PhpCsFixer\Finder;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\MockObject\MockObject;
@@ -91,6 +92,9 @@ final class FactoryTest extends TestCase
 
     public function testFactoryConsumesPassedOptionsToIt(): void
     {
+        $stub = self::createStub(RuleCustomisationPolicyInterface::class);
+        $stub->method('getPolicyVersionForCache')->willReturn('v1');
+
         $options = [
             'cacheFile' => __DIR__.'/../../build/.php-cs-fixer.cache',
             'format' => 'junit',
@@ -98,7 +102,9 @@ final class FactoryTest extends TestCase
             'indent' => "\t",
             'lineEnding' => "\r\n",
             'usingCache' => false,
+            'ruleCustomisers' => $stub,
         ];
+        /** @var Config $config */
         $config = Factory::create($this->mockRuleset(), [], $options)->forProjects();
 
         self::assertSame($options['cacheFile'], $config->getCacheFile());
@@ -107,6 +113,7 @@ final class FactoryTest extends TestCase
         self::assertSame($options['indent'], $config->getIndent());
         self::assertSame($options['lineEnding'], $config->getLineEnding());
         self::assertFalse($config->getUsingCache());
+        self::assertSame($stub, $config->getRuleCustomisationPolicy());
     }
 
     public function testCreateForLibraryCreatesPreformattedLicense(): void
