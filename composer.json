@@ -17,7 +17,7 @@
     "require": {
         "php": "^8.1",
         "ext-tokenizer": "*",
-        "friendsofphp/php-cs-fixer": "^3.84"
+        "friendsofphp/php-cs-fixer": "^3.92"
     },
     "require-dev": {
         "nexusphp/tachycardia": "^2.1",

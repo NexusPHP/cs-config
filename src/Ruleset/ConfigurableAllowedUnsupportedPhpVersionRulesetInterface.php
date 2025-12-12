@@ -21,7 +21,7 @@ interface ConfigurableAllowedUnsupportedPhpVersionRulesetInterface extends Rules
     /**
      * @internal
      */
-    public const PHP_CS_FIXER_MAX_SUPPORTED_PHP_VERSION_ID = 8_04_99;
+    public const PHP_CS_FIXER_MAX_SUPPORTED_PHP_VERSION_ID = 8_05_99;
 
     /**
      * Returns whether this ruleset allows unsupported PHP versions.

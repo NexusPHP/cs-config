@@ -23,7 +23,15 @@ final class Nexus83 extends AbstractRuleset
     public function __construct()
     {
         $this->name = 'Nexus for PHP 8.3';
-        $this->rules = (new Nexus82())->getRules();
+        $this->rules = [
+            ...(new Nexus82())->getRules(),
+            'phpdoc_readonly_class_comment_to_keyword' => true,
+            'php_unit_test_case_static_method_calls' => [
+                'call_type' => 'self',
+                'methods' => [],
+                'target' => 'newest',
+            ],
+        ];
         $this->requiredPHPVersion = 8_03_00;
         $this->autoActivateIsRiskyAllowed = true;
     }
