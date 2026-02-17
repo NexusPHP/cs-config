@@ -727,7 +727,7 @@ final class Nexus81 extends AbstractRuleset
             'types_spaces' => ['space' => 'none', 'space_multiple_catch' => null],
             'unary_operator_spaces' => ['only_dec_inc' => false],
             'use_arrow_functions' => true,
-            'void_return' => true,
+            'void_return' => ['fix_lambda' => true],
             'whitespace_after_comma_in_array' => ['ensure_single_space' => true],
             'yield_from_array_to_yields' => true,
             'yoda_style' => [
