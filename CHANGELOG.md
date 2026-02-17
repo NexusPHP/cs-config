@@ -5,6 +5,17 @@ All notable changes to this library will be documented in this file:
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v3.28.0](https://github.com/NexusPHP/cs-config/compare/v3.27.0...v3.28.0) - 2026-02-17
+
+- Bump actions/checkout from 5 to 6 (#9)
+- Bump actions/cache from 4 to 5 (#10)
+- Add new fixers of php-cs-fixer v3.93
+- Bump to php-cs-fixer v3.94
+- Add more options to `phpdoc_line_span`
+- Enable `fix_lambda` option in `void_return`
+- Bump to PHP 8.2
+- Bump tachycardia to v2.4
+
 ## [v3.27.0](https://github.com/NexusPHP/cs-config/compare/v3.26.4...v3.27.0) - 2025-12-12
 
 - Add `preserve_existing_declaration` option to `declare_strict_types`
