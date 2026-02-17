@@ -486,9 +486,13 @@ final class Nexus81 extends AbstractRuleset
                 ],
             ],
             'phpdoc_line_span' => [
+                'case' => 'multi',
+                'class' => 'multi',
                 'const' => 'multi',
                 'method' => 'multi',
+                'other' => 'single',
                 'property' => 'multi',
+                'trait_import' => 'multi',
             ],
             'phpdoc_list_type' => true,
             'phpdoc_no_access' => true,
