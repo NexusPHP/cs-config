@@ -16,6 +16,8 @@ namespace Nexus\CsConfig\Ruleset;
 /**
  * Ruleset for `Nexus` group.
  *
+ * @deprecated v3.28.0 Minimum version is now at PHP 8.2
+ *
  * @internal
  */
 final class Nexus81 extends AbstractRuleset

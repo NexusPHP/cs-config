@@ -15,7 +15,7 @@
         "slack": "https://nexusphp.slack.com"
     },
     "require": {
-        "php": "^8.1",
+        "php": "^8.2",
         "ext-tokenizer": "*",
         "friendsofphp/php-cs-fixer": "^3.94"
     },
@@ -25,10 +25,7 @@
         "phpstan/phpstan": "^2.1",
         "phpstan/phpstan-phpunit": "^2.0",
         "phpstan/phpstan-strict-rules": "^2.0",
-        "phpunit/phpunit": "^10.5 || ^11.0"
-    },
-    "conflict": {
-        "liaison/cs-config": "*"
+        "phpunit/phpunit": "^11.5 || ^12.5"
     },
     "minimum-stability": "dev",
     "prefer-stable": true,

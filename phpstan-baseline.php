@@ -8,7 +8,7 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/src/Factory.php',
 ];
 $ignoreErrors[] = [
-	'rawMessage' => 'Comparison operation ">" between int<80100, 80599> and 80599 is always false.',
+	'rawMessage' => 'Comparison operation ">" between int<80200, 80599> and 80599 is always false.',
 	'identifier' => 'greater.alwaysFalse',
 	'count' => 1,
 	'path' => __DIR__ . '/src/Ruleset/AbstractRuleset.php',

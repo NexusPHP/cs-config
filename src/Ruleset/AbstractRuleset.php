@@ -30,9 +30,9 @@ abstract class AbstractRuleset implements ConfigurableAllowedUnsupportedPhpVersi
     /**
      * Minimum PHP version.
      *
-     * @var int<70400, 90000>
+     * @var int<80100, 90000>
      */
-    protected int $requiredPHPVersion = 7_04_00;
+    protected int $requiredPHPVersion = 8_01_00;
 
     /**
      * Have this ruleset turn on `$isRiskyAllowed` flag?

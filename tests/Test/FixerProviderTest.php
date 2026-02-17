@@ -13,7 +13,7 @@ declare(strict_types=1);
 
 namespace Nexus\CsConfig\Tests\Test;
 
-use Nexus\CsConfig\Ruleset\Nexus81;
+use Nexus\CsConfig\Ruleset\Nexus82;
 use Nexus\CsConfig\Ruleset\RulesetInterface;
 use Nexus\CsConfig\Test\FixerProvider;
 use PhpCsFixer\Fixer\DeprecatedFixerInterface;
@@ -53,7 +53,7 @@ final class FixerProviderTest extends TestCase
      */
     public static function provideCreateMethodGivesNoDeprecatedBuiltInFixersCases(): iterable
     {
-        $builtin = FixerProvider::create(new Nexus81())->builtin();
+        $builtin = FixerProvider::create(new Nexus82())->builtin();
         ksort($builtin, SORT_REGULAR);
 
         foreach ($builtin as $name => $fixer) {
@@ -72,11 +72,11 @@ final class FixerProviderTest extends TestCase
 
     public function testCreateMethodGivesConfiguredRulesAllEnabled(): void
     {
-        $provider = FixerProvider::create(new Nexus81());
+        $provider = FixerProvider::create(new Nexus82());
         $configured = $provider->configured();
         $builtin = $provider->builtin();
         $enabled = array_filter(
-            (new Nexus81())->getRules(),
+            (new Nexus82())->getRules(),
             static fn(mixed $value): bool => false !== $value,
         );
 
@@ -86,8 +86,8 @@ final class FixerProviderTest extends TestCase
 
     public function testEnabledMethodPassesSameRulesAsCallingRulesetRulesDirectly(): void
     {
-        $enabledByProvider = FixerProvider::create(new Nexus81())->enabled();
-        $enabledByRuleset = (new Nexus81())->getRules();
+        $enabledByProvider = FixerProvider::create(new Nexus82())->enabled();
+        $enabledByRuleset = (new Nexus82())->getRules();
 
         self::assertSame($enabledByRuleset, $enabledByProvider);
     }
