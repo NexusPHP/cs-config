@@ -20,7 +20,7 @@ use PhpCsFixer\Fixer\DeprecatedFixerInterface;
 use PhpCsFixer\Fixer\FixerInterface;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
-use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -36,8 +36,8 @@ final class FixerProviderTest extends TestCase
 
     public function testCreateMethodCreatesSameBuiltInFixers(): void
     {
-        $fixerProvider1 = FixerProvider::create($this->mockRuleset());
-        $fixerProvider2 = FixerProvider::create($this->mockRuleset());
+        $fixerProvider1 = FixerProvider::create(self::mockRuleset());
+        $fixerProvider2 = FixerProvider::create(self::mockRuleset());
 
         self::assertSame($fixerProvider1->builtin(), $fixerProvider2->builtin());
     }
@@ -63,7 +63,7 @@ final class FixerProviderTest extends TestCase
 
     public function testResetReallyResetsBuiltIn(): void
     {
-        $provider = FixerProvider::create($this->mockRuleset());
+        $provider = FixerProvider::create(self::mockRuleset());
         self::assertNotEmpty($provider->builtin());
 
         FixerProvider::reset();
@@ -92,8 +92,8 @@ final class FixerProviderTest extends TestCase
         self::assertSame($enabledByRuleset, $enabledByProvider);
     }
 
-    private function mockRuleset(): MockObject&RulesetInterface
+    private static function mockRuleset(): RulesetInterface&Stub
     {
-        return $this->createMock(RulesetInterface::class);
+        return self::createStub(RulesetInterface::class);
     }
 }

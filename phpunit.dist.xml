@@ -6,6 +6,7 @@
          colors="true"
          columns="max"
          beStrictAboutOutputDuringTests="true"
+         displayDetailsOnAllIssues="true"
          executionOrder="random"
          failOnRisky="true"
          failOnWarning="true"

@@ -20,7 +20,7 @@ use PhpCsFixer\Config;
 use PhpCsFixer\Config\RuleCustomisationPolicyInterface;
 use PhpCsFixer\Finder;
 use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -31,7 +31,7 @@ final class FactoryTest extends TestCase
 {
     public function testFactoryThrowsExceptionOnIncompatibleVersionId(): void
     {
-        $ruleset = $this->mockRuleset();
+        $ruleset = self::mockRuleset();
         $ruleset
             ->method('getRequiredPHPVersion')
             ->willReturn(\PHP_VERSION_ID + 2)
@@ -49,16 +49,16 @@ final class FactoryTest extends TestCase
 
     public function testFactoryReturnsInstanceOfConfig(): void
     {
-        $config = Factory::create($this->mockRuleset())->forProjects();
+        $config = Factory::create(self::mockRuleset())->forProjects();
         self::assertInstanceOf(Config::class, $config);
 
-        $config = Factory::create($this->mockRuleset())->forLibrary('Library', 'John Doe', 'email', 2020);
+        $config = Factory::create(self::mockRuleset())->forLibrary('Library', 'John Doe', 'email', 2020);
         self::assertInstanceOf(Config::class, $config);
     }
 
     public function testFactoryPassesSameRulesFromRuleset(): void
     {
-        $ruleset = $this->mockRuleset();
+        $ruleset = self::mockRuleset();
         $config = Factory::create($ruleset)->forProjects();
 
         self::assertSame($ruleset->getRules(), $config->getRules());
@@ -77,7 +77,7 @@ final class FactoryTest extends TestCase
 
     public function testFactoryReturnsDefaultOptionsWhenNoOptionsGiven(): void
     {
-        $config = Factory::create($this->mockRuleset())->forProjects();
+        $config = Factory::create(self::mockRuleset())->forProjects();
 
         self::assertSame('.php-cs-fixer.cache', $config->getCacheFile());
         self::assertSame([], $config->getCustomFixers());
@@ -105,7 +105,7 @@ final class FactoryTest extends TestCase
             'ruleCustomisers' => $stub,
         ];
         /** @var Config $config */
-        $config = Factory::create($this->mockRuleset(), [], $options)->forProjects();
+        $config = Factory::create(self::mockRuleset(), [], $options)->forProjects();
 
         self::assertSame($options['cacheFile'], $config->getCacheFile());
         self::assertSame($options['format'], $config->getFormat());
@@ -118,7 +118,7 @@ final class FactoryTest extends TestCase
 
     public function testCreateForLibraryCreatesPreformattedLicense(): void
     {
-        $config = Factory::create($this->mockRuleset())->forLibrary('Library', 'Foo Bar', 'foo@bar.com', 2020);
+        $config = Factory::create(self::mockRuleset())->forLibrary('Library', 'Foo Bar', 'foo@bar.com', 2020);
 
         $rules = $config->getRules();
         self::assertArrayHasKey('header_comment', $rules);
@@ -131,8 +131,8 @@ final class FactoryTest extends TestCase
         self::assertStringContainsString('(c) 2020 Foo Bar <foo@bar.com>', $header);
     }
 
-    private function mockRuleset(): MockObject&RulesetInterface
+    private static function mockRuleset(): RulesetInterface&Stub
     {
-        return $this->createMock(RulesetInterface::class);
+        return self::createStub(RulesetInterface::class);
     }
 }

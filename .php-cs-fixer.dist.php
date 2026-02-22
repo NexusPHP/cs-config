@@ -22,7 +22,7 @@ $finder = Finder::create()
         __DIR__.'/tests',
     ])
     ->notPath([
-        '/Fixer/',
+        '/Fixer\/Comment/',
         '/Test\/AbstractCustomFixerTestCase\.php/',
     ])
     ->append([__FILE__])
