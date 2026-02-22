@@ -490,7 +490,7 @@ final class Nexus82 extends AbstractRuleset
                 'class' => 'multi',
                 'const' => 'multi',
                 'method' => 'multi',
-                'other' => 'single',
+                'other' => null,
                 'property' => 'multi',
                 'trait_import' => 'multi',
             ],
