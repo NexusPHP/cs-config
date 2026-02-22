@@ -5,6 +5,12 @@ All notable changes to this library will be documented in this file:
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v3.28.1](https://github.com/NexusPHP/cs-config/compare/v3.28.0...v3.28.1) - 2026-02-22
+
+- Use `null` value for `other` option of `phpdoc_line_span`
+- Refactor to use `createStub()` instead of `createMock()`
+- Enable option of `single_quote`
+
 ## [v3.28.0](https://github.com/NexusPHP/cs-config/compare/v3.27.0...v3.28.0) - 2026-02-17
 
 - Bump actions/checkout from 5 to 6 (#9)
