@@ -626,7 +626,7 @@ final class Nexus82 extends AbstractRuleset
             'single_line_comment_style' => ['comment_types' => ['asterisk', 'hash']],
             'single_line_empty_body' => true,
             'single_line_throw' => false,
-            'single_quote' => ['strings_containing_single_quote_chars' => false],
+            'single_quote' => ['strings_containing_single_quote_chars' => true],
             'single_space_around_construct' => [
                 'constructs_contain_a_single_space' => ['yield_from'],
                 'constructs_preceded_by_a_single_space' => ['as', 'use_lambda'],
