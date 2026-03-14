@@ -37,10 +37,10 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
 
       - name: Setup PHP, with composer and extensions
-        uses: shivammathur/setup-php@v2
+        uses: shivammathur/setup-php@44454db4f0199b8b9685a5d763dc37cbf79108e1 # 2.36.0
         with:
           php-version: ${{ matrix.php-version }}
           tools: composer
@@ -55,7 +55,7 @@ jobs:
         run: echo "COMPOSER_CACHE_DIR=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
 
       - name: Cache composer dependencies
-        uses: actions/cache@v5
+        uses: actions/cache@cdf6c1fa76f9f475f3d7449005a359c84ca0f306 # v5.0.3
         with:
           path: ${{ steps.composer-cache.outputs.COMPOSER_CACHE_DIR }}
           key: composer-${{ matrix.php-version }}-${{ hashFiles('**/composer.json') }}
@@ -81,14 +81,13 @@ jobs:
         env:
           TACHYCARDIA_MONITOR_GA: enabled
 
-      - name: Run Coveralls
-        run: |
-          composer global require --ansi php-coveralls/php-coveralls
-          php-coveralls --verbose --coverage_clover=build/phpunit/logs/clover.xml --json_path=build/phpunit/logs/coverage.json --exclude-no-stmt --ansi
-        env:
-          COVERALLS_REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          COVERALLS_PARALLEL: true
-          COVERALLS_FLAG_NAME: PHP ${{ matrix.php-version }}
+      - name: Upload coverage to Coveralls
+        uses: coverallsapp/github-action@648a8eb78e6d50909eff900e4ec85cab4524a45b # v2.3.6
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          file: build/phpunit/logs/clover.xml
+          parallel: true
+          flag-name: PHP ${{ matrix.php-version }}
 
   coveralls-finish:
     name: Coveralls Finished
@@ -98,8 +97,8 @@ jobs:
     runs-on: ubuntu-24.04
 
     steps:
-      - name: Upload to Coveralls API
-        uses: coverallsapp/github-action@master
+      - name: Finish Coveralls
+        uses: coverallsapp/github-action@648a8eb78e6d50909eff900e4ec85cab4524a45b # v2.3.6
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           parallel-finished: true
