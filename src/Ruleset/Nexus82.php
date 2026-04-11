@@ -350,6 +350,7 @@ final class Nexus82 extends AbstractRuleset
             'no_useless_sprintf' => true,
             'no_whitespace_before_comma_in_array' => ['after_heredoc' => false],
             'no_whitespace_in_blank_line' => true,
+            'no_whitespace_in_empty_array' => true,
             'non_printable_character' => ['use_escape_sequences_in_strings' => true],
             'normalize_index_brace' => true,
             'not_operator_with_space' => false,
