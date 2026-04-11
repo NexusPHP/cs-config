@@ -1,4 +1,4 @@
-name: build
+name: Tests
 
 permissions:
   contents: read
@@ -9,21 +9,21 @@ on:
   push:
     paths:
       - '**.php'
-      - .github/workflows/build.yml
+      - .github/workflows/tests.yml
       - composer.json
-      - phpstan.neon.dist
-      - phpunit.xml.dist
+      - phpstan.dist.neon
+      - phpunit.dist.xml
   pull_request:
     paths:
       - '**.php'
-      - .github/workflows/build.yml
+      - .github/workflows/tests.yml
       - composer.json
-      - phpstan.neon.dist
-      - phpunit.xml.dist
+      - phpstan.dist.neon
+      - phpunit.dist.xml
 
 jobs:
   main:
-    name: Build [PHP ${{ matrix.php-version }}]
+    name: Tests [PHP ${{ matrix.php-version }}]
     runs-on: ubuntu-24.04
 
     strategy:
@@ -67,14 +67,13 @@ jobs:
         run: |
           composer config --global github-oauth.github.com ${{ secrets.GITHUB_TOKEN }}
           composer update --ansi
+          composer audit
 
       - name: Run PHP-CS-Fixer
         run: composer cs:check
 
       - name: Run PHPStan Static Analysis Check
         run: composer phpstan:check
-        env:
-          XDEBUG_MODE: 'off'
 
       - name: Run Nexus CS Config Test Suite
         run: composer test:unit
