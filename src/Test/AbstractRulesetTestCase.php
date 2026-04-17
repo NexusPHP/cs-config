@@ -109,7 +109,7 @@ abstract class AbstractRulesetTestCase extends TestCase
         $fixersThatArePresets = array_filter(
             self::$enabledFixers,
             static fn(string $fixer): bool => substr($fixer, 0, 1) === '@',
-            ARRAY_FILTER_USE_KEY,
+            \ARRAY_FILTER_USE_KEY,
         );
 
         self::assertEmpty($fixersThatArePresets, \sprintf(

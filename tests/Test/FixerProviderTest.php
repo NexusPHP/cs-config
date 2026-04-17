@@ -54,7 +54,7 @@ final class FixerProviderTest extends TestCase
     public static function provideCreateMethodGivesNoDeprecatedBuiltInFixersCases(): iterable
     {
         $builtin = FixerProvider::create(new Nexus82())->builtin();
-        ksort($builtin, SORT_REGULAR);
+        ksort($builtin, \SORT_REGULAR);
 
         foreach ($builtin as $name => $fixer) {
             yield $name => [$fixer];

@@ -245,14 +245,9 @@ final class Nexus82 extends AbstractRuleset
             'multiline_string_to_heredoc' => true,
             'multiline_whitespace_before_semicolons' => ['strategy' => 'new_line_for_chained_calls'],
             'native_constant_invocation' => [
-                'fix_built_in' => false,
-                'include' => [
-                    'DIRECTORY_SEPARATOR',
-                    'PHP_INT_SIZE',
-                    'PHP_SAPI',
-                    'PHP_VERSION_ID',
-                ],
-                'exclude' => [],
+                'fix_built_in' => true,
+                'include' => [],
+                'exclude' => ['null', 'true', 'false'],
                 'scope' => 'namespaced',
                 'strict' => true,
             ],
