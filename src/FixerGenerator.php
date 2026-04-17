@@ -33,10 +33,7 @@ final class FixerGenerator implements \IteratorAggregate
      * @param non-empty-string $path
      * @param non-empty-string $vendor
      */
-    private function __construct(
-        private string $path,
-        private string $vendor,
-    ) {}
+    private function __construct(private string $path, private string $vendor) {}
 
     /**
      * @throws \RuntimeException
