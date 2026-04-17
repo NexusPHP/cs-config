@@ -28,9 +28,7 @@ $finder = Finder::create()
     ->append([__FILE__])
 ;
 
-$overrides = [
-    'final_public_method_for_abstract_class' => false,
-];
+$overrides = [];
 $options = [
     'finder' => $finder,
     'cacheFile' => 'build/.php-cs-fixer.cache',
