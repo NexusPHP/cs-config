@@ -555,7 +555,7 @@ final class Nexus82 extends AbstractRuleset
                     ['phpstan-assert', 'phpstan-assert-if-true', 'phpstan-assert-if-false'],
                     ['property', 'property-read', 'property-write'],
                     ['runTestsInSeparateProcess', 'runInSeparateProcess', 'preserveGlobalState'],
-                    ['template', 'template-covariant'],
+                    ['template', 'template-covariant', 'template-contravariant', 'extends', 'implements', 'use'],
                 ],
                 'skip_unlisted_annotations' => false,
             ],
