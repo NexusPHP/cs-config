@@ -94,6 +94,8 @@ final class Factory
         $options['ruleCustomisers'] ??= null;
         $options['rules'] = array_merge($ruleset->getRules(), $overrides, $options['customRules'] ?? []);
 
+        unset($options['customRules']);
+
         return new self($ruleset, $options);
     }
 
