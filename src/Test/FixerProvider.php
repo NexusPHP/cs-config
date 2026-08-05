@@ -64,6 +64,8 @@ final class FixerProvider
      * Returns the names and instances of built-in fixers.
      *
      * @return array<string, FixerInterface>
+     *
+     * @phpstan-impure
      */
     public function builtin(): array
     {

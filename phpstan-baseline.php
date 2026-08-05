@@ -55,11 +55,5 @@ $ignoreErrors[] = [
 	'count' => 1,
 	'path' => __DIR__ . '/src/Test/FixerProvider.php',
 ];
-$ignoreErrors[] = [
-	'rawMessage' => 'Call to static method PHPUnit\\Framework\\Assert::assertEmpty() with non-empty-array<string, PhpCsFixer\\Fixer\\FixerInterface> will always evaluate to false.',
-	'identifier' => 'staticMethod.impossibleType',
-	'count' => 1,
-	'path' => __DIR__ . '/tests/Test/FixerProviderTest.php',
-];
 
 return ['parameters' => ['ignoreErrors' => $ignoreErrors]];
