@@ -17,6 +17,13 @@ parameters:
     - vendor/autoload.php
   additionalConstructors:
     - Nexus\CsConfig\Test\AbstractCustomFixerTestCase::setUp
+  ignoreErrors:
+    -
+      identifier: classConstant.internalClass
+    -
+      identifier: method.internalClass
+    -
+      identifier: new.internalClass
   checkBenevolentUnionTypes: true
   checkImplicitMixed: true
   checkMissingCallableSignature: true
