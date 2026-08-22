@@ -497,8 +497,6 @@ final class Nexus82 extends AbstractRuleset
                 'replacements' => [
                     'const' => 'var',
                     'link' => 'see',
-                    'property-read' => 'property',
-                    'property-write' => 'property',
                     'type' => 'var',
                 ],
             ],
