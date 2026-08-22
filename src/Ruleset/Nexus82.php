@@ -240,7 +240,7 @@ final class Nexus82 extends AbstractRuleset
             'multiline_comment_opening_closing' => true,
             'multiline_promoted_properties' => [
                 'keep_blank_lines' => false,
-                'minimum_number_of_parameters' => 3,
+                'minimum_number_of_parameters' => 2,
             ],
             'multiline_string_to_heredoc' => true,
             'multiline_whitespace_before_semicolons' => ['strategy' => 'new_line_for_chained_calls'],
