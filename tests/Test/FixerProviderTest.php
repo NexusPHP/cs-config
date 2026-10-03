@@ -64,10 +64,10 @@ final class FixerProviderTest extends TestCase
     public function testResetReallyResetsBuiltIn(): void
     {
         $provider = FixerProvider::create(self::mockRuleset());
-        self::assertNotEmpty($provider->builtin());
+        self::assertNotSame([], $provider->builtin());
 
         FixerProvider::reset();
-        self::assertEmpty($provider->builtin());
+        self::assertSame([], $provider->builtin());
     }
 
     public function testCreateMethodGivesConfiguredRulesAllEnabled(): void

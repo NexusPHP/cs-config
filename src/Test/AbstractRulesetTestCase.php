@@ -112,7 +112,7 @@ abstract class AbstractRulesetTestCase extends TestCase
             \ARRAY_FILTER_USE_KEY,
         );
 
-        self::assertEmpty($fixersThatArePresets, \sprintf(
+        self::assertSame([], $fixersThatArePresets, \sprintf(
             '[%s] Ruleset should not be using rule sets (presets) as fixers. Found: "%s".',
             static::createRuleset()->getName(),
             implode('", "', array_keys($fixersThatArePresets)),
@@ -126,7 +126,7 @@ abstract class AbstractRulesetTestCase extends TestCase
         sort($fixersNotConfigured);
         $c = \count($fixersNotConfigured);
 
-        self::assertEmpty($fixersNotConfigured, \sprintf(
+        self::assertSame([], $fixersNotConfigured, \sprintf(
             '[%s] Non-deprecated built-in %s "%s" %s not configured in the ruleset.',
             static::createRuleset()->getName(),
             $c > 1 ? 'fixers' : 'fixer',
@@ -142,7 +142,7 @@ abstract class AbstractRulesetTestCase extends TestCase
         sort($fixersNotBuiltIn);
         $c = \count($fixersNotBuiltIn);
 
-        self::assertEmpty($fixersNotBuiltIn, \sprintf(
+        self::assertSame([], $fixersNotBuiltIn, \sprintf(
             '[%s] Ruleset used %s "%s" which %s unknown and/or deprecated in PhpCsFixer.',
             static::createRuleset()->getName(),
             $c > 1 ? 'fixers' : 'fixer',
@@ -197,7 +197,7 @@ abstract class AbstractRulesetTestCase extends TestCase
         $usedDeprecatedOptions = array_intersect($deprecatedOptions, $ruleConfiguration);
         $extraUsedOptions = array_diff($ruleConfiguration, $goodOptions);
 
-        self::assertEmpty($missingOptions, \sprintf(
+        self::assertSame([], $missingOptions, \sprintf(
             'Enabled configurable fixer "%s" does not use its available array %s "%s". Missing %s: "%s".',
             $name,
             \count($goodOptions) > 1 ? 'options' : 'option',
@@ -205,13 +205,13 @@ abstract class AbstractRulesetTestCase extends TestCase
             \count($missingOptions) > 1 ? 'options' : 'option',
             implode('", "', $missingOptions),
         ));
-        self::assertEmpty($usedDeprecatedOptions, \sprintf(
+        self::assertSame([], $usedDeprecatedOptions, \sprintf(
             'Enabled configurable fixer "%s" uses deprecated %s: "%s".',
             $name,
             \count($usedDeprecatedOptions) > 1 ? 'options' : 'option',
             implode('", "', $usedDeprecatedOptions),
         ));
-        self::assertEmpty($extraUsedOptions, \sprintf(
+        self::assertSame([], $extraUsedOptions, \sprintf(
             '%s "%s" for enabled configurable fixer "%s" %s not defined by PhpCsFixer.',
             \count($extraUsedOptions) > 1 ? 'Options' : 'Option',
             implode('", "', $extraUsedOptions),
